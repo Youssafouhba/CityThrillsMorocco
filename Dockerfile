@@ -11,7 +11,5 @@ COPY pom.xml .
 # Copiez le reste des fichiers du projet dans le conteneur
 COPY src ./src
 
-# Compilez et empaquetez l'application
-RUN mvn package
 COPY *.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
