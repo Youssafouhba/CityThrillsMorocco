@@ -1,5 +1,21 @@
 FROM eclipse-temurin:20-jdk-alpine
 VOLUME /tmp
-COPY src src
+# Utilisez une image de base avec Java et Maven
+FROM maven:3.8.4-openjdk-11 AS builder
+
+# Définissez le répertoire de travail dans le conteneur
+WORKDIR /app
+
+# Copiez le fichier pom.xml dans le conteneur
+COPY pom.xml .
+
+# Téléchargez les dépendances Maven
+RUN mvn dependency:go-offline -B
+
+# Copiez le reste des fichiers du projet dans le conteneur
+COPY src ./src
+
+# Compilez et empaquetez l'application
+RUN mvn package
 COPY *.jar app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
