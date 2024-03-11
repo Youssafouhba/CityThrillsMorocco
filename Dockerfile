@@ -8,10 +8,6 @@ WORKDIR /app
 
 # Copiez le fichier pom.xml dans le conteneur
 COPY pom.xml .
-
-# Téléchargez les dépendances Maven
-RUN mvn dependency:go-offline -B
-
 # Copiez le reste des fichiers du projet dans le conteneur
 COPY src ./src
 
