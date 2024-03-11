@@ -1,15 +1,14 @@
-FROM eclipse-temurin:20-jdk-alpine
-VOLUME /tmp
-# Utilisez une image de base avec Java et Maven
-FROM maven:3.8.4-openjdk-11 AS builder
+FROM maven:3.8.4-openjdk-17 AS builder
 
 # Définissez le répertoire de travail dans le conteneur
 WORKDIR /app
+COPY . /app/
+RUN mvn clean package
 
-# Copiez le fichier pom.xml dans le conteneur
-COPY pom.xml .
-# Copiez le reste des fichiers du projet dans le conteneur
-COPY src ./src
-
-COPY *.jar app.jar
+#
+FROM openjdk:17-alpine
+# Définissez le répertoire de travail dans le conteneur
+WORKDIR /app
+COPY --from=builder /app/target/*.jar /app/app.jar
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app.jar"]
