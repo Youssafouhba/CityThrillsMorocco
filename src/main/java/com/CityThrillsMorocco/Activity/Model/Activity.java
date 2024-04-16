@@ -2,7 +2,7 @@ package com.CityThrillsMorocco.Activity.Model;
 
 import com.CityThrillsMorocco.Agence.Model.Agence;
 import com.CityThrillsMorocco.Enumeration.ActivityCategories;
-import com.CityThrillsMorocco.Enumeration.Vielle;
+import com.CityThrillsMorocco.Enumeration.City;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,12 +26,12 @@ public class Activity {
     private Date duration;
     private String location;
     private String description;
-    private Double tarif;
+    private Double price;
     @Enumerated(EnumType.STRING)
     private ActivityCategories category;
     @Enumerated(EnumType.STRING)
-    private Vielle vielle;
+    private City city;
     @OneToOne(targetEntity = Agence.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "agence_id")
+    @JoinColumn(nullable = false, name = "id")
     private Agence agence;
 }

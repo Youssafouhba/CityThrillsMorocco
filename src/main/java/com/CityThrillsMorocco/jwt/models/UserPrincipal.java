@@ -1,7 +1,7 @@
 package com.CityThrillsMorocco.jwt.models;
 
 
-import com.CityThrillsMorocco.user.entity.UserEntity;
+import com.CityThrillsMorocco.user.model.User;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,7 +11,7 @@ import java.util.Collection;
 @AllArgsConstructor
 public class UserPrincipal implements UserDetails {
 
-  private final UserEntity userEntity;
+  private final User userEntity;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

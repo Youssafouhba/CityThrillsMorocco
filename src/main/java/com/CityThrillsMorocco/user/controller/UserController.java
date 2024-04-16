@@ -1,15 +1,16 @@
 package com.CityThrillsMorocco.user.controller;
 
-import com.CityThrillsMorocco.user.data.UserDto;
+import com.CityThrillsMorocco.user.Dto.UserDto;
+import com.CityThrillsMorocco.user.model.User;
 import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.security.NoSuchAlgorithmException;
-import java.util.UUID;
+import java.util.List;
 
 @Log4j2
 @AllArgsConstructor
@@ -18,34 +19,41 @@ public class UserController {
 
   private final UserService userService;
 
-  @GetMapping("/api/v1/users")
-  public Iterable<UserDto> getUsers() {
-    return userService.findAllUsers();
+  @GetMapping("/all")
+  public List<UserDto> AllUsers(){
+    return userService.getAllUserss();
   }
 
-  @GetMapping("/api/v1/users/{id}")
-  public UserDto getUserById(@PathVariable("id") UUID id) {
-    return userService.findUserById(id);
-  }
-
-  @DeleteMapping("/api/v1/users/{id}")
-  @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void deleteUserById(@PathVariable("id") UUID id) {
-    userService.removeUserById(id);
-  }
 
   @PostMapping("/register")
   @ResponseStatus(HttpStatus.CREATED)
-  public UserDto postUser(@Valid @RequestBody UserDto userDto)
-    throws NoSuchAlgorithmException {
-    return userService.createUser(userDto, userDto.getPassword());
+  public ResponseEntity<?> registerUser(@RequestBody User user) {
+    return userService.saveUser(user);
   }
 
-  @PutMapping("/api/v1/users/{id}")
-  public void putUser(
-    @PathVariable("id") UUID id,
-    @Valid @RequestBody UserDto userDto
-  ) throws NoSuchAlgorithmException {
-    userService.updateUser(id, userDto, userDto.getPassword());
+  @GetMapping("/confirm-account")
+  public ResponseEntity<?> confirmUserAccount(@RequestParam("token")String confirmationToken) {
+    return userService.confirmEmail(confirmationToken);
   }
+
+
+
+  @GetMapping("/{id}")
+  public UserDto getUserById(@PathVariable("id") Long id){
+    return userService.getUserById(id);
+  }
+  @GetMapping("/delete/{id}")
+  @ResponseStatus(HttpStatus.NO_CONTENT)
+  public void deleteUserById(@PathVariable("id") Long id){
+    userService.DeleteUserById(id);
+  }
+
+  @PutMapping("/update/{id}")
+  public void putUser(
+          @PathVariable("id") Long id,
+          @RequestBody UserDto userDto
+  ) throws NoSuchAlgorithmException {
+    userService.updateUsert(id,userDto, userDto.getPassword());
+  }
+
 }

@@ -5,7 +5,7 @@ import com.CityThrillsMorocco.jwt.models.AuthenticationRequest;
 import com.CityThrillsMorocco.jwt.models.AuthenticationResponse;
 import com.CityThrillsMorocco.jwt.services.ApplicationUserDetailsService;
 import com.CityThrillsMorocco.jwt.util.JwtUtil;
-import com.CityThrillsMorocco.user.entity.UserEntity;
+import com.CityThrillsMorocco.user.model.User;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,7 +28,7 @@ class AuthenticateController {
   public AuthenticationResponse authenticate(
     @RequestBody AuthenticationRequest req
   ) throws Exception {
-    UserEntity user;
+    User user;
 
     try {
       user = userDetailsService.authenticate(req.getEmail(), req.getPassword());

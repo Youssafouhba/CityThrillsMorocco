@@ -1,6 +1,6 @@
 package com.CityThrillsMorocco.AccountVerification.Model;
 
-import com.CityThrillsMorocco.Client.Model.Client;
+import com.CityThrillsMorocco.user.model.User;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -23,14 +23,14 @@ public class ConfirmationToken {
         @Temporal(TemporalType.TIMESTAMP)
         private Date createdDate;
 
-        @OneToOne(targetEntity = Client.class, fetch = FetchType.EAGER)
+        @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
         @JoinColumn(nullable = false, name = "user_id")
-        private Client user;
+        private User user;
 
         public ConfirmationToken() {
         }
 
-        public ConfirmationToken(Client user) {
+        public ConfirmationToken(User user) {
             this.user = user;
             createdDate = new Date();
             confirmationToken = UUID.randomUUID().toString();

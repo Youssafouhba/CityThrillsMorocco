@@ -1,12 +1,12 @@
 package com.CityThrillsMorocco.Product.Service;
 
-import com.CityThrillsMorocco.Client.Dto.ClientDto;
-import com.CityThrillsMorocco.Client.Model.Client;
-import com.CityThrillsMorocco.Client.Service.ClientService;
 import com.CityThrillsMorocco.Product.Model.Product;
 import com.CityThrillsMorocco.Product.Repository.ProductRepository;
 import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.exception.NotFoundException;
+import com.CityThrillsMorocco.user.Dto.UserDto;
+import com.CityThrillsMorocco.user.model.User;
+import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ import java.util.List;
 public class ProductService {
     private final ProductRepository productRepository;
     private final ModelMapper mapper;
-    private final ClientService clientService;
+    private final UserService userService;
     public Product addProduct(Product product, Long id){
         var existingProduct = productRepository.selectExistsCode(product.getCode());
         if(existingProduct) throw new BadRequestException(" this product code " + product.getCode() + " already exists !!");
-        ClientDto client = clientService.getClientById(id);
-        product.setUser(mapper.map(client, Client.class));
+        UserDto client = userService.getUserById(id);
+        product.setUser(mapper.map(client, User.class));
         productRepository.save(product);
         return product;
     }

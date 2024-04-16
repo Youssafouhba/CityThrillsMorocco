@@ -1,7 +1,7 @@
 package com.CityThrillsMorocco.Agence.Model;
 
 import com.CityThrillsMorocco.Activity.Model.Activity;
-import com.CityThrillsMorocco.Client.Model.Client;
+import com.CityThrillsMorocco.user.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,9 +22,9 @@ public class Agence {
     private String Location;
     @Column(unique = true)
     private String email;
-    @OneToOne(targetEntity = Client.class, fetch = FetchType.EAGER)
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
-    private Client user;
-    @OneToMany(mappedBy = "activity" , cascade = CascadeType.ALL)
+    private User user;
+    @OneToMany(targetEntity = Activity.class, fetch = FetchType.EAGER)
     Set<Activity> activities = new HashSet<Activity>();
 }

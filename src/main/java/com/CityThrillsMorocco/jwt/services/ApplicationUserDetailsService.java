@@ -2,7 +2,7 @@ package com.CityThrillsMorocco.jwt.services;
 
 
 import com.CityThrillsMorocco.jwt.models.UserPrincipal;
-import com.CityThrillsMorocco.user.entity.UserEntity;
+import com.CityThrillsMorocco.user.model.User;
 import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -27,7 +27,7 @@ public class ApplicationUserDetailsService implements UserDetailsService {
     return new UserPrincipal(userService.searchByEmail(email));
   }
 
-  public UserEntity authenticate(String email, String password)
+  public User authenticate(String email, String password)
           throws NoSuchAlgorithmException {
     if (
             email.isEmpty() || password.isEmpty()
