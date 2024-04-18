@@ -1,13 +1,13 @@
-package com.CityThrillsMorocco.user.service;
+package com.CityThrillsMorocco.agence.Service;
 
 import com.CityThrillsMorocco.accountverification.Model.ConfirmationToken;
 import com.CityThrillsMorocco.accountverification.Repository.ConfirmationTokenRepository;
 import com.CityThrillsMorocco.accountverification.Service.EmailService;
+import com.CityThrillsMorocco.agence.Dto.AgenceDto;
+import com.CityThrillsMorocco.agence.Model.Agence;
+import com.CityThrillsMorocco.agence.Repository.AgenceRepository;
 import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.exception.NotFoundException;
-import com.CityThrillsMorocco.user.Dto.UserDto;
-import com.CityThrillsMorocco.user.model.User;
-import com.CityThrillsMorocco.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
@@ -22,88 +22,83 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@AllArgsConstructor
 @Service
+@AllArgsConstructor
+public class AgenceService {
 
-public class UserService  {
-
-    private final UserRepository userRepository;
-    private final ModelMapper mapper;
     private final ConfirmationTokenRepository confirmationTokenRepository;
+    private final AgenceRepository agenceRepository;
+    private final ModelMapper mapper;
     private final EmailService emailService;
 
-    public User searchByEmail(String email) {
-        return userRepository.findByEmail(email);
+
+    public Agence searchByEmail(String email) {
+        return agenceRepository.findByEmail(email);
     }
-    public User createUser(UserDto userDto, String Password) throws NoSuchAlgorithmException {
-        User user = DtoToUser(userDto);
+
+    public Agence createAgence(AgenceDto agenceDto, String Password) throws NoSuchAlgorithmException {
+        Agence agence = DtoToAgence(agenceDto);
         if (Password.isBlank()) throw new IllegalArgumentException(
                 "Password is required"
         );
-        var existsEmail = userRepository.selectExistsEmail(user.getEmail());
+        var existsEmail = agenceRepository.selectExistsEmail(agence.getEmail());
         if (existsEmail) throw new BadRequestException(
-                "Email " + user.getEmail() + " taken"
+                "Email " + agence.getEmail() + " taken"
         );
         byte[] salt = createSalt();
-        byte[] hashedPassword = createPasswordHash(user.getPassword(), salt);
-        user.setStoredSalt(salt);
-        user.setStoredHash(hashedPassword);
-        userRepository.save(user);
-        return user;
+        byte[] hashedPassword = createPasswordHash(agence.getPassword(), salt);
+        agence.setStoredSalt(salt);
+        agence.setStoredHash(hashedPassword);
+        agenceRepository.save(agence);
+        return agence;
     }
-    public void updateUsert(Long id, UserDto userDto, String password)
+
+    public List<AgenceDto> getAllAgences(){
+        var agences = new ArrayList<>( agenceRepository.findAll());
+        return agences.stream()
+                .map(this::agenceToDto)
+                .collect(Collectors.toList());
+    }
+    public void updateAgence(Long id, AgenceDto agenceDto, String password)
             throws NoSuchAlgorithmException {
-        var user = findOrThrow(id);
-        var userParam = DtoToUser(userDto);
-        user.setEmail(userParam.getEmail());
-        user.setPhone(userParam.getPhone());
+        var agence = findOrThrow(id);
+        var agenceParam = DtoToAgence(agenceDto);
+        agence.setEmail(agenceParam.getEmail());
+        agence.setPhone(agenceParam.getPhone());
         if (!password.isBlank()) {
             byte[] salt = createSalt();
             byte[] hashedPassword = createPasswordHash(password, salt);
-            user.setStoredSalt(salt);
-            user.setStoredHash(hashedPassword);
+            agence.setStoredSalt(salt);
+            agence.setStoredHash(hashedPassword);
         }
-        userRepository.save(user);
+        agenceRepository.save(agence);
     }
-    public List<UserDto> getAllUserss(){
-        var users = new ArrayList<>( userRepository.findAll());
-        return users.stream()
-                .map(this::UserToDto)
-                .collect(Collectors.toList());
-    }
-
-    public UserDto getUserById(Long id){
-        var user = userRepository
+    public Agence getAgenceById(Long id){
+        var agence = agenceRepository
                 .findById(id)
                 .orElseThrow(
-                        ()-> new NotFoundException("User by id " + id + " was not found")
+                        ()-> new NotFoundException("agence by id " + id + " was not found")
                 );
-        return UserToDto(user);
+        return agence;
     }
-
-    public void DeleteUserById(Long id){
+    public void DeleteAgenceById(Long id){
         findOrThrow(id);
-        userRepository.deleteById(id);
+        agenceRepository.deleteById(id);
     }
 
 
-    public ResponseEntity<?> saveUser(User user) {
-
-        if (userRepository.existsByEmail(user.getEmail())) {
+    public ResponseEntity<?> saveAgence(Agence agence) {
+        if (agenceRepository.existsByEmail(agence.getEmail())) {
             return ResponseEntity.badRequest().body("Error: Email is already in use!");
         }
-
-        userRepository.save(user);
-
-        ConfirmationToken confirmationToken = new ConfirmationToken(user);
-
+        agenceRepository.save(agence);
+        ConfirmationToken confirmationToken = new ConfirmationToken(agence);
         confirmationTokenRepository.save(confirmationToken);
-
         SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(user.getEmail());
+        mailMessage.setTo(agence.getEmail());
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setText("To confirm your account, please click here : "
-                +"http://localhost:8080/CityThrillsMorocco/confirm-account?token="+confirmationToken.getConfirmationToken());
+                +"http://localhost:8080/CityThrillsMorocco/Admin/confirm-account?token="+confirmationToken.getConfirmationToken());
         emailService.sendEmail(mailMessage);
 
         System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
@@ -117,21 +112,22 @@ public class UserService  {
 
         if(tokene != null)
         {
-            User user = userRepository.findByEmailIgnoreCase(tokene.getUser().getEmail());
-            user.setEnabled(true);
-            userRepository.save(user);
+            Agence agence = agenceRepository.findByEmailIgnoreCase(tokene.getUser().getEmail());
+            agence.setEnabled(true);
+            agenceRepository.save(agence);
             return ResponseEntity.ok("Email verified successfully!");
         }
         return ResponseEntity.badRequest().body("Error: Couldn't verify email");
     }
 
-    private User findOrThrow(final Long id) {
-        return userRepository
+    private Agence findOrThrow(final Long id) {
+        return agenceRepository
                 .findById(id)
                 .orElseThrow(
-                        () -> new NotFoundException("User by id " + id + " was not found")
+                        () -> new NotFoundException("agence by id " + id + " was not found")
                 );
     }
+
     private byte[] createSalt() {
         var random = new SecureRandom();
         var salt = new byte[128];
@@ -147,11 +143,11 @@ public class UserService  {
         return md.digest(password.getBytes(StandardCharsets.UTF_8));
     }
 
-    private UserDto UserToDto(User user) {
-        return mapper.map(user, UserDto.class);
+    private AgenceDto agenceToDto(Agence agence) {
+        return mapper.map(agence, AgenceDto.class);
     }
 
-    private User DtoToUser(UserDto userDto) {
-        return mapper.map(userDto, User.class);
+    private Agence DtoToAgence(AgenceDto agenceDto) {
+        return mapper.map(agenceDto, Agence.class);
     }
 }
