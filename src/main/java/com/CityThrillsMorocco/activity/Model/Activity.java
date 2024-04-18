@@ -32,6 +32,6 @@ public class Activity {
     @Enumerated(EnumType.STRING)
     private City city;
     @ManyToOne(targetEntity = Agence.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false, name = "id")
+    @JoinColumn(nullable = false, name = "agence_id")
     private Agence agence;
 }
