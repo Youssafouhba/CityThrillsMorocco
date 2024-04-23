@@ -16,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/CityThrillsMorocco/Admin")
+@CrossOrigin("http://localhost:4200/")
 public class AgenceController {
     private final AgenceService agenceService;
     @GetMapping("/all")
@@ -25,9 +26,9 @@ public class AgenceController {
 
 
     @PostMapping("/register")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> registerUser(@RequestBody Agence agence) {
-        return agenceService.saveAgence(agence);
+    public ResponseEntity<?> registerUser(@RequestBody Agence agence) throws NoSuchAlgorithmException {
+        agenceService.saveAgence(agence);
+        return  ResponseEntity.status(HttpStatus.CREATED).body("Message créé avec succès");
     }
 
     @GetMapping("/confirm-account")

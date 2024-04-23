@@ -87,13 +87,13 @@ public class UserService  {
     }
 
 
-    public ResponseEntity<?> saveUser(User user) {
+    public ResponseEntity<?> saveUser(User user) throws NoSuchAlgorithmException {
 
         if (userRepository.existsByEmail(user.getEmail())) {
             return ResponseEntity.badRequest().body("Error: Email is already in use!");
         }
 
-        userRepository.save(user);
+        createUser(mapper.map(user,UserDto.class),user.getPassword());
 
         ConfirmationToken confirmationToken = new ConfirmationToken(user);
 

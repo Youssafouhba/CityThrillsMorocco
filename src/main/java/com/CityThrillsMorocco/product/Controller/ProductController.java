@@ -6,17 +6,23 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/CityThrillsMorocco/agence")
+@RequestMapping("/CityThrillsMorocco/Admin/products")
 @CrossOrigin("http://localhost:4200/")
 public class ProductController {
     private final ProductService productService;
+
+    @GetMapping("all")
+    public List<Product> getProducts() {
+        return productService.getAllProducts();
+    }
+
     @PostMapping("/add")
-    public Product saveproduct(@RequestBody Product product, Long id){
-        return productService.addProduct(product,id);
+    public Product saveproduct(@RequestBody Product product){
+        return productService.addProduct(product);
     }
     @GetMapping("/{id}")
     public Product getProductById(@PathVariable("id") Long id){
@@ -28,11 +34,5 @@ public class ProductController {
         productService.DeleteProductById(id);
     }
 
-    @PutMapping("/update/{id}")
-    public void putProduct(
-            @PathVariable("id") Long id,
-            @RequestBody Product product
-    ) throws NoSuchAlgorithmException {
-        productService.updateProduct(id,product);
-    }
+
 }

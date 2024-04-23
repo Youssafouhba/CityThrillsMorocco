@@ -18,7 +18,7 @@ public class Agence {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String Location;
+    private String location;
     @Column(unique = true)
     private String email;
     private String phone;

@@ -16,4 +16,6 @@ public interface ActivityRepo extends JpaRepository<Activity, Long> {
     )
     Boolean selectExistsDesignation(String designation);
     Activity findByDesignation(String designation);
+
+    void deleteById(Long id);
 }

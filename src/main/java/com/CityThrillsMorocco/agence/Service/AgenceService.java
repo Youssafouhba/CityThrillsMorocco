@@ -11,7 +11,6 @@ import com.CityThrillsMorocco.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
@@ -36,7 +35,7 @@ public class AgenceService {
         return agenceRepository.findByEmail(email);
     }
 
-    public Agence createAgence(AgenceDto agenceDto, String Password) throws NoSuchAlgorithmException {
+    public ResponseEntity<?>  createAgence(AgenceDto agenceDto, String Password) throws NoSuchAlgorithmException {
         Agence agence = DtoToAgence(agenceDto);
         if (Password.isBlank()) throw new IllegalArgumentException(
                 "Password is required"
@@ -50,7 +49,7 @@ public class AgenceService {
         agence.setStoredSalt(salt);
         agence.setStoredHash(hashedPassword);
         agenceRepository.save(agence);
-        return agence;
+        return ResponseEntity.ok("Created successfully");
     }
 
     public List<AgenceDto> getAllAgences(){
@@ -87,11 +86,12 @@ public class AgenceService {
     }
 
 
-    public ResponseEntity<?> saveAgence(Agence agence) {
+    public ResponseEntity<?> saveAgence(Agence agence) throws NoSuchAlgorithmException {
         if (agenceRepository.existsByEmail(agence.getEmail())) {
             return ResponseEntity.badRequest().body("Error: Email is already in use!");
         }
-        agenceRepository.save(agence);
+        createAgence(agenceToDto(agence), agence.getPassword());
+        /*
         ConfirmationToken confirmationToken = new ConfirmationToken(agence);
         confirmationTokenRepository.save(confirmationToken);
         SimpleMailMessage mailMessage = new SimpleMailMessage();
@@ -102,7 +102,7 @@ public class AgenceService {
         emailService.sendEmail(mailMessage);
 
         System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
-
+*/
         return ResponseEntity.ok("Verify email by the link sent on your email address");
     }
 

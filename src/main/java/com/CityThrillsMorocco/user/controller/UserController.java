@@ -28,7 +28,7 @@ public class UserController {
 
   @PostMapping("/register")
   @ResponseStatus(HttpStatus.CREATED)
-  public ResponseEntity<?> registerUser(@RequestBody User user) {
+  public ResponseEntity<?> registerUser(@RequestBody User user) throws NoSuchAlgorithmException {
     return userService.saveUser(user);
   }
 
