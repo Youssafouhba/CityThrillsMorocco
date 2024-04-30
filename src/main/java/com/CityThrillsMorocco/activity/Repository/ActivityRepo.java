@@ -1,9 +1,14 @@
 package com.CityThrillsMorocco.activity.Repository;
 
+import com.CityThrillsMorocco.activity.Dto.ActivityDto;
 import com.CityThrillsMorocco.activity.Model.Activity;
+import com.CityThrillsMorocco.enumeration.ActivityCategories;
+import com.CityThrillsMorocco.enumeration.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface ActivityRepo extends JpaRepository<Activity, Long> {
@@ -15,5 +20,8 @@ public interface ActivityRepo extends JpaRepository<Activity, Long> {
                     "WHERE u.designation = ?1"
     )
     Boolean selectExistsDesignation(String designation);
-    Activity findByDesignation(String designation);
+
+    List<Activity> findAllByCategory(ActivityCategories category);
+    List<Activity> findAllByCity(City city);
+
 }

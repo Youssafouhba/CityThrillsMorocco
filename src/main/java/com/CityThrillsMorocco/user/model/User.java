@@ -1,5 +1,6 @@
 package com.CityThrillsMorocco.user.model;
 
+import com.CityThrillsMorocco.enumeration.Role;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ public class User {
   private String email;
   private String phone;
   private String password;
+  private Role role;
   private byte[] storedHash;
   private byte[] storedSalt;
   private boolean isEnabled;
