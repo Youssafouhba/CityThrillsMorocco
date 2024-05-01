@@ -26,6 +26,6 @@ public class Agence {
     private byte[] storedHash;
     private byte[] storedSalt;
     private boolean isEnabled;
-    @OneToMany(targetEntity = Activity.class, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Activity.class, fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     Set<Activity> activities = new HashSet<Activity>();
 }

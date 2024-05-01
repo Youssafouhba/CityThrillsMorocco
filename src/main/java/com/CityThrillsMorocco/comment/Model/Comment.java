@@ -4,7 +4,6 @@ import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.user.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,7 +11,6 @@ import java.util.Date;
 @Entity
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class Comment {
 
     @Id
@@ -22,14 +20,18 @@ public class Comment {
     private int note;
 
     private String content;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
 
-    @ManyToOne(targetEntity = Activity.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = Activity.class)
     @JoinColumn(nullable = false, name = "id_activity")
     private Activity activity;
 
-    @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
+
+    public Comment(){
+        createdDate = new Date();
+    }
 }

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @Log4j2
-public class CityThrillsMoroccoApplication {
+public class CityThrillsMoroccoApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(CityThrillsMoroccoApplication.class, args);

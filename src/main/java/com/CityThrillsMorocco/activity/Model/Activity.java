@@ -44,6 +44,8 @@ public class Activity {
 
     private String imageUrl;
 
+    private String status = "Active";
+
     @Enumerated(EnumType.STRING)
     private City city;
 

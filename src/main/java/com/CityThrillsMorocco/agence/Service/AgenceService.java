@@ -10,6 +10,7 @@ import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.exception.NotFoundException;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -35,11 +36,11 @@ public class AgenceService {
         return agenceRepository.findByEmail(email);
     }
 
-    public ResponseEntity<?>  createAgence(AgenceDto agenceDto, String Password) throws NoSuchAlgorithmException {
+    public ResponseEntity<?> createAgence(AgenceDto agenceDto, String Password) throws NoSuchAlgorithmException {
         Agence agence = DtoToAgence(agenceDto);
-        if (Password.isBlank()) throw new IllegalArgumentException(
-                "Password is required"
-        );
+        if (Password.isBlank()){
+            return new ResponseEntity<>("Password is required",HttpStatus.BAD_REQUEST);
+        }
         var existsEmail = agenceRepository.selectExistsEmail(agence.getEmail());
         if (existsEmail) throw new BadRequestException(
                 "Email " + agence.getEmail() + " taken"
@@ -52,12 +53,13 @@ public class AgenceService {
         return ResponseEntity.ok("Created successfully");
     }
 
-    public List<AgenceDto> getAllAgences(){
+    public  ResponseEntity<List<AgenceDto>> getAllAgences(){
         var agences = new ArrayList<>( agenceRepository.findAll());
-        return agences.stream()
+        return new ResponseEntity<>(agences.stream()
                 .map(this::agenceToDto)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()),HttpStatus.FOUND);
     }
+
     public void updateAgence(Long id, AgenceDto agenceDto, String password)
             throws NoSuchAlgorithmException {
         var agence = findOrThrow(id);
@@ -72,14 +74,15 @@ public class AgenceService {
         }
         agenceRepository.save(agence);
     }
+
     public Agence getAgenceById(Long id){
-        var agence = agenceRepository
+        return agenceRepository
                 .findById(id)
                 .orElseThrow(
                         ()-> new NotFoundException("agence by id " + id + " was not found")
                 );
-        return agence;
     }
+
     public void DeleteAgenceById(Long id){
         findOrThrow(id);
         agenceRepository.deleteById(id);

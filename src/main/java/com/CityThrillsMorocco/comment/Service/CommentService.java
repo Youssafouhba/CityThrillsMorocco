@@ -12,6 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 @AllArgsConstructor
 @Service
@@ -28,4 +29,13 @@ public class CommentService {
         comment.setActivity(activity);
         return commentRepository.save(comment);
     }
+
+    public List<Comment> getComments(){
+        return commentRepository.findAll();
+    }
+
+    public void deleteComment(Long id){
+        commentRepository.deleteById(id);
+    }
+
 }

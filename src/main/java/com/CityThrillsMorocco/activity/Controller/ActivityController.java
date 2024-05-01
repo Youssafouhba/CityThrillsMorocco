@@ -16,24 +16,32 @@ import java.util.List;
 public class ActivityController {
     private final ActivityService activityService;
 
-    @GetMapping("/all")
-    public List<Activity> AllUsers(){
-        return activityService.getAllActivities();
+    @GetMapping
+    public ResponseEntity<List<Activity>> AllUsers(){
+        return new ResponseEntity<>(activityService.getAllActivities(),HttpStatus.ACCEPTED);
     }
 
     @GetMapping("/{id}")
-    public Activity getActivityById(@PathVariable("id") Long id){
-        return activityService.getActivityById(id);
+    public ResponseEntity<Activity> getActivityById(@PathVariable("id") Long id){
+        return new ResponseEntity<>(activityService.getActivityById(id),HttpStatus.ACCEPTED);
     }
 
-    @PostMapping("/remove/{id}")
+    @DeleteMapping("/{id}")
     public void deleteActivity(@PathVariable("id") Long id){
         activityService.deleteActivity(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public ResponseEntity<?> registerUser(@RequestBody Activity activity) throws NoSuchAlgorithmException {
-        activityService.addActivity(activity,1L);
+        activityService.addActivity(activity,3L);
+        return  ResponseEntity.status(HttpStatus.CREATED).body("Message créé avec succès");
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateActivity(
+            @RequestBody Activity activity,
+            @PathVariable("id")Long id) throws NoSuchAlgorithmException {
+        activityService.updateActivity(activity,id);
         return  ResponseEntity.status(HttpStatus.CREATED).body("Message créé avec succès");
     }
 }

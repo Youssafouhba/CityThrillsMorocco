@@ -6,6 +6,7 @@ import com.CityThrillsMorocco.agence.Model.Agence;
 import com.CityThrillsMorocco.agence.Service.AgenceService;
 import com.CityThrillsMorocco.exception.BadRequestException;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -26,13 +27,35 @@ public class ActivityService {
     public void deleteActivity(Long id){
          activityRepo.deleteById(id);
     }
-    public Activity addActivity(Activity activity,Long agenceid){
+
+    public ResponseEntity<?> addActivity(Activity activity, Long agenceid){
         var existingActivity = activityRepo.selectExistsDesignation(activity.getDesignation());
-        if(existingActivity) throw new BadRequestException(" this activity  already exists !!");
+        if(existingActivity) {
+            throw new BadRequestException(" this activity  already exists !!");
+        }
         Agence agence = agenceService.getAgenceById(agenceid);
         activity.setAgence(agence);
         activityRepo.save(activity);
-        return activity;
+        return ResponseEntity.ok(" added succesfully");
+    }
+
+    public void updateActivity(Activity activity,Long id){
+        var existingActivity = activityRepo.selectExistsDesignation(activity.getDesignation());
+        if(existingActivity) throw new BadRequestException(" this activity  already exists !!");
+
+        Activity activity1 = getActivityById(id);
+
+        activity1.setAgence(activity.getAgence());
+        activity1.setPrice(activity.getPrice());
+        activity1.setCategory(activity.getCategory());
+        activity1.setAgence(activity.getAgence());
+        activity1.setDesignation(activity.getDesignation());
+        activity1.setImageUrl(activity.getImageUrl());
+        activity1.setPrice(activity.getPrice());
+        activity1.setDescriptiondetail(activity.getDescriptiondetail());
+        activity1.setId(id);
+
+        activityRepo.save(activity);
     }
 
     public Activity getActivityById(Long id) {

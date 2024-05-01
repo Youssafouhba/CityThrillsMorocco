@@ -65,6 +65,7 @@ public class UserService  {
         }
         userRepository.save(user);
     }
+
     public List<UserDto> getAllUserss(){
         var users = new ArrayList<>( userRepository.findAll());
         return users.stream()

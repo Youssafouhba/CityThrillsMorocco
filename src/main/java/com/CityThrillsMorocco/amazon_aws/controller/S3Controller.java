@@ -1,6 +1,7 @@
 package com.CityThrillsMorocco.amazon_aws.controller;
 
 import com.CityThrillsMorocco.amazon_aws.service.S3Service;
+
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -11,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/CityThrillsMorocco")
+@RequestMapping("/CityThrillsMorocco/aws")
 public class S3Controller {
 
     private final S3Service s3Service;
