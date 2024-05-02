@@ -20,15 +20,14 @@ public class UserController {
 
   private final UserService userService;
 
-  @GetMapping("/all")
+  @GetMapping
   public List<UserDto> AllUsers(){
     return userService.getAllUserss();
   }
 
-
-  @PostMapping("/register")
+  @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public ResponseEntity<?> registerUser(@RequestBody User user) {
+  public ResponseEntity<?> registerUser(@RequestBody User user) throws NoSuchAlgorithmException {
     return userService.saveUser(user);
   }
 
@@ -37,23 +36,19 @@ public class UserController {
     return userService.confirmEmail(confirmationToken);
   }
 
-
-
   @GetMapping("/{id}")
   public UserDto getUserById(@PathVariable("id") Long id){
     return userService.getUserById(id);
   }
-  @GetMapping("/delete/{id}")
+
+  @DeleteMapping("/{id}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   public void deleteUserById(@PathVariable("id") Long id){
     userService.DeleteUserById(id);
   }
 
-  @PutMapping("/update/{id}")
-  public void putUser(
-          @PathVariable("id") Long id,
-          @RequestBody UserDto userDto
-  ) throws NoSuchAlgorithmException {
+  @PutMapping("/{id}")
+  public void putUser( @PathVariable("id") Long id, @RequestBody UserDto userDto ) throws NoSuchAlgorithmException {
     userService.updateUsert(id,userDto, userDto.getPassword());
   }
 

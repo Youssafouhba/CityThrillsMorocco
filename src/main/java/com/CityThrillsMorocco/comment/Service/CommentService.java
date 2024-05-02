@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
@@ -31,22 +30,12 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
-    public List<Activity> findTop6Activities(){
-        List<Activity> topActivities = commentRepository.findActivitiesWithHighRatings();
-        if(topActivities.size() > 6){
-            topActivities = topActivities.subList(0,6);
-        }
-
-        return topActivities;
+    public List<Comment> getComments(){
+        return commentRepository.findAll();
     }
 
-    public Long getNote(Long activity_id){
-        return commentRepository.findAverageNoteByActivityId(activity_id);
+    public void deleteComment(Long id){
+        commentRepository.deleteById(id);
     }
-
-    public Long getNumberOfComments(Long activity_id){
-        return commentRepository.getNumberOfComments(activity_id);
-    }
-
 
 }

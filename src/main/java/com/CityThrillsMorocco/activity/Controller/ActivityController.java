@@ -6,22 +6,47 @@ import com.CityThrillsMorocco.activity.Service.ActivityService;
 import com.CityThrillsMorocco.enumeration.ActivityCategories;
 import com.CityThrillsMorocco.enumeration.City;
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-@Log4j2
 @AllArgsConstructor
 @RestController
-@RequestMapping("/activity")
+@RequestMapping("/CityThrillsMorocco/Admin/activities")
 public class ActivityController {
-    @Autowired
     private final ActivityService activityService;
+
+    @GetMapping
+    public ResponseEntity<List<Activity>> AllUsers(){
+        return new ResponseEntity<>(activityService.getAllActivities(),HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Activity> getActivityById(@PathVariable("id") Long id){
+        return new ResponseEntity<>(activityService.getActivityById(id),HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteActivity(@PathVariable("id") Long id){
+        activityService.deleteActivity(id);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> registerUser(@RequestBody Activity activity) throws NoSuchAlgorithmException {
+        activityService.addActivity(activity,3L);
+        return  ResponseEntity.status(HttpStatus.CREATED).body("Message créé avec succès");
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateActivity(
+            @RequestBody Activity activity,
+            @PathVariable("id")Long id) throws NoSuchAlgorithmException {
+        activityService.updateActivity(activity,id);
+        return  ResponseEntity.status(HttpStatus.CREATED).body("Message créé avec succès");
+    }
 
     @GetMapping("/activities/category{category}")
     public List<ActivityDto> getActivitiesByCategory(@PathVariable("category") ActivityCategories category) {
@@ -39,8 +64,4 @@ public class ActivityController {
         return activityService.findall();
     }
 
-    @GetMapping("/{id}")
-    public ActivityDto getActivity (@PathVariable("id") Long activityId){
-        return activityService.getActivity(activityId);
-    }
 }

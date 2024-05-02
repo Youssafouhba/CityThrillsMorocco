@@ -2,12 +2,10 @@ package com.CityThrillsMorocco.activity.Dto;
 
 import com.CityThrillsMorocco.enumeration.ActivityCategories;
 import com.CityThrillsMorocco.enumeration.City;
-
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -23,5 +21,5 @@ public class ActivityDto {
     private ActivityCategories category;
     private City city;
     private Long agence_id;
-    private String image_path;
+    private String imageUrl;
 }

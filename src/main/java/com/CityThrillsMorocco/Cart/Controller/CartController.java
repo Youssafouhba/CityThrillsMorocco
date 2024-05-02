@@ -14,7 +14,7 @@ import java.util.Optional;
 @Log4j2
 @AllArgsConstructor
 @RestController
-@RequestMapping("/cart")
+@RequestMapping("/CityThrillsMorocco/cart")
 public class CartController {
     @Autowired
     private CartService cartService;

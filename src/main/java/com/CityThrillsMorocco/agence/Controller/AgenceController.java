@@ -16,18 +16,19 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/CityThrillsMorocco/Admin")
+@CrossOrigin("http://localhost:54360/")
 public class AgenceController {
+
     private final AgenceService agenceService;
-    @GetMapping("/all")
-    public List<AgenceDto> AllUsers(){
+
+    @GetMapping
+    public ResponseEntity<List<AgenceDto>> AllUsers(){
         return agenceService.getAllAgences();
     }
 
-
-    @PostMapping("/register")
-    @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> registerUser(@RequestBody Agence agence) {
-        return agenceService.saveAgence(agence);
+    @GetMapping("/{id}")
+    public ResponseEntity<Agence> getAgenceById(@PathVariable("id") Long id){
+        return new  ResponseEntity<>(agenceService.getAgenceById(id),HttpStatus.FOUND);
     }
 
     @GetMapping("/confirm-account")
@@ -35,23 +36,20 @@ public class AgenceController {
         return agenceService.confirmEmail(confirmationToken);
     }
 
-    @GetMapping("/{id}")
-    public Agence getAgenceById(@PathVariable("id") Long id){
-        return agenceService.getAgenceById(id);
+    @PostMapping
+    public ResponseEntity<?> registerUser(@RequestBody Agence agence) throws NoSuchAlgorithmException {
+        return  agenceService.saveAgence(agence);
     }
-    @GetMapping("/delete/{id}")
+
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteAgenceById(@PathVariable("id") Long id){
         agenceService.DeleteAgenceById(id);
     }
 
-    @PutMapping("/update/{id}")
-    public void putAgence(
-            @PathVariable("id") Long id,
-            @RequestBody AgenceDto agenceDto
-    ) throws NoSuchAlgorithmException {
+    @PutMapping("/{id}")
+    public void putAgence(@PathVariable("id") Long id, @RequestBody AgenceDto agenceDto ) throws NoSuchAlgorithmException {
         agenceService.updateAgence(id,agenceDto, agenceDto.getPassword());
     }
-
 
 }

@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @Data
 public class AgenceDto {
     private Long id;
-    private String firstname;
-    private String lastname;
+    private String name;
+    private String location;
     private String email;
     private String phone;
     private String password;

@@ -15,10 +15,10 @@ import java.util.Set;
 @NoArgsConstructor
 public class Agence {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String Location;
+    private String location;
     @Column(unique = true)
     private String email;
     private String phone;
@@ -26,6 +26,6 @@ public class Agence {
     private byte[] storedHash;
     private byte[] storedSalt;
     private boolean isEnabled;
-    @OneToMany(targetEntity = Activity.class, fetch = FetchType.EAGER)
+    @OneToMany(targetEntity = Activity.class, fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     Set<Activity> activities = new HashSet<Activity>();
 }
