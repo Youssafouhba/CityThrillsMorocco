@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2024-04-29 17:30:12,162 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
 2024-04-29 17:30:12,296 INFO o.s.b.StartupInfoLogger [restartedMain] Starting CityThrillsMoroccoApplication using Java 20.0.2 on DESKTOP-6EU5B5M with PID 14964 (C:\Users\hp\Downloads\CityThrillsMorocco\target\classes started by hp in C:\Users\hp\Downloads\CityThrillsMorocco)
 2024-04-29 17:30:12,304 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
@@ -42,3 +43,8 @@
 2024-04-29 17:46:05,799 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-04-29 17:46:06,019 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
 2024-04-29 17:46:06,446 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+=======
+2024-04-30 00:44:28,609 INFO o.s.o.j.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-30 00:44:28,686 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2024-04-30 00:44:28,727 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+>>>>>>> main

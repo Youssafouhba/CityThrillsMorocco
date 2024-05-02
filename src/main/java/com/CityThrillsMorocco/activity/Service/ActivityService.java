@@ -1,16 +1,21 @@
 package com.CityThrillsMorocco.activity.Service;
 
+import com.CityThrillsMorocco.activity.Dto.ActivityDto;
 import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.activity.Repository.ActivityRepo;
 import com.CityThrillsMorocco.agence.Model.Agence;
 import com.CityThrillsMorocco.agence.Service.AgenceService;
+import com.CityThrillsMorocco.enumeration.ActivityCategories;
+import com.CityThrillsMorocco.enumeration.City;
 import com.CityThrillsMorocco.exception.BadRequestException;
 import lombok.AllArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -18,6 +23,7 @@ public class ActivityService {
 
     private final ActivityRepo activityRepo;
     private final AgenceService agenceService;
+    private final ModelMapper modelMapper;
 
     public List<Activity> getAllActivities(){
         List<Activity> activities = new ArrayList<Activity>( activityRepo.findAll());
@@ -58,7 +64,38 @@ public class ActivityService {
         activityRepo.save(activity);
     }
 
+    public List<ActivityDto> findAllByCategory(ActivityCategories category) {
+        List<Activity> activities = activityRepo.findAllByCategory(category);
+        return activities.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ActivityDto> findAllByCity(City city){
+        List<Activity> activities = activityRepo.findAllByCity(city);
+        return activities.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
     public Activity getActivityById(Long id) {
         return activityRepo.getById(id);
+    }
+
+    public List<Activity> findall(){
+        return activityRepo.findAll();
+    }
+
+    public ActivityDto convertToDto(Activity activity) {
+        ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
+        activityDto.setAgence_id(activity.getAgence().getId());
+        return activityDto;
+    }
+
+    public ActivityDto getActivity(Long activityId) {
+        Activity activity = activityRepo.getById(activityId);
+        ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
+        activityDto.setAgence_id(activity.getAgence().getId());
+        return activityDto;
     }
 }

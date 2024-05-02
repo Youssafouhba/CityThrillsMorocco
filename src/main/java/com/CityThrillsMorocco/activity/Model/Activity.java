@@ -52,5 +52,4 @@ public class Activity {
     @ManyToOne(targetEntity = Agence.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "agence_id")
     private Agence agence;
-
 }

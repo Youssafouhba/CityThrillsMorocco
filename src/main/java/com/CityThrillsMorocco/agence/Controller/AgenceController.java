@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/CityThrillsMorocco/Admin")
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin("http://localhost:54360/")
 public class AgenceController {
 
     private final AgenceService agenceService;
