@@ -30,7 +30,14 @@ public class CommentService {
         comment.setActivity(activity);
         return commentRepository.save(comment);
     }
+    public List<Comment> getComments(){
+        return commentRepository.findAll();
+    }
 
+    public void deleteComment(Long id){
+        commentRepository.deleteById(id);
+    }
+    
     public List<Activity> findTop6Activities(){
         List<Activity> topActivities = commentRepository.findActivitiesWithHighRatings();
         if(topActivities.size() > 6){
