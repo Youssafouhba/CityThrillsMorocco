@@ -1,0 +1,274 @@
+
+<div id="container-wrapper">
+  <!-- Dashboard -->
+  <div id="dashboard" class="dashboard-container">
+    <div class="db-info-wrap db-add-tour-wrap">
+      <form [formGroup]="activityForm" (ngSubmit)="createActivity()">
+      <div class="row">
+        <!-- Listings -->
+
+        <div class="col-lg-8 col-xl-9">
+          <div class="dashboard-box">
+
+            <div class="custom-field-wrap">
+                <div >
+                  <mat-form-field style="width: 100%;">
+                    <mat-label>Designation</mat-label>
+                    <input formControlName="designation" placeholder="Designation" [matAutocomplete]="activitiesAuto" required matInput />
+                    <mat-error>The designation is not valid</mat-error>
+                  </mat-form-field>
+                  <mat-autocomplete #activitiesAuto="matAutocomplete">
+                    <mat-option *ngFor="let activity of activities$ | async" [value]="activity.designation">
+                      {{activity.designation}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </div>
+                <div>
+                  <mat-form-field style="width: 100%;" >
+                    <mat-label>Description</mat-label>
+                    <textarea formControlName="description" placeholder="Description" [matAutocomplete]="activitiesAuto" required matInput></textarea>
+                    <mat-error>The description is not valid</mat-error>
+                  </mat-form-field>
+                  <mat-autocomplete #activitiesAuto="matAutocomplete">
+                    <mat-option *ngFor="let activity of activities$ | async" [value]="activity.designation">
+                      {{activity.description}}
+                    </mat-option>
+                  </mat-autocomplete>
+                </div>
+              <div>
+                <mat-form-field style="width: 100%;" >
+                  <mat-label>Description Details</mat-label>
+                  <textarea formControlName="descriptiondetail" placeholder="Description Details" [matAutocomplete]="activitiesAuto" required matInput></textarea>
+                  <mat-error>The description is not valid</mat-error>
+                </mat-form-field>
+                <mat-autocomplete #activitiesAuto="matAutocomplete">
+                  <mat-option *ngFor="let activity of activities$ | async" [value]="activity.descriptiondetail">
+                    {{activity.descriptiondetail}}
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-box">
+            <div class="custom-field-wrap">
+              <h4>Dates and Prices</h4>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Started Date</mat-label>
+                      <input matInput type="text" formControlName="starteddate" placeholder="Started Date" [matDatepicker]="picker1" />
+                      <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                      <mat-datepicker #picker1></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Finished Date</mat-label>
+                      <input matInput formControlName="finisheddate" type="text" placeholder="Finished Date" [matDatepicker]="picker" />
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <mat-form-field>
+                      <mat-label>Started Duration</mat-label>
+                      <input type="time" formControlName="startedduration" placeholder="HH:mm" [matAutocomplete]="activitiesAuto" matInput />
+                    </mat-form-field>
+                    <mat-autocomplete #activitiesAuto="matAutocomplete">
+                      <mat-option *ngFor="let activity of activities$ | async" [value]="activity.startedduration">
+                        {{activity.startedduration}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <mat-form-field>
+                      <mat-label>Finished Duration</mat-label>
+                      <input type="time" formControlName="finishedduration" placeholder="HH:mm" [matAutocomplete]="activitiesAuto" matInput />
+                    </mat-form-field>
+                    <mat-autocomplete #activitiesAuto="matAutocomplete">
+                      <mat-option *ngFor="let activity of activities$ | async" [value]="activity.finishedduration">
+                        {{activity.finishedduration}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Categories</mat-label>
+                      <mat-select formControlName="category">
+                        <mat-option *ngFor="let category of categories" [value]="category">
+                          {{category}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Sale Price</mat-label>
+                      <input type="number" formControlName="price" placeholder="Sale Price" required matInput />
+                      <mat-error>The price is required</mat-error>
+                      <mat-hint>
+                        Price should be between 1 and 10000
+                      </mat-hint>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button mat-raised-button color="primary" type="submit" [disabled]="!activityForm.valid">Create</button>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-box">
+            <h4>Gallery</h4>
+            <div class="custom-field-wrap">
+              <div class="dragable-field">
+                <div class="dragable-field-inner">
+                  <p class="drag-drop-info">Drop Files To Upload</p>
+                  <p>or</p>
+                  <div class="upload-input">
+                    <div class="form-group">
+                      <span class="upload-btn">Upload a image</span>
+                      <input type="file" name="myfile">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-box">
+            <h4>Location</h4>
+            <div class="custom-field-wrap">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <mat-form-field>
+                      <mat-label>Select Map</mat-label>
+                      <mat-select >
+                        <mat-option>
+                          Google Map
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div>
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>API key</mat-label>
+                      <input formControlName="location" placeholder="Location" [matAutocomplete]="activitiesAuto" required matInput />
+                      <mat-error>The location is not valid</mat-error>
+                    </mat-form-field>
+                    <mat-autocomplete #activitiesAuto="matAutocomplete">
+                      <mat-option *ngFor="let activity of activities$ | async" [value]="activity.location">
+                        {{activity.location}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-xl-3">
+          <div class="dashboard-box">
+            <div class="custom-field-wrap">
+              <h4>Publish</h4>
+              <div class="publish-btn">
+                <div class="form-group">
+                  <input type="submit" name="draft" value="Save Draft">
+                </div>
+                <div class="form-group">
+                  <input type="submit" name="preview" value="Preview">
+                </div>
+              </div>
+              <div class="publish-status">
+                                    <span>
+                                        <strong>Status:</strong>
+                                        Draft
+                                    </span>
+                <a href="#">Edit</a>
+              </div>
+              <div class="publish-status">
+                                    <span>
+                                        <strong>Visibility:</strong>
+                                        Poblic
+                                    </span>
+                <a href="#">Edit</a>
+              </div>
+              <div class="publish-status">
+                                    <span>
+                                        <strong>Visibility:</strong>
+                                        Poblic
+                                    </span>
+                <a href="#">Edit</a>
+              </div>
+              <div class="publish-action">
+                <input type="submit" name="publish" value="Publish">
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-box">
+            <div class="custom-field-wrap db-pop-field-wrap">
+              <h4>Popular</h4>
+              <div class="form-group">
+                <label class="custom-input"><input type="checkbox">
+                  <span class="custom-input-field"></span>
+                  Use Polpular
+                </label>
+              </div>
+            </div>
+            <div class="custom-field-wrap db-pop-field-wrap">
+              <h4>Keywords</h4>
+              <div class="form-group">
+                <input type="text" name="keyword" placeholder="Keywords">
+              </div>
+            </div>
+            <div class="custom-field-wrap db-cat-field-wrap">
+              <h4>Category</h4>
+              <div class="form-group">
+                <label class="custom-input"><input type="checkbox">
+                  <span class="custom-input-field"></span>
+                  Hotel
+                </label>
+              </div>
+              <div class="form-group">
+                <label class="custom-input"><input type="checkbox" checked="checked">
+                  <span class="custom-input-field"></span>
+                  Walking
+                </label>
+              </div>
+              <div class="add-btn">
+                <a href="#">Add category</a>
+              </div>
+            </div>
+            <div class="custom-field-wrap db-media-field-wrap">
+              <h4>Add image</h4>
+              <div class="upload-input">
+                <div class="form-group">
+                  <span class="upload-btn">Upload a image</span>
+                  <input formControlName="imageUrl" type="file" name="myfile" (change)="onFileSelected($event)" required>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </form>
+    </div>
+    <!-- Copyrights -->
+    <div class="copyrights">
+      Copyright © 2021 Travele. All rights reserveds.
+    </div>
+  </div>
+</div>

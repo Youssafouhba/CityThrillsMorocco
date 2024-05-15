@@ -1,0 +1,58 @@
+{{designation}}
+<!--
+<div id="container-wrapper">
+  <div id="dashboard" class="dashboard-container">
+    <div class="db-info-wrap db-package-wrap">
+      <div class="dashboard-box table-opp-color-box">
+        <h4> List Activities</h4>
+        <p>Nonummy hac atque adipisicing donec placeat pariatur quia ornare nisl.</p>
+        <div class="table-responsive">
+          <table mat-table [dataSource]="activities" matSort matSortDisableClear>
+            <ng-container matColumnDef="designation">
+              <th mat-header-cell *matHeaderCellDef  mat-sort-header>Designation</th>
+              <td mat-cell *matCellDef="let element">{{ element.designation }}</td>
+            </ng-container>
+            <ng-container matColumnDef="finishedDate">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Finished Date</th>
+              <td mat-cell *matCellDef="let element">{{ element.finisheddate }}</td>
+            </ng-container>
+            <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+              <td mat-cell *matCellDef="let element">{{ element.category }}</td>
+            </ng-container>
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+              <td mat-cell *matCellDef="let element">
+                <span
+                  [ngClass]="{'badge badge-success': status==='Active',
+                  'badge badge-danger': status==='Expired'}"  >
+                  {{status}}</span>
+              </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+              <th mat-header-cell *matHeaderCellDef>Action</th>
+              <td mat-cell *matCellDef="let element">
+    <span class="badge badge-success" (click)="openUpdateDialog(element.id)">
+      <i class="far fa-edit"></i>
+    </span>
+                <span class="badge badge-danger" style="margin-left: 10px" (click)="openDeleteConfirmationDialog(element.id)">
+      <i class="far fa-trash-alt"></i>
+    </span>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="['designation', 'finishedDate', 'category', 'status', 'action']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['designation', 'finishedDate', 'category', 'status', 'action']"
+                [hidden]="isDatePassed(row.finisheddate)"
+            ></tr>
+          </table>
+          <mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,15]"></mat-paginator>
+        </div>
+      </div>
+    </div>
+
+<div class="copyrights">
+  Copyright © 2021 Travele. All rights reserveds.
+</div>
+</div>
+</div>
+-->

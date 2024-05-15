@@ -1,0 +1,61 @@
+<div class="position-relative">
+
+  <div class="authentication-wrapper authentication-basic container-p-y">
+    <div [hidden]="!errorMessage" class="alert alert-warning" style="width: 50%;margin-left: 25%;margin-top: 3%;">
+      <h5 class="alert-heading mb-1">{{errorMessage}} !!</h5>
+    </div>
+    <div class="authentication-inner py-4">
+
+      <div class="card p-2">
+
+        <div class="app-brand justify-content-center mt-5">
+          <div style="display: block;">
+            <a href="index.html" class="app-brand-link gap-2">
+                <span class="app-brand-logo demo">
+                  <span style="color: #9055fd">
+                    <img src="./assets/img/Nouveau_projet-ai-brush-removebg-0dyusvph.png" style="width: 40px;"/>
+                  </span>
+                </span>
+              <span class="app-brand-text demo text-heading fw-semibold">CSEC</span>
+            </a>
+            <h4 class="mb-2" > Login to your account</h4>
+          </div>
+        </div>
+
+        <div class="card-body mt-2">
+
+          <form [formGroup]="addForm" (ngSubmit)="login(email.value,password.value)" id="formAuthentication" class="mb-3" >
+            <div class="form-floating form-floating-outline mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                #email
+                name="email"
+                placeholder="Enter your email"
+                autofocus />
+              <label>Email</label>
+            </div>
+            <div class="form-floating form-floating-outline mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="password"
+                #password
+                name="password"
+                placeholder="Enter your password"
+                autofocus />
+              <label>Email</label>
+            </div>
+            <button type="submit" class="btn btn-primary d-grid w-100">Login</button>
+          </form>
+          <div class="text-center">
+            <a routerLink="/resetPassword" class="d-flex align-items-center justify-content-center">
+              Reset Password!
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="FacetManager">
+    <facet type="jpa" name="JPA">
+      <configuration>
+        <setting name="validation-enabled" value="true" />
+        <datasource-mapping>
+          <factory-entry name="entityManagerFactory" value="8b41394e-3a30-4907-b69f-be12277eb590" />
+        </datasource-mapping>
+        <naming-strategy-map />
+      </configuration>
+    </facet>
+  </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="71b9a04e-6535-468b-9387-0ccbf1290ae6" />
+  </component>
+</module>

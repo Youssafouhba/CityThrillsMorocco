@@ -1,0 +1,554 @@
+2024-05-14 16:14:31,652 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2024-05-14 16:14:31,779 INFO o.s.b.StartupInfoLogger [restartedMain] Starting CityThrillsMoroccoApplication using Java 20.0.2 on DESKTOP-6EU5B5M with PID 10044 (C:\CityThrillsMorocco-admin_brache\target\classes started by hp in C:\CityThrillsMorocco-admin_brache)
+2024-05-14 16:14:31,788 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2024-05-14 16:14:31,896 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-05-14 16:14:31,897 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-05-14 16:14:33,874 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:14:33,878 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-14 16:14:34,125 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 228 ms. Found 11 JPA repository interfaces.
+2024-05-14 16:14:34,151 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:14:34,153 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-14 16:14:34,205 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.Notification.Repository.NotificationRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,206 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.Reservation.Repository.ReservationRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,207 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.RolesAndPrivileges.Repository.PrivilegeRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,208 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.RolesAndPrivileges.Repository.RoleRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,210 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.View.Repository.ViewRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,212 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.accountverification.Repository.ConfirmationTokenRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,215 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.activity.Repository.ActivityRepo. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,216 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.agency.Repository.AgenceRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,217 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.comment.Repository.CommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,218 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.product.Repository.ProductRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,219 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.user.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:14:34,219 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 51 ms. Found 0 Redis repository interfaces.
+2024-05-14 16:14:35,943 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2024-05-14 16:14:35,962 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-14 16:14:35,963 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-05-14 16:14:35,963 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-05-14 16:14:36,253 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-05-14 16:14:36,254 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 4355 ms
+2024-05-14 16:14:36,637 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-14 16:14:36,767 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 5.6.3.Final
+2024-05-14 16:14:37,112 INFO o.h.a.c.r.j.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-05-14 16:14:37,318 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2024-05-14 16:14:37,615 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2024-05-14 16:14:37,669 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2024-05-14 16:14:39,880 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-05-14 16:14:39,896 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:14:43,038 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-14 16:14:44,038 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [restartedMain] Adding welcome page template: index
+2024-05-14 16:14:45,628 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure Ant [pattern='/**'] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3d32d9ea, org.springframework.security.web.context.SecurityContextPersistenceFilter@797e8b08, org.springframework.security.web.header.HeaderWriterFilter@77d82684, org.springframework.security.web.authentication.logout.LogoutFilter@2fdd8a3a, com.CityThrillsMorocco.jwt.filters.JwtRequestFilter@37857302, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@27a48900, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2a8aa313, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7652c7fb, org.springframework.security.web.session.SessionManagementFilter@defb362, org.springframework.security.web.access.ExceptionTranslationFilter@7a494b28, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4eeccd6a]
+2024-05-14 16:14:45,747 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-05-14 16:14:45,820 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-05-14 16:14:45,872 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2024-05-14 16:14:45,912 INFO o.s.b.StartupInfoLogger [restartedMain] Started CityThrillsMoroccoApplication in 15.301 seconds (JVM running for 17.668)
+2024-05-14 16:16:58,405 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:16:58,518 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2024-05-14 16:16:58,607 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2024-05-14 16:16:59,373 INFO o.s.b.StartupInfoLogger [restartedMain] Starting CityThrillsMoroccoApplication using Java 20.0.2 on DESKTOP-6EU5B5M with PID 10044 (C:\CityThrillsMorocco-admin_brache\target\classes started by hp in C:\CityThrillsMorocco-admin_brache)
+2024-05-14 16:16:59,374 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2024-05-14 16:17:00,404 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:00,405 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-14 16:17:00,407 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 0 JPA repository interfaces.
+2024-05-14 16:17:00,413 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:00,413 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-14 16:17:00,416 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 1 ms. Found 0 Redis repository interfaces.
+2024-05-14 16:17:01,083 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2024-05-14 16:17:01,086 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-14 16:17:01,087 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-05-14 16:17:01,088 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-05-14 16:17:01,170 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-05-14 16:17:01,170 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1789 ms
+2024-05-14 16:17:01,387 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-14 16:17:01,404 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2024-05-14 16:17:01,474 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2024-05-14 16:17:01,476 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2024-05-14 16:17:02,072 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-05-14 16:17:02,073 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:02,109 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webSocketHandlerMapping' defined in org.springframework.web.socket.config.annotation.DelegatingWebSocketConfiguration: Unsatisfied dependency expressed through method 'webSocketHandlerMapping' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'defaultSockJsTaskScheduler' defined in org.springframework.web.socket.config.annotation.DelegatingWebSocketConfiguration: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.scheduling.TaskScheduler]: Factory method 'defaultSockJsTaskScheduler' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webSocketHandler' defined in com.CityThrillsMorocco.CityThrillsMoroccoApplication: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.socket.WebSocketHandler]: Factory method 'webSocketHandler' threw exception; nested exception is java.lang.NoClassDefFoundError: com/CityThrillsMorocco/WebSocket/WebSocketHandler
+2024-05-14 16:17:02,109 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:02,109 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Shutdown initiated...
+2024-05-14 16:17:02,115 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Shutdown completed.
+2024-05-14 16:17:02,116 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2024-05-14 16:17:02,128 INFO o.s.b.a.l.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-14 16:17:02,179 ERROR o.s.b.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'webSocketHandlerMapping' defined in org.springframework.web.socket.config.annotation.DelegatingWebSocketConfiguration: Unsatisfied dependency expressed through method 'webSocketHandlerMapping' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'defaultSockJsTaskScheduler' defined in org.springframework.web.socket.config.annotation.DelegatingWebSocketConfiguration: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.scheduling.TaskScheduler]: Factory method 'defaultSockJsTaskScheduler' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webSocketHandler' defined in com.CityThrillsMorocco.CityThrillsMoroccoApplication: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.socket.WebSocketHandler]: Factory method 'webSocketHandler' threw exception; nested exception is java.lang.NoClassDefFoundError: com/CityThrillsMorocco/WebSocket/WebSocketHandler
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:800) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:541) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:953) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) [spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) [spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) [spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) [spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290) [spring-boot-2.6.2.jar:2.6.2]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication.main(CityThrillsMoroccoApplication.java:47) [classes/:?]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.6.2.jar:2.6.2]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'defaultSockJsTaskScheduler' defined in org.springframework.web.socket.config.annotation.DelegatingWebSocketConfiguration: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.scheduling.TaskScheduler]: Factory method 'defaultSockJsTaskScheduler' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webSocketHandler' defined in com.CityThrillsMorocco.CityThrillsMoroccoApplication: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.socket.WebSocketHandler]: Factory method 'webSocketHandler' threw exception; nested exception is java.lang.NoClassDefFoundError: com/CityThrillsMorocco/WebSocket/WebSocketHandler
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.14.jar:5.3.14]
+	... 22 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.scheduling.TaskScheduler]: Factory method 'defaultSockJsTaskScheduler' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webSocketHandler' defined in com.CityThrillsMorocco.CityThrillsMoroccoApplication: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.socket.WebSocketHandler]: Factory method 'webSocketHandler' threw exception; nested exception is java.lang.NoClassDefFoundError: com/CityThrillsMorocco/WebSocket/WebSocketHandler
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.14.jar:5.3.14]
+	... 22 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'webSocketHandler' defined in com.CityThrillsMorocco.CityThrillsMoroccoApplication: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.socket.WebSocketHandler]: Factory method 'webSocketHandler' threw exception; nested exception is java.lang.NoClassDefFoundError: com/CityThrillsMorocco/WebSocket/WebSocketHandler
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.resolveBeanReference(ConfigurationClassEnhancer.java:362) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:334) ~[spring-context-5.3.14.jar:5.3.14]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a.webSocketHandler(<generated>) ~[classes/:?]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication.registerWebSocketHandlers(CityThrillsMoroccoApplication.java:26) ~[classes/:?]
+	at org.springframework.web.socket.config.annotation.DelegatingWebSocketConfiguration.registerWebSocketHandlers(DelegatingWebSocketConfiguration.java:52) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at org.springframework.web.socket.config.annotation.WebSocketConfigurationSupport.initHandlerRegistry(WebSocketConfigurationSupport.java:56) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at org.springframework.web.socket.config.annotation.WebSocketConfigurationSupport.defaultSockJsTaskScheduler(WebSocketConfigurationSupport.java:85) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.14.jar:5.3.14]
+	... 22 more
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.web.socket.WebSocketHandler]: Factory method 'webSocketHandler' threw exception; nested exception is java.lang.NoClassDefFoundError: com/CityThrillsMorocco/WebSocket/WebSocketHandler
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.resolveBeanReference(ConfigurationClassEnhancer.java:362) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:334) ~[spring-context-5.3.14.jar:5.3.14]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a.webSocketHandler(<generated>) ~[classes/:?]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication.registerWebSocketHandlers(CityThrillsMoroccoApplication.java:26) ~[classes/:?]
+	at org.springframework.web.socket.config.annotation.DelegatingWebSocketConfiguration.registerWebSocketHandlers(DelegatingWebSocketConfiguration.java:52) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at org.springframework.web.socket.config.annotation.WebSocketConfigurationSupport.initHandlerRegistry(WebSocketConfigurationSupport.java:56) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at org.springframework.web.socket.config.annotation.WebSocketConfigurationSupport.defaultSockJsTaskScheduler(WebSocketConfigurationSupport.java:85) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.14.jar:5.3.14]
+	... 22 more
+Caused by: java.lang.NoClassDefFoundError: com/CityThrillsMorocco/WebSocket/WebSocketHandler
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication.webSocketHandler(CityThrillsMoroccoApplication.java:41) ~[classes/:?]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a.CGLIB$webSocketHandler$4(<generated>) ~[classes/:?]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a$$FastClassBySpringCGLIB$$be7bd3f7.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244) ~[spring-core-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331) ~[spring-context-5.3.14.jar:5.3.14]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a.webSocketHandler(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.resolveBeanReference(ConfigurationClassEnhancer.java:362) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:334) ~[spring-context-5.3.14.jar:5.3.14]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a.webSocketHandler(<generated>) ~[classes/:?]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication.registerWebSocketHandlers(CityThrillsMoroccoApplication.java:26) ~[classes/:?]
+	at org.springframework.web.socket.config.annotation.DelegatingWebSocketConfiguration.registerWebSocketHandlers(DelegatingWebSocketConfiguration.java:52) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at org.springframework.web.socket.config.annotation.WebSocketConfigurationSupport.initHandlerRegistry(WebSocketConfigurationSupport.java:56) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at org.springframework.web.socket.config.annotation.WebSocketConfigurationSupport.defaultSockJsTaskScheduler(WebSocketConfigurationSupport.java:85) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.14.jar:5.3.14]
+	... 22 more
+Caused by: java.lang.ClassNotFoundException: com.CityThrillsMorocco.WebSocket.WebSocketHandler
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication.webSocketHandler(CityThrillsMoroccoApplication.java:41) ~[classes/:?]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a.CGLIB$webSocketHandler$4(<generated>) ~[classes/:?]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a$$FastClassBySpringCGLIB$$be7bd3f7.invoke(<generated>) ~[classes/:?]
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244) ~[spring-core-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331) ~[spring-context-5.3.14.jar:5.3.14]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a.webSocketHandler(<generated>) ~[classes/:?]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.resolveBeanReference(ConfigurationClassEnhancer.java:362) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:334) ~[spring-context-5.3.14.jar:5.3.14]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication$$EnhancerBySpringCGLIB$$2c2b214a.webSocketHandler(<generated>) ~[classes/:?]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication.registerWebSocketHandlers(CityThrillsMoroccoApplication.java:26) ~[classes/:?]
+	at org.springframework.web.socket.config.annotation.DelegatingWebSocketConfiguration.registerWebSocketHandlers(DelegatingWebSocketConfiguration.java:52) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at org.springframework.web.socket.config.annotation.WebSocketConfigurationSupport.initHandlerRegistry(WebSocketConfigurationSupport.java:56) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at org.springframework.web.socket.config.annotation.WebSocketConfigurationSupport.defaultSockJsTaskScheduler(WebSocketConfigurationSupport.java:85) ~[spring-websocket-5.3.14.jar:5.3.14]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1389) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1309) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:887) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791) ~[spring-beans-5.3.14.jar:5.3.14]
+	... 22 more
+2024-05-14 16:17:19,200 INFO o.s.b.StartupInfoLogger [restartedMain] Starting CityThrillsMoroccoApplication using Java 20.0.2 on DESKTOP-6EU5B5M with PID 10044 (C:\CityThrillsMorocco-admin_brache\target\classes started by hp in C:\CityThrillsMorocco-admin_brache)
+2024-05-14 16:17:19,204 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2024-05-14 16:17:20,024 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:20,024 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-14 16:17:20,115 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 89 ms. Found 4 JPA repository interfaces.
+2024-05-14 16:17:20,121 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:20,122 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-14 16:17:20,150 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.accountverification.Repository.ConfirmationTokenRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:20,151 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.activity.Repository.ActivityRepo. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:20,152 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.agency.Repository.AgenceRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:20,153 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.user.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:20,153 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 30 ms. Found 0 Redis repository interfaces.
+2024-05-14 16:17:20,849 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2024-05-14 16:17:20,866 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-14 16:17:20,868 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-05-14 16:17:20,868 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-05-14 16:17:20,966 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-05-14 16:17:20,966 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1750 ms
+2024-05-14 16:17:21,545 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-14 16:17:21,558 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2024-05-14 16:17:21,626 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2024-05-14 16:17:21,627 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2024-05-14 16:17:22,904 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-05-14 16:17:22,905 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:22,939 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'activityController' defined in file [C:\CityThrillsMorocco-admin_brache\target\classes\com\CityThrillsMorocco\activity\Controller\ActivityController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.CityThrillsMorocco.activity.WebSocket.ActivityWebSocketHandler' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-05-14 16:17:22,940 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:22,941 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Shutdown initiated...
+2024-05-14 16:17:22,950 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Shutdown completed.
+2024-05-14 16:17:22,952 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2024-05-14 16:17:22,971 INFO o.s.b.a.l.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-14 16:17:22,989 ERROR o.s.b.d.LoggingFailureAnalysisReporter [restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.CityThrillsMorocco.activity.Controller.ActivityController required a bean of type 'com.CityThrillsMorocco.activity.WebSocket.ActivityWebSocketHandler' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.CityThrillsMorocco.activity.WebSocket.ActivityWebSocketHandler' in your configuration.
+
+2024-05-14 16:17:24,630 INFO o.s.b.StartupInfoLogger [restartedMain] Starting CityThrillsMoroccoApplication using Java 20.0.2 on DESKTOP-6EU5B5M with PID 10044 (C:\CityThrillsMorocco-admin_brache\target\classes started by hp in C:\CityThrillsMorocco-admin_brache)
+2024-05-14 16:17:24,632 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2024-05-14 16:17:25,320 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:25,321 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-14 16:17:25,434 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 111 ms. Found 11 JPA repository interfaces.
+2024-05-14 16:17:25,438 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:25,439 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-14 16:17:25,469 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.Notification.Repository.NotificationRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,469 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.Reservation.Repository.ReservationRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,470 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.RolesAndPrivileges.Repository.PrivilegeRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,470 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.RolesAndPrivileges.Repository.RoleRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,471 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.View.Repository.ViewRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,471 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.accountverification.Repository.ConfirmationTokenRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,472 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.activity.Repository.ActivityRepo. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,472 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.agency.Repository.AgenceRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,473 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.comment.Repository.CommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,473 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.product.Repository.ProductRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,473 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.user.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:25,474 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 34 ms. Found 0 Redis repository interfaces.
+2024-05-14 16:17:25,874 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2024-05-14 16:17:25,875 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-14 16:17:25,877 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-05-14 16:17:25,877 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-05-14 16:17:25,944 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-05-14 16:17:25,945 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1309 ms
+2024-05-14 16:17:26,151 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-14 16:17:26,162 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Starting...
+2024-05-14 16:17:26,173 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
+2024-05-14 16:17:26,174 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2024-05-14 16:17:28,162 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-05-14 16:17:28,163 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:29,319 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-14 16:17:29,662 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [restartedMain] Adding welcome page template: index
+2024-05-14 16:17:30,552 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure Ant [pattern='/**'] with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@12b017f8, org.springframework.security.web.context.SecurityContextPersistenceFilter@327760ad, org.springframework.security.web.header.HeaderWriterFilter@53a5aa4, org.springframework.security.web.authentication.logout.LogoutFilter@7a0013d1, com.CityThrillsMorocco.jwt.filters.JwtRequestFilter@3ea79f1a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6509855b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@32310c24, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c09b778, org.springframework.security.web.session.SessionManagementFilter@1d7b8e1f, org.springframework.security.web.access.ExceptionTranslationFilter@217edaf2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@d798058]
+2024-05-14 16:17:30,581 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-05-14 16:17:30,626 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-05-14 16:17:30,630 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2024-05-14 16:17:30,653 INFO o.s.b.StartupInfoLogger [restartedMain] Started CityThrillsMoroccoApplication in 6.098 seconds (JVM running for 182.41)
+2024-05-14 16:17:30,659 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-05-14 16:17:40,676 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:40,678 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-4 - Shutdown initiated...
+2024-05-14 16:17:40,684 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-4 - Shutdown completed.
+2024-05-14 16:17:40,931 INFO o.s.b.StartupInfoLogger [restartedMain] Starting CityThrillsMoroccoApplication using Java 20.0.2 on DESKTOP-6EU5B5M with PID 10044 (C:\CityThrillsMorocco-admin_brache\target\classes started by hp in C:\CityThrillsMorocco-admin_brache)
+2024-05-14 16:17:40,932 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2024-05-14 16:17:41,611 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:41,612 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-14 16:17:41,771 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 158 ms. Found 11 JPA repository interfaces.
+2024-05-14 16:17:41,778 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:41,778 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-14 16:17:41,820 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.Notification.Repository.NotificationRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,823 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.Reservation.Repository.ReservationRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,823 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.RolesAndPrivileges.Repository.PrivilegeRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,824 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.RolesAndPrivileges.Repository.RoleRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,824 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.View.Repository.ViewRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,824 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.accountverification.Repository.ConfirmationTokenRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,826 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.activity.Repository.ActivityRepo. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,827 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.agency.Repository.AgenceRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,828 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.comment.Repository.CommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,828 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.product.Repository.ProductRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,829 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.user.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:41,829 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 50 ms. Found 0 Redis repository interfaces.
+2024-05-14 16:17:42,389 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2024-05-14 16:17:42,391 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-14 16:17:42,392 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-05-14 16:17:42,392 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-05-14 16:17:42,469 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-05-14 16:17:42,469 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1532 ms
+2024-05-14 16:17:42,655 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-14 16:17:42,671 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Starting...
+2024-05-14 16:17:42,679 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
+2024-05-14 16:17:42,680 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2024-05-14 16:17:43,652 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-05-14 16:17:43,653 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:44,628 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authenticateController' defined in file [C:\CityThrillsMorocco-admin_brache\target\classes\com\CityThrillsMorocco\jwt\controllers\AuthenticateController.class]: Unsatisfied dependency expressed through constructor parameter 0; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'org.springframework.security.authentication.AuthenticationManager' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2024-05-14 16:17:44,630 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:44,630 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Shutdown initiated...
+2024-05-14 16:17:44,634 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Shutdown completed.
+2024-05-14 16:17:44,636 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2024-05-14 16:17:44,648 INFO o.s.b.a.l.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-14 16:17:44,657 ERROR o.s.b.d.LoggingFailureAnalysisReporter [restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 0 of constructor in com.CityThrillsMorocco.jwt.controllers.AuthenticateController required a bean of type 'org.springframework.security.authentication.AuthenticationManager' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.security.authentication.AuthenticationManager' in your configuration.
+
+2024-05-14 16:17:47,362 INFO o.s.b.StartupInfoLogger [restartedMain] Starting CityThrillsMoroccoApplication using Java 20.0.2 on DESKTOP-6EU5B5M with PID 10044 (C:\CityThrillsMorocco-admin_brache\target\classes started by hp in C:\CityThrillsMorocco-admin_brache)
+2024-05-14 16:17:47,363 INFO o.s.b.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2024-05-14 16:17:47,899 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:47,899 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-05-14 16:17:48,085 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 185 ms. Found 11 JPA repository interfaces.
+2024-05-14 16:17:48,093 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode!
+2024-05-14 16:17:48,095 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-05-14 16:17:48,148 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.Notification.Repository.NotificationRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,150 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.Reservation.Repository.ReservationRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,151 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.RolesAndPrivileges.Repository.PrivilegeRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,152 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.RolesAndPrivileges.Repository.RoleRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,154 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.View.Repository.ViewRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,155 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.accountverification.Repository.ConfirmationTokenRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,156 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.activity.Repository.ActivityRepo. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,157 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.agency.Repository.AgenceRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,158 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.comment.Repository.CommentRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,159 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.product.Repository.ProductRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,159 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.CityThrillsMorocco.user.repository.UserRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2024-05-14 16:17:48,159 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 63 ms. Found 0 Redis repository interfaces.
+2024-05-14 16:17:48,612 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2024-05-14 16:17:48,613 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-05-14 16:17:48,614 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-05-14 16:17:48,614 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.56]
+2024-05-14 16:17:48,681 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-05-14 16:17:48,681 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1314 ms
+2024-05-14 16:17:48,899 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-05-14 16:17:48,916 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Starting...
+2024-05-14 16:17:48,923 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Start completed.
+2024-05-14 16:17:48,924 INFO o.h.d.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.MySQL55Dialect
+2024-05-14 16:17:49,868 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-05-14 16:17:49,869 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:51,149 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-05-14 16:17:51,572 INFO o.s.b.a.w.s.WelcomePageHandlerMapping [restartedMain] Adding welcome page template: index
+2024-05-14 16:17:52,585 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.NoClassDefFoundError: org/springframework/security/oauth2/client/web/OAuth2LoginAuthenticationFilter
+2024-05-14 16:17:52,592 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-14 16:17:52,593 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Shutdown initiated...
+2024-05-14 16:17:52,598 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Shutdown completed.
+2024-05-14 16:17:52,600 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2024-05-14 16:17:52,610 INFO o.s.b.a.l.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-05-14 16:17:52,614 ERROR o.s.b.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.NoClassDefFoundError: org/springframework/security/oauth2/client/web/OAuth2LoginAuthenticationFilter
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:953) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.14.jar:5.3.14]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:145) ~[spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:730) [spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:412) [spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:302) [spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1301) [spring-boot-2.6.2.jar:2.6.2]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1290) [spring-boot-2.6.2.jar:2.6.2]
+	at com.CityThrillsMorocco.CityThrillsMoroccoApplication.main(CityThrillsMoroccoApplication.java:47) [classes/:?]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.6.2.jar:2.6.2]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.NoClassDefFoundError: org/springframework/security/oauth2/client/web/OAuth2LoginAuthenticationFilter
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	... 24 more
+Caused by: java.lang.NoClassDefFoundError: org/springframework/security/oauth2/client/web/OAuth2LoginAuthenticationFilter
+	at org.springframework.security.config.annotation.web.builders.HttpSecurity.oauth2Login(HttpSecurity.java:2447) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at com.CityThrillsMorocco.config.SecurityConfig.configure(SecurityConfig.java:48) ~[classes/:?]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.getHttp(WebSecurityConfigurerAdapter.java:217) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:315) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:93) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at com.CityThrillsMorocco.config.SecurityConfig$$EnhancerBySpringCGLIB$$d4c88e3b.init(<generated>) ~[classes/:?]
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:338) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:300) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:38) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.springSecurityFilterChain(WebSecurityConfiguration.java:127) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	... 24 more
+Caused by: java.lang.ClassNotFoundException: org.springframework.security.oauth2.client.web.OAuth2LoginAuthenticationFilter
+	at jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[?:?]
+	at jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[?:?]
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:521) ~[?:?]
+	at org.springframework.security.config.annotation.web.builders.HttpSecurity.oauth2Login(HttpSecurity.java:2447) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at com.CityThrillsMorocco.config.SecurityConfig.configure(SecurityConfig.java:48) ~[classes/:?]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.getHttp(WebSecurityConfigurerAdapter.java:217) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:315) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:93) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at com.CityThrillsMorocco.config.SecurityConfig$$EnhancerBySpringCGLIB$$d4c88e3b.init(<generated>) ~[classes/:?]
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:338) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:300) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:38) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.springSecurityFilterChain(WebSecurityConfiguration.java:127) ~[spring-security-config-5.6.1.jar:5.6.1]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.14.jar:5.3.14]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.14.jar:5.3.14]
+	... 24 more

@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="aeuok.task.spring.boot.starter" type="repository">
+    <properties maven-id="com.aeuok:task-spring-boot-starter:1.0.0" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/aeuok/task-spring-boot-starter/1.0.0/task-spring-boot-starter-1.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
