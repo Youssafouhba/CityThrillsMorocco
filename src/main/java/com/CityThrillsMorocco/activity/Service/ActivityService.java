@@ -71,6 +71,20 @@ public class ActivityService {
                 .collect(Collectors.toList());
     }
 
+    public List<ActivityDto> findFamousPlaces() {
+        List<Activity> activities = activityRepo.findFamousPlaces();
+
+        if (activities.size() > 6) {
+            activities = activities.subList(0, 6);
+        }
+
+        return activities.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+
+
     public List<ActivityDto> findAllByCity(City city){
         List<Activity> activities = activityRepo.findAllByCity(city);
         return activities.stream()
@@ -86,14 +100,27 @@ public class ActivityService {
         return activityRepo.findAll();
     }
 
-    public ActivityDto convertToDto(Activity activity) {
+
+
+    public ActivityDto findById(Long activityId) {
+        Activity activity = activityRepo.getById(activityId);
         ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
         activityDto.setAgence_id(activity.getAgence().getId());
         return activityDto;
     }
-
-    public ActivityDto getActivity(Long activityId) {
-        Activity activity = activityRepo.getById(activityId);
+    public int countActivities(){
+        return activityRepo.countActivities();
+    }
+    public List<ActivityDto> findActivitiesByCityAndCategory(City city, String category) {
+        List<Activity> activities = activityRepo.findActivitiesByCityAndCategory(city, category);
+        List<ActivityDto> activityDtos = new ArrayList<>();
+        for (Activity activity : activities) {
+            ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
+            activityDtos.add(activityDto);
+        }
+        return activityDtos;
+    }
+    public ActivityDto convertToDto(Activity activity) {
         ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
         activityDto.setAgence_id(activity.getAgence().getId());
         return activityDto;

@@ -1,5 +1,6 @@
 package com.CityThrillsMorocco.user.model;
 
+import com.CityThrillsMorocco.Wishlist.model.Wishlist;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,4 +26,6 @@ public class User {
   private byte[] storedHash;
   private byte[] storedSalt;
   private boolean isEnabled;
+  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+  private Wishlist wishlist;
 }

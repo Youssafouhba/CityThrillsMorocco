@@ -15,7 +15,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/CityThrillsMorocco/Admin/activities")
+@RequestMapping("/activity")
 public class ActivityController {
     private final ActivityService activityService;
 
@@ -48,7 +48,7 @@ public class ActivityController {
         return  ResponseEntity.status(HttpStatus.CREATED).body("Message créé avec succès");
     }
 
-    @GetMapping("/activities/category{category}")
+    @GetMapping("/activities/category/{category}")
     public List<ActivityDto> getActivitiesByCategory(@PathVariable("category") ActivityCategories category) {
         return activityService.findAllByCategory(category);
 
@@ -64,4 +64,19 @@ public class ActivityController {
         return activityService.findall();
     }
 
-}
+    @GetMapping("/countactivities")
+    public int countActivities(){
+        return activityService.countActivities();
+    }
+
+    @GetMapping("/{city}/{category}")
+    public List<ActivityDto> findActivitiesByCityAndCategory(@PathVariable("city") City city,
+                                                             @PathVariable("category") String category) {
+        return activityService.findActivitiesByCityAndCategory(city, category);
+    }
+
+    @GetMapping("/famous_places")
+    public List<ActivityDto> findFamousPlaces(){
+        return activityService.findFamousPlaces();
+    }
+ }

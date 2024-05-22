@@ -18,4 +18,7 @@ public interface AgenceRepository extends JpaRepository<Agence, Long> {
     Agence findByEmail(String email);
     Agence findByEmailIgnoreCase(String emailId);
     Boolean existsByEmail(String email);
+
+    @Query("SELECT COUNT(a) FROM Agence a")
+    int countAgences();
 }

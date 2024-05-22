@@ -4,6 +4,7 @@
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
+        <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="entityManagerFactory" value="2356ebdf-9b72-428b-bd04-e4da2109e7d1" />
         </datasource-mapping>

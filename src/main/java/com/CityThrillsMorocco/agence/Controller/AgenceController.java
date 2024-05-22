@@ -16,7 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/CityThrillsMorocco/Admin")
-@CrossOrigin("http://localhost:54360/")
+@CrossOrigin("http://localhost:4200/")
 public class AgenceController {
 
     private final AgenceService agenceService;
@@ -50,6 +50,11 @@ public class AgenceController {
     @PutMapping("/{id}")
     public void putAgence(@PathVariable("id") Long id, @RequestBody AgenceDto agenceDto ) throws NoSuchAlgorithmException {
         agenceService.updateAgence(id,agenceDto, agenceDto.getPassword());
+    }
+
+    @GetMapping("/number_of_agences")
+    public int getNumberOfAgences(){
+     return agenceService.getNumberOfAgences();
     }
 
 }

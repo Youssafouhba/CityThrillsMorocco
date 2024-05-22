@@ -123,6 +123,10 @@ public class AgenceService {
         return ResponseEntity.badRequest().body("Error: Couldn't verify email");
     }
 
+    public int getNumberOfAgences(){
+        return agenceRepository.countAgences();
+    }
+
     private Agence findOrThrow(final Long id) {
         return agenceRepository
                 .findById(id)
@@ -145,6 +149,8 @@ public class AgenceService {
         md.update(salt);
         return md.digest(password.getBytes(StandardCharsets.UTF_8));
     }
+
+
 
     private AgenceDto agenceToDto(Agence agence) {
         return mapper.map(agence, AgenceDto.class);
