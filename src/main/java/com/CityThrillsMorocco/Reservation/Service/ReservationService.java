@@ -26,21 +26,21 @@ public class ReservationService {
     private final UserService userService;
     private final ActivityService activityService;
 
-    @GetMapping("/{activityId}")
-    @PreAuthorize("hasRole('ROLE_CONTENT_MANAGER')")
-    public List<Reservation> getReservationsByActivityId(@PathVariable Long activityId) {
+
+    public List<Reservation> getReservationsByActivityId(Long activityId) {
         return reservationRepository.findByActivityId(activityId);
     }
 
-    @PostMapping
-    public ResponseEntity<?> createReservation(String token, Long activityId, Reservation reservation){
+
+    public ResponseEntity<?> createReservation(User  user, Reservation reservation, Long activityId){
         Activity activity = activityService.getActivityById(activityId);
+        System.out.println(activity.getId());
         if(activity != null){
-            if (!verifMaxParticipants(reservation,activity))
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le nombre de participants dépasse la capacité maximale de l'activité");
+            //if (!verifMaxParticipants(reservation,activity))
+              //  return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Le nombre de participants dépasse la capacité maximale de l'activité");
             Reservation reservation_ = new Reservation();
             reservation_.setActivity(activity);
-            reservation_.setUser(getUser(token));
+            reservation_.setUser(user);
             reservation_.setParticipantCount(reservation.getParticipantCount());
             reservation_.setEndDate(reservation.getEndDate());
             reservation_.setStartDate(reservation.getStartDate());

@@ -1,13 +1,13 @@
 package com.CityThrillsMorocco.agency.Repository;
 
 import com.CityThrillsMorocco.agency.Model.Agence;
-import com.CityThrillsMorocco.user.model.User;
-import org.hibernate.mapping.Set;
+import com.CityThrillsMorocco.user.model.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public interface AgenceRepository extends JpaRepository<Agence, Long> {
@@ -23,7 +23,7 @@ public interface AgenceRepository extends JpaRepository<Agence, Long> {
     Agence findByEmailIgnoreCase(String emailId);
     Boolean existsByEmail(String email);
 
-    Agence getAgenceByUsersIn(Collection<User> users);
+    List<Agence> findByAdmin(Admin admin);
 
     Long countAgenceByIdIs(Long id);
 }

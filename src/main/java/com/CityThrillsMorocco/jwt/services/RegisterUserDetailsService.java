@@ -10,6 +10,7 @@ import com.CityThrillsMorocco.RolesAndPrivileges.Models.Privilege;
 import com.CityThrillsMorocco.RolesAndPrivileges.Repository.RoleRepository;
 import com.CityThrillsMorocco.RolesAndPrivileges.Models.Role;
 import com.CityThrillsMorocco.user.Dto.UserDto;
+import com.CityThrillsMorocco.user.model.Admin;
 import com.CityThrillsMorocco.user.model.User;
 import com.CityThrillsMorocco.user.repository.UserRepository;
 import org.springframework.context.MessageSource;
@@ -39,6 +40,7 @@ public class RegisterUserDetailsService implements UserDetailsService {
     private final EmailService emailService;
     private final MessageSource messages;
 
+
     private final RoleRepository roleRepository;
 
     public RegisterUserDetailsService(UserRepository userRepository, AgenceRepository agenceRepository, PasswordEncoder passwordEncoder, ConfirmationTokenRepository confirmationTokenRepository, EmailService emailService, MessageSource messages, RoleRepository roleRepository) {
@@ -51,33 +53,46 @@ public class RegisterUserDetailsService implements UserDetailsService {
         this.roleRepository = roleRepository;
     }
 
+
     public ResponseEntity<?> registerNewUserAccount(UserDto accountDto,String roleName) throws EmailExistsException, NoSuchAlgorithmException {
 
         if (emailExist(accountDto.getEmail())) {
            return ResponseEntity.badRequest().body("There is an account with that email address:" + accountDto.getEmail());
         }
+        User user;
+        if (roleName.equals("ROLE_CONTENT_MANAGER")) {
+            Admin admin = new Admin();
+            admin.setFirstname(accountDto.getFirstname());
+            admin.setLastname(accountDto.getLastname());
+            admin.setPassword(passwordEncoder.encode(accountDto.getPassword()));
+            admin.setEmail(accountDto.getEmail());
+            admin.setPhone(accountDto.getPhone());
+            admin.setRoles(Arrays.asList(roleRepository.findByName(roleName)));
 
-        User user = new User();
-        user.setFirstname(accountDto.getFirstname());
-        user.setLastname(accountDto.getLastname());
-        user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
-        user.setEmail(accountDto.getEmail());
-        user.setPhone(accountDto.getPhone());
-        user.setRoles(Arrays.asList(roleRepository.findByName(roleName)));
-
-        if(roleName == "ROLE_CONTENT_MANAGER"){
             Agence agency = new Agence();
-            Set<Agence> agences = new HashSet<>();
-            agency.setName(user.getFirstname());
-            agency.setPhone(user.getPhone());
-            agency.setLocation(user.getLastname());
-            agency.setEmail(user.getEmail());
-            agenceRepository.save(agency);
-            agences.add(agenceRepository.findByEmail(agency.getEmail()));
-            user.setAgences(agences);
+            agency.setName(admin.getFirstname());
+            agency.setPhone(admin.getPhone());
+            agency.setLocation(admin.getLastname());
+            agency.setEmail(admin.getEmail());
+            // Assuming you have a method to set the Admin in Agence.
+            agency.setAdmin(admin); // Set the admin for this agency.
+
+            agenceRepository.save(agency); // Save the agency to the database.
+
+            user = admin;
+            System.out.println(user.getId());// Assign the admin to the general user reference for further processing.
+        } else {
+            user = new User();
+            user.setFirstname(accountDto.getFirstname());
+            user.setLastname(accountDto.getLastname());
+            user.setPassword(passwordEncoder.encode(accountDto.getPassword()));
+            user.setEmail(accountDto.getEmail());
+            user.setPhone(accountDto.getPhone());
+            user.setRoles(Arrays.asList(roleRepository.findByName(roleName)));
         }
-        userRepository.save(user);
-        SendMail(user);
+
+        userRepository.save(user); // Save the user or admin to the database.
+        // SendMail(user); // Send an email to the user or admin.
 
         return ResponseEntity.ok("Verify email by the link sent on your email address");
     }

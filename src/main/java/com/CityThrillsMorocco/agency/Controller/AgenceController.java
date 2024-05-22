@@ -28,10 +28,16 @@ public class AgenceController {
     public ResponseEntity<List<AgenceDto>> AllUsers(){
         return agenceService.getAllAgences();
     }
-
+/*
     @GetMapping("/{id}")
     public ResponseEntity<Agence> getAgenceById(@PathVariable("id") Long id){
         return new  ResponseEntity<>(agenceService.getAgenceById(id),HttpStatus.FOUND);
+    }*/
+
+
+    @GetMapping("/{admin_id}")
+    public ResponseEntity<Agence> getAgenceByAdmin(@PathVariable("admin_id") Long id){
+        return ResponseEntity.ok(agenceService.getAgenceByUser(id));
     }
 
     @PostMapping
@@ -47,7 +53,7 @@ public class AgenceController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> putAgence(@PathVariable("id") Long id, @RequestBody Agence agence ) throws NoSuchAlgorithmException {
-        return agenceService.updateAgence(id,mapper.map(agence,AgenceDto.class));
+        return ResponseEntity.ok(agenceService.updateAgence(id,mapper.map(agence,AgenceDto.class)));
     }
 
     @GetMapping("/users/count/{id}")

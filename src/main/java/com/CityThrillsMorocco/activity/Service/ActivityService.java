@@ -1,11 +1,14 @@
 package com.CityThrillsMorocco.activity.Service;
 
+import com.CityThrillsMorocco.Program.Model.Program;
+import com.CityThrillsMorocco.Program.Service.ProgramService;
 import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.activity.Repository.ActivityRepo;
 import com.CityThrillsMorocco.agency.Model.Agence;
 import com.CityThrillsMorocco.agency.Repository.AgenceRepository;
 import com.CityThrillsMorocco.agency.Service.AgenceService;
 import com.CityThrillsMorocco.exception.BadRequestException;
+import com.CityThrillsMorocco.user.model.Admin;
 import com.CityThrillsMorocco.user.model.User;
 import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
@@ -24,8 +27,11 @@ public class ActivityService {
     private final ActivityRepo activityRepo;
     private final AgenceService agenceService;
     private final UserService userService;
+    private final ProgramService programService;
     private final AgenceRepository agenceRepository;
     private final ModelMapper mapper;
+
+
     public List<Activity> getAllActivities(){
         List<Activity> activitieslist = new ArrayList<Activity>( activityRepo.findAll());
         return activitieslist;
@@ -43,7 +49,15 @@ public class ActivityService {
         Agence agence = agenceService.getAgenceById(
                 getAgenceByUser(agenceid));
         activity.setAgence(agence);
-        activityRepo.save(activity);
+        Program program = new Program();
+        program = activity.getProgram();
+        System.out.println(program);
+        activity.setProgram(program);
+
+        activity.setProgram(programService.createProgramFromActivity(program));
+        Activity savedActivity = activityRepo.save(activity);
+        // Créer le programme à partir de l'activité
+
         return ResponseEntity.ok(" added succesfully");
     }
 
@@ -73,15 +87,18 @@ public class ActivityService {
     }
 
     public List<Activity> AllAgenceActivities(Long id){
+        System.out.println(id);
         return activityRepo.findActivitiesByAgence_Id(
                 getAgenceByUser(id)
         );
     }
 
-    public Long getAgenceByUser(Long id){
-        return agenceRepository.getAgenceByUsersIn(Arrays.asList(
-                mapper.map(userService.getUserById(id), User.class)
-        )).getId();
+    public Long getAgenceByUser(Long id) {
+        Admin admin = mapper.map(userService.getUserById(id), Admin.class);
+
+        List<Agence> agences = agenceRepository.findByAdmin(admin);
+
+        return agences.isEmpty() ? null : agences.get(0).getId();
     }
 
 }

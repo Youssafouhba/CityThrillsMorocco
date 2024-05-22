@@ -1,9 +1,13 @@
 package com.CityThrillsMorocco.user.repository;
 
+import com.CityThrillsMorocco.user.model.Admin;
 import com.CityThrillsMorocco.user.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
@@ -21,4 +25,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
   User findByEmailIgnoreCase(String emailId);
 
   Boolean existsByEmail(String email);
+
 }

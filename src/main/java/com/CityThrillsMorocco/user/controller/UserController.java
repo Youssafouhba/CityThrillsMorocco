@@ -3,6 +3,7 @@ package com.CityThrillsMorocco.user.controller;
 import com.CityThrillsMorocco.jwt.util.JwtUtil;
 import com.CityThrillsMorocco.user.Dto.UserDto;
 import com.CityThrillsMorocco.user.model.User;
+import com.CityThrillsMorocco.user.service.AdminService;
 import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -21,6 +22,7 @@ import java.util.List;
 public class UserController {
 
   private final UserService userService;
+  private final AdminService adminService;
   private final JwtUtil jwtUtil;
 
   @GetMapping
@@ -48,10 +50,10 @@ public class UserController {
     return userService.getUserById(id);
   }
 
-  @DeleteMapping("/{id}")
-  @ResponseStatus(HttpStatus.NO_CONTENT)
-  public void deleteUserById(@PathVariable("id") Long id){
-    userService.DeleteUserById(id);
+
+  @DeleteMapping("/{admin_id}")
+  public void deleteAccount(@PathVariable("admin_id") Long id){
+    adminService.deleteAccoount(id);
   }
 
   @PutMapping("/{id}")

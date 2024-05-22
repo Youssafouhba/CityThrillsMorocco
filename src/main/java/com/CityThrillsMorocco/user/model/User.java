@@ -3,23 +3,22 @@ package com.CityThrillsMorocco.user.model;
 import com.CityThrillsMorocco.Notification.Model.Notification;
 import com.CityThrillsMorocco.Reservation.Model.Reservation;
 import com.CityThrillsMorocco.RolesAndPrivileges.Models.Role;
-import com.CityThrillsMorocco.agency.Model.Agence;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
   @Id
@@ -32,7 +31,7 @@ public class User {
   private String email;
   private String phone;
   private String password;
-  private boolean isEnabled;
+  private boolean isEnabled=false;
   private String provider;
   @ManyToMany
   @JsonIgnore
@@ -42,23 +41,16 @@ public class User {
                   name = "user_id", referencedColumnName = "id"),
           inverseJoinColumns = @JoinColumn(
                   name = "role_id", referencedColumnName = "id"))
-  @JsonBackReference
   private Collection<Role> roles;
-
-  @ManyToMany
-  @JsonIgnore
-  @JoinTable(
-          name = "user_agence",
-          joinColumns = @JoinColumn(name = "user_id"),
-          inverseJoinColumns = @JoinColumn(name = "agence_id"))
-  @JsonBackReference
-  private Set<Agence> agences;
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   @JsonIgnore
+  @JsonManagedReference("reservation")
   private List<Reservation> reservations = new ArrayList<>();
 
 
+
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+  @JsonManagedReference("notification")
   private List<Notification> notifications;
 }

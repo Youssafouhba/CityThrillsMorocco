@@ -1,5 +1,6 @@
 package com.CityThrillsMorocco.comment.Controller;
 
+import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.comment.Model.Comment;
 import com.CityThrillsMorocco.comment.Service.CommentService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,22 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentController {
     private final CommentService commentService;
+
+
+    @GetMapping("/comments_with_High_Rating")
+    public List<Activity> findActivitiesWithHighRatings(){
+        return commentService.findTop6Activities();
+    }
+
+    @GetMapping("/note/{activity_id}")
+    public Long getNote(@PathVariable("activity_id") Long activity_id){
+        return commentService.getNote(activity_id);
+    }
+
+    @GetMapping("/numberOfComments/{id}")
+    public Long getNumberOfComments(@PathVariable("id") Long activity_id){
+        return commentService.getNumberOfComments(activity_id);
+    }
 
     @GetMapping
     public List<Comment> getComments(){

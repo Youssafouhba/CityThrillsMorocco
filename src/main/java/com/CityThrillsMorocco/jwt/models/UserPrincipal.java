@@ -2,6 +2,7 @@ package com.CityThrillsMorocco.jwt.models;
 
 
 import com.CityThrillsMorocco.RolesAndPrivileges.Repository.RoleRepository;
+import com.CityThrillsMorocco.user.model.Admin;
 import com.CityThrillsMorocco.user.model.User;
 import com.CityThrillsMorocco.user.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,10 +19,10 @@ import java.util.List;
 public class UserPrincipal implements UserDetails {
 
 
-  private final Object object;
+  private final User user;
 
-  public UserPrincipal(Object object){
-      this.object = object;
+  public UserPrincipal(User user){
+      this.user = user;
   }
 
 
@@ -29,7 +30,7 @@ public class UserPrincipal implements UserDetails {
   public Collection<? extends GrantedAuthority> getAuthorities() {
     List<GrantedAuthority> authorities = new ArrayList<>();
 
-    if (object instanceof User user) {
+    if (user instanceof Admin) {
       String role = "ROLE_CONTENT_MANAGER";
       authorities.add(new SimpleGrantedAuthority(role));
 
@@ -45,14 +46,7 @@ public class UserPrincipal implements UserDetails {
 
   @Override
   public String getUsername() {
-    Class<?> clazz = object.getClass();
-    try {
-      Field emailField = clazz.getDeclaredField("email");
-      emailField.setAccessible(true);
-      return (String) emailField.get(object);
-    } catch (NoSuchFieldException | IllegalAccessException e) {
-      throw new RuntimeException(e);
-    }
+   return this.user.getEmail();
   }
 
 

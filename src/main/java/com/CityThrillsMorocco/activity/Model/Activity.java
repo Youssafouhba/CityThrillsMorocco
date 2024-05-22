@@ -1,6 +1,8 @@
 package com.CityThrillsMorocco.activity.Model;
 
 import com.CityThrillsMorocco.Notification.Model.Notification;
+import com.CityThrillsMorocco.Program.Model.Program;
+import com.CityThrillsMorocco.Program.Model.ProgramElement;
 import com.CityThrillsMorocco.Reservation.Model.Reservation;
 import com.CityThrillsMorocco.agency.Model.Agence;
 import com.CityThrillsMorocco.enumeration.City;
@@ -77,10 +79,19 @@ public class Activity {
 
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
+    @JsonBackReference
     private List<Reservation> reservations = new ArrayList<>();
 
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL)
+    @JsonIgnore
+    @JsonBackReference
     private List<Notification> notifications;
+
+    @ManyToOne
+    @JoinColumn(name = "program_id", nullable = false)
+    @JsonBackReference
+    private Program program;
+
 
     public void updateStatusWhenStartDateArrives() {
         LocalDate currentDate = LocalDate.now();

@@ -108,6 +108,11 @@ public class UserService  {
 
     public void DeleteUserById(Long id){
         findOrThrow(id);
+        confirmationTokenRepository.delete(
+                confirmationTokenRepository.findConfirmationTokenByUser(
+                        userRepository.getById(id)
+                )
+        );
         userRepository.deleteById(id);
     }
 

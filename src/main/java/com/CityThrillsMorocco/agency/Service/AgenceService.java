@@ -2,11 +2,15 @@ package com.CityThrillsMorocco.agency.Service;
 
 import com.CityThrillsMorocco.accountverification.Repository.ConfirmationTokenRepository;
 import com.CityThrillsMorocco.accountverification.Service.EmailService;
+import com.CityThrillsMorocco.activity.Model.Activity;
+import com.CityThrillsMorocco.activity.Repository.ActivityRepo;
 import com.CityThrillsMorocco.agency.Dto.AgenceDto;
 import com.CityThrillsMorocco.agency.Model.Agence;
 import com.CityThrillsMorocco.agency.Repository.AgenceRepository;
 import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.exception.NotFoundException;
+import com.CityThrillsMorocco.user.model.Admin;
+import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -23,8 +27,10 @@ import java.util.stream.Collectors;
 public class AgenceService {
 
     private final ConfirmationTokenRepository confirmationTokenRepository;
+    private final ActivityRepo activityRepo;
     private final AgenceRepository agenceRepository;
     private final ModelMapper mapper;
+    private final UserService userService;
     private final EmailService emailService;
 
 
@@ -45,7 +51,6 @@ public class AgenceService {
         return ResponseEntity.ok("Created successfully");
     }
 
-
     public  ResponseEntity<List<AgenceDto>> getAllAgences(){
         var agences = new ArrayList<>( agenceRepository.findAll());
         return new ResponseEntity<>(agences.stream()
@@ -62,7 +67,7 @@ public class AgenceService {
         agence.setLocation(agenceParam.getLocation());
         agence.setName(agenceParam.getName());
         agenceRepository.save(agence);
-        return ResponseEntity.ok("updated succes");
+        return ResponseEntity.ok("Updated Successfully .");
     }
 
     public Agence getAgenceById(Long id){
@@ -73,11 +78,19 @@ public class AgenceService {
                 );
     }
 
-    public void DeleteAgenceById(Long id){
-        findOrThrow(id);
-        agenceRepository.deleteById(id);
+    public Agence getAgenceByUser(Long id) {
+        Admin admin = mapper.map(userService.getUserById(id), Admin.class);
+
+        List<Agence> agences = agenceRepository.findByAdmin(admin);
+
+        return agences.get(0);
     }
 
+    public void DeleteAgenceById(Long id){
+        findOrThrow(id);
+        activityRepo.deleteAll(activityRepo.findActivitiesByAgence_Id(id));
+        agenceRepository.deleteById(id);
+    }
 
     public ResponseEntity<?> saveAgence(Agence agence) throws NoSuchAlgorithmException {
         if (agenceRepository.existsByEmail(agence.getEmail())) {
@@ -88,8 +101,6 @@ public class AgenceService {
         return ResponseEntity.ok("Verify email by the link sent on your email address");
     }
 
-
-
     private Agence findOrThrow(final Long id) {
         return agenceRepository
                 .findById(id)
@@ -97,7 +108,6 @@ public class AgenceService {
                         () -> new NotFoundException("agence by id " + id + " was not found")
                 );
     }
-
 
     public Long getTotalUserCountByAgency(Long agencyId) {
         return agenceRepository.countAgenceByIdIs(agencyId);

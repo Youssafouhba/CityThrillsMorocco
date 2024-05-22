@@ -4,6 +4,7 @@ package com.CityThrillsMorocco.jwt.controllers;
 import com.CityThrillsMorocco.RolesAndPrivileges.Models.Role;
 import com.CityThrillsMorocco.jwt.models.AuthenticationRequest;
 import com.CityThrillsMorocco.jwt.models.AuthenticationResponse;
+import com.CityThrillsMorocco.jwt.models.UserPrincipal;
 import com.CityThrillsMorocco.jwt.services.ApplicationUserDetailsService;
 import com.CityThrillsMorocco.jwt.util.JwtUtil;
 import com.CityThrillsMorocco.user.model.User;
@@ -34,11 +35,9 @@ public class AuthenticateController {
     } catch (BadCredentialsException e) {
       return ResponseEntity.badRequest().body("Incorrect username or password");
     }
-    Field email = user.getClass().getDeclaredField("email");
-    email.setAccessible(true);
-    var userDetails = userDetailsService.loadUserByUsername((String) email.get(user));
     Role role = userDetailsService.getRole(user.getId());
-    System.out.println(userDetails);
+    UserPrincipal userDetails = new UserPrincipal(user);
+    System.out.println();
     var jwt = jwtTokenUtil.generateToken(userDetails);
     return ResponseEntity.ok().body( new AuthenticationResponse(role,jwt,user.getId()));
   }
