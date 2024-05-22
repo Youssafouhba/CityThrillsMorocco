@@ -15,7 +15,7 @@ import java.util.List;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/CityThrillsMorocco/Admin/activities")
+@RequestMapping("/activity")
 public class ActivityController {
     private final ActivityService activityService;
 
@@ -63,5 +63,7 @@ public class ActivityController {
     public List<Activity> getAllActivities(){
         return activityService.findall();
     }
+
+
 
 }

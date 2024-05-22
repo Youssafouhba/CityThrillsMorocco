@@ -25,6 +25,7 @@ public class Activity {
     private String description;
 
     private String descriptiondetail;
+    private int maxParticipants;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date starteddate;
