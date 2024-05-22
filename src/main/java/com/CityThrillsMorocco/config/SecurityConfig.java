@@ -6,6 +6,7 @@ import com.CityThrillsMorocco.jwt.services.ApplicationUserDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -43,6 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 // second chain
                 .antMatcher("/**")
                 .authorizeRequests()
+                .antMatchers(HttpMethod.DELETE , "/CityThrillsMorocco/cart/remove/**")
+                .permitAll()
                 // third chain
                 .antMatchers("/**")
                 .permitAll()

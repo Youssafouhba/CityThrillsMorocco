@@ -98,4 +98,9 @@ public class ActivityService {
         activityDto.setAgence_id(activity.getAgence().getId());
         return activityDto;
     }
+    public void decrementActivityCapacity(Activity activity,int nbr) {
+        activity.setMaxParticipants(activity.getMaxParticipants()-nbr);
+
+        activityRepo.save(activity);
+    }
 }

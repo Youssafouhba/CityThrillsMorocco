@@ -7,9 +7,13 @@ import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.exception.NotFoundException;
 import com.CityThrillsMorocco.user.Dto.UserDto;
 import com.CityThrillsMorocco.user.model.User;
+
 import com.CityThrillsMorocco.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
@@ -24,13 +28,18 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-
+@NoArgsConstructor
+@Data
 public class UserService  {
 
-    private final UserRepository userRepository;
-    private final ModelMapper mapper;
-    private final ConfirmationTokenRepository confirmationTokenRepository;
-    private final EmailService emailService;
+    @Autowired
+    private  UserRepository userRepository;
+    @Autowired
+    private  ModelMapper mapper;
+    @Autowired
+    private  ConfirmationTokenRepository confirmationTokenRepository;
+    @Autowired
+    private  EmailService emailService;
 
     public User searchByEmail(String email) {
         return userRepository.findByEmail(email);

@@ -10,6 +10,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class ActivityDto {
     private Long id;
     private String designation;
