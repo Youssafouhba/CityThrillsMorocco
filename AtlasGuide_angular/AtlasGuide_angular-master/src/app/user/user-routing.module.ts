@@ -8,8 +8,6 @@ import {CartComponent} from "./Paiement_process/cart_wishlist/cart/cart.componen
 import {HomeComponent} from "./home/home.component";
 import {LoginComponent} from "../admin/authentification/login/login.component";
 import {RegisterComponent} from "../admin/authentification/register/register.component";
-import {UserAccountComponent} from "./user-account/user-account.component";
-import {BookingComponent} from "./user-account/booking/booking.component";
 
 
 const routes: Routes = [
@@ -20,8 +18,6 @@ const routes: Routes = [
   {path:'paiement' , component : PaiementFormComponent},
   {path:'confirmation' , component : PaiementConfirmationComponent},
   {path:'wishlist' , component : WishlistComponent},
-  {path: 'UserAccount' , component : UserAccountComponent},
-  {path: 'Booking' , component : BookingComponent},
   {path:'Details/:id' , component : ActivityDetailsComponent},
 ];
 
