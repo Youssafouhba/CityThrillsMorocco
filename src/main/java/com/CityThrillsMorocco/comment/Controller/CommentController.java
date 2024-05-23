@@ -3,43 +3,19 @@ package com.CityThrillsMorocco.comment.Controller;
 import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.comment.Model.Comment;
 import com.CityThrillsMorocco.comment.Service.CommentService;
-
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
-import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-@Log4j2
-@AllArgsConstructor
 @RestController
-@RequestMapping("comment")
+@RequestMapping("/CityThrillsMorocco/Comments")
+@RequiredArgsConstructor
 public class CommentController {
-  
-    private CommentService commentService;
-    @GetMapping
-    public List<Comment> getComments(){
-        return commentService.getComments();
-    }
+    private final CommentService commentService;
 
-    @PostMapping
-    public Comment addComment(@RequestBody Comment comment) throws NoSuchAlgorithmException {
-        return commentService.addComment(comment,12L,9L);
-    }
-
-    @DeleteMapping("/{id}")
-    public void removeComment(@PathVariable("id") Long id ) throws NoSuchAlgorithmException{
-        commentService.deleteComment(id);
-    }
-    
     @GetMapping("/comments_with_High_Rating")
     public List<Activity> findActivitiesWithHighRatings(){
         return commentService.findTop6Activities();
@@ -54,4 +30,39 @@ public class CommentController {
     public Long getNumberOfComments(@PathVariable("id") Long activity_id){
         return commentService.getNumberOfComments(activity_id);
     }
+
+    @GetMapping
+    public List<Comment> getComments(){
+        return commentService.getComments();
+    }
+
+    @GetMapping("/{activity_id}")
+    public List<Comment> getCommentsByActivityId(@PathVariable("activity_id") Long activityId) {
+        return commentService.getCommentsByActivityId(activityId);
+    }
+
+    @PostMapping
+    public Comment addComment(@RequestBody Comment comment) throws NoSuchAlgorithmException {
+        return commentService.addComment(comment,12L,9L);
+    }
+    @PostMapping("/{parent_id}")
+    public ResponseEntity<?> createReply(
+            @RequestBody Comment reply,
+            @RequestHeader("Authorization") String token,
+            @PathVariable("parent_id") Long parentId
+    ){
+        commentService.createReply(reply,parentId,token);
+        return ResponseEntity.ok().body("Reply Sent ");
+    }
+
+    @GetMapping("/{commentId}/replies")
+    public List<Comment> getRepliesByCommentId(@PathVariable Long commentId) {
+        return commentService.getRepliesByCommentId(commentId);
+    }
+
+    @DeleteMapping("/{id}")
+    public void removeComment(@PathVariable("id") Long id ) throws NoSuchAlgorithmException{
+        commentService.deleteComment(id);
+    }
+
 }

@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import java.util.Arrays;
 
@@ -22,8 +21,6 @@ public class CorsConfig {
 
     @Value("${client.url}")
     private String CLIENT_URL;
-
-
 
     @Bean
     CorsFilter corsFilter() {
@@ -40,7 +37,8 @@ public class CorsConfig {
                         "Origin, Accept",
                         "X-Requested-With",
                         "Access-Control-Request-Method",
-                        "Access-Control-Request-Headers"
+                        "Access-Control-Request-Headers",
+                        "x-user-role"
                 )
         );
         corsConfiguration.setExposedHeaders(
@@ -65,6 +63,4 @@ public class CorsConfig {
 
         return new CorsFilter(urlBasedCorsConfigurationSource);
     }
-
-
 }

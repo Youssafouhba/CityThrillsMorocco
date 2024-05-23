@@ -7,59 +7,74 @@ import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.exception.NotFoundException;
 import com.CityThrillsMorocco.user.Dto.UserDto;
 import com.CityThrillsMorocco.user.model.User;
-
 import com.CityThrillsMorocco.user.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-@NoArgsConstructor
-@Data
-public class UserService  {
 
-    @Autowired
-    private  UserRepository userRepository;
-    @Autowired
-    private  ModelMapper mapper;
-    @Autowired
-    private  ConfirmationTokenRepository confirmationTokenRepository;
-    @Autowired
-    private  EmailService emailService;
+public class UserService  {
+    public PasswordEncoder passwordEncoder;
+    private final UserRepository userRepository;
+    private final ModelMapper mapper;
+    private final EmailService emailService;
+    private final ConfirmationTokenRepository confirmationTokenRepository;
+
+    public ResponseEntity<?> confirmEmail(String confirmationToken) {
+        ConfirmationToken tokene = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+        if(tokene != null)
+        {
+            User user = userRepository.findByEmailIgnoreCase(tokene.getUser().getEmail());
+            user.setEnabled(true);
+            userRepository.save(user);
+            return ResponseEntity.ok("Email verified successfully!");
+        }
+        return ResponseEntity.badRequest().body("Error: Couldn't verify email");
+    }
+
+    public ResponseEntity<?> ResetPassword(String Email) throws NoSuchAlgorithmException {
+        User user = searchByEmail(Email);
+        var existsEmail = userRepository.selectExistsEmail(user.getEmail());
+        if (!existsEmail) throw new BadRequestException(
+                "Email " + user.getEmail() + "dosen't exist !!!"
+        );
+        ConfirmationToken confirmationToken =  confirmationTokenRepository.findConfirmationTokenByUser(user);
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(user.getEmail());
+        mailMessage.setSubject("Rset Password!");
+        mailMessage.setText("To Reset your Password, please click here : "
+                +"http://localhost:4200/resetPassword?token="+confirmationToken.getConfirmationToken());
+        emailService.sendEmail(mailMessage);
+
+        return ResponseEntity.ok("Verify email by the link sent on your email address");
+    }
+
+    public ResponseEntity<?> registerNewPassword(String token ,String password) throws NoSuchAlgorithmException {
+        ConfirmationToken confirmationToken = confirmationTokenRepository.findByConfirmationToken(token);
+        User user = confirmationToken.getUser();
+        user.setPassword(passwordEncoder.encode(password));
+        userRepository.save(user);
+        return ResponseEntity.ok("Password Created Succefully !!");
+    }
 
     public User searchByEmail(String email) {
         return userRepository.findByEmail(email);
     }
-    public User createUser(UserDto userDto, String Password) throws NoSuchAlgorithmException {
-        User user = DtoToUser(userDto);
-        if (Password.isBlank()) throw new IllegalArgumentException(
-                "Password is required"
-        );
-        var existsEmail = userRepository.selectExistsEmail(user.getEmail());
-        if (existsEmail) throw new BadRequestException(
-                "Email " + user.getEmail() + " taken"
-        );
-        byte[] salt = createSalt();
-        byte[] hashedPassword = createPasswordHash(user.getPassword(), salt);
-        user.setStoredSalt(salt);
-        user.setStoredHash(hashedPassword);
-        userRepository.save(user);
-        return user;
-    }
+
+
+
+
     public void updateUsert(Long id, UserDto userDto, String password)
             throws NoSuchAlgorithmException {
         var user = findOrThrow(id);
@@ -67,10 +82,7 @@ public class UserService  {
         user.setEmail(userParam.getEmail());
         user.setPhone(userParam.getPhone());
         if (!password.isBlank()) {
-            byte[] salt = createSalt();
-            byte[] hashedPassword = createPasswordHash(password, salt);
-            user.setStoredSalt(salt);
-            user.setStoredHash(hashedPassword);
+            user.setPassword(passwordEncoder.encode(password));
         }
         userRepository.save(user);
     }
@@ -93,46 +105,12 @@ public class UserService  {
 
     public void DeleteUserById(Long id){
         findOrThrow(id);
+        confirmationTokenRepository.delete(
+                confirmationTokenRepository.findConfirmationTokenByUser(
+                        userRepository.getById(id)
+                )
+        );
         userRepository.deleteById(id);
-    }
-
-
-    public ResponseEntity<?> saveUser(User user) throws NoSuchAlgorithmException {
-
-        if (userRepository.existsByEmail(user.getEmail())) {
-            return ResponseEntity.badRequest().body("Error: Email is already in use!");
-        }
-
-        createUser(mapper.map(user,UserDto.class),user.getPassword());
-
-        ConfirmationToken confirmationToken = new ConfirmationToken(user);
-
-        confirmationTokenRepository.save(confirmationToken);
-
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
-        mailMessage.setTo(user.getEmail());
-        mailMessage.setSubject("Complete Registration!");
-        mailMessage.setText("To confirm your account, please click here : "
-                +"http://localhost:8080/CityThrillsMorocco/confirm-account?token="+confirmationToken.getConfirmationToken());
-        emailService.sendEmail(mailMessage);
-
-        System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
-
-        return ResponseEntity.ok("Verify email by the link sent on your email address");
-    }
-
-
-    public ResponseEntity<?> confirmEmail(String confirmationToken) {
-        ConfirmationToken tokene = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
-
-        if(tokene != null)
-        {
-            User user = userRepository.findByEmailIgnoreCase(tokene.getUser().getEmail());
-            user.setEnabled(true);
-            userRepository.save(user);
-            return ResponseEntity.ok("Email verified successfully!");
-        }
-        return ResponseEntity.badRequest().body("Error: Couldn't verify email");
     }
 
     private User findOrThrow(final Long id) {
@@ -142,19 +120,9 @@ public class UserService  {
                         () -> new NotFoundException("User by id " + id + " was not found")
                 );
     }
-    private byte[] createSalt() {
-        var random = new SecureRandom();
-        var salt = new byte[128];
-        random.nextBytes(salt);
 
-        return salt;
-    }
-
-    private byte[] createPasswordHash(String password, byte[] salt)
-            throws NoSuchAlgorithmException {
-        var md = MessageDigest.getInstance("SHA-512");
-        md.update(salt);
-        return md.digest(password.getBytes(StandardCharsets.UTF_8));
+    public Long getTotalUserCount() {
+        return userRepository.count();
     }
 
     private UserDto UserToDto(User user) {

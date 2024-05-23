@@ -1,2 +1,4 @@
-package com.CityThrillsMorocco.config;public class StringToActivityCategoriesConverter {
+package com.CityThrillsMorocco.config;
+
+public class StringToActivityCategoriesConverter {
 }

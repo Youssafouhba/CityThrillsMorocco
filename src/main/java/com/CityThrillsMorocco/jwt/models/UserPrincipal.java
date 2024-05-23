@@ -1,21 +1,38 @@
 package com.CityThrillsMorocco.jwt.models;
 
 
+import com.CityThrillsMorocco.user.model.Admin;
 import com.CityThrillsMorocco.user.model.User;
-import lombok.AllArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-@AllArgsConstructor
+
 public class UserPrincipal implements UserDetails {
 
-  private final User userEntity;
+
+  private final User user;
+
+  public UserPrincipal(User user){
+      this.user = user;
+  }
+
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return null;
+    List<GrantedAuthority> authorities = new ArrayList<>();
+
+    if (user instanceof Admin) {
+      String role = "ROLE_CONTENT_MANAGER";
+      authorities.add(new SimpleGrantedAuthority(role));
+
+    }
+
+    return authorities;
   }
 
   @Override
@@ -25,8 +42,9 @@ public class UserPrincipal implements UserDetails {
 
   @Override
   public String getUsername() {
-    return this.userEntity.getEmail();
+   return this.user.getEmail();
   }
+
 
   @Override
   public boolean isAccountNonExpired() {
@@ -47,4 +65,5 @@ public class UserPrincipal implements UserDetails {
   public boolean isEnabled() {
     return false;
   }
+
 }
