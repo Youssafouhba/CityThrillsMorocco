@@ -92,7 +92,7 @@ public class RegisterUserDetailsService implements UserDetailsService {
         }
 
         userRepository.save(user); // Save the user or admin to the database.
-        // SendMail(user); // Send an email to the user or admin.
+         SendMail(user); // Send an email to the user or admin.
 
         return ResponseEntity.ok("Verify email by the link sent on your email address");
     }
