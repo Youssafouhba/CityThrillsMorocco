@@ -10,8 +10,6 @@ import {WishlistComponent} from "./Paiement_process/cart_wishlist/wishlist/wishl
 import {PaiementConfirmationComponent} from "./Paiement_process/paiement-confirmation/paiement-confirmation.component";
 import {PaiementFormComponent} from "./Paiement_process/paiement-form/paiement-form.component";
 import {CartComponent} from "./Paiement_process/cart_wishlist/cart/cart.component";
-import {SignUpComponent} from "./supplier/sign-up/sign-up.component";
-import {LoginComponent} from "./supplier/login/login.component";
 import {FamousPlacesComponent} from "./home/famous-places/famous-places.component";
 import {FooterComponent} from "./shared/footer/footer.component";
 import {HeaderComponent} from "./shared/header/header.component";
@@ -39,8 +37,6 @@ import {ActivitesByCityComponent} from "./activites-by-city/activites-by-city.co
       HeaderComponent,
       FooterComponent,
       FamousPlacesComponent,
-      LoginComponent,
-      SignUpComponent,
       CartComponent,
       PaiementFormComponent,
       PaiementConfirmationComponent,
