@@ -1,0 +1,298 @@
+
+<div id="container-wrapper">
+  <!-- Dashboard -->
+  <div id="dashboard" class="dashboard-container">
+    <div class="db-info-wrap db-add-tour-wrap">
+      <h1 class="fill-primary" style="margin-left: 30%;">Publish a New Activity</h1>
+
+        <div class="row">
+          <div class="col-lg-8 col-xl-9">
+            <form [formGroup]="activityForm" (ngSubmit)="createActivity()">
+              <div class="dashboard-box">
+                <div class="custom-field-wrap">
+                  <h4>Activity Details</h4>
+                  <div >
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>Designation</mat-label>
+                      <input formControlName="designation" placeholder="Designation" [matAutocomplete]="activitiesAuto" required matInput />
+                      <mat-error>The designation is not valid</mat-error>
+                    </mat-form-field>
+                    <mat-autocomplete #activitiesAuto="matAutocomplete">
+                      <mat-option *ngFor="let activity of activities$ | async" [value]="activity.designation">
+                        {{activity.designation}}
+                      </mat-option>
+                    </mat-autocomplete>
+
+                  </div>
+                  <div>
+                    <mat-form-field style="width: 100%;" >
+                      <mat-label>Description</mat-label>
+                      <textarea formControlName="description" placeholder="Description" [matAutocomplete]="activitiesAuto" required matInput></textarea>
+                      <mat-error>The description is not valid</mat-error>
+                    </mat-form-field>
+                    <mat-autocomplete #activitiesAuto="matAutocomplete">
+                      <mat-option *ngFor="let activity of activities$ | async" [value]="activity.designation">
+                        {{activity.description}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </div>
+                  <div>
+                    <mat-form-field style="width: 100%;" >
+                      <mat-label>Description Details</mat-label>
+                      <textarea formControlName="descriptionDetail" placeholder="Description Details" [matAutocomplete]="activitiesAuto" required matInput></textarea>
+                      <mat-error>The description is not valid</mat-error>
+                    </mat-form-field>
+                    <mat-autocomplete #activitiesAuto="matAutocomplete">
+                      <mat-option *ngFor="let activity of activities$ | async" [value]="activity.descriptionDetail">
+                        {{activity.descriptionDetail}}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <form>
+              <div class="dashboard-box">
+                <div class="custom-field-wrap">
+                  <h4>Activity Program</h4>
+                  <div>
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>Number of Days:</mat-label>
+                      <mat-select (selectionChange)="setNumberOfDays($event)">
+                        <mat-option *ngFor="let day of days" [value]="day">
+                          {{day}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div *ngIf="numberOfDays > 0">
+                    <mat-vertical-stepper>
+                      <div *ngFor="let element of programElements; let i = index">
+                        <mat-step>
+                          <div style="display: block;">
+                            <ng-template matStepLabel>Day {{i + 1}}</ng-template>
+                            <mat-form-field style="width: 100%;">
+                              <mat-label>Name:</mat-label>
+                              <input placeholder="Name" [(ngModel)]="element.name" name="name-{{i}}" required matInput />
+                              <mat-error>The designation is not valid</mat-error>
+                            </mat-form-field>
+                            <mat-form-field style="width: 100%;">
+                              <mat-label>Description:</mat-label>
+                              <input placeholder="Description" [(ngModel)]="element.description" name="description-{{i}}" required matInput />
+                              <mat-error>The designation is not valid</mat-error>
+                            </mat-form-field>
+                          </div>
+                        </mat-step>
+                      </div>
+                    </mat-vertical-stepper>
+                  </div>
+
+                </div>
+              </div>
+            </form>
+            <form [formGroup]="activityForm" (ngSubmit)="createActivity()">
+              <div class="dashboard-box">
+                <div class="custom-field-wrap">
+                  <h4>Dates and Prices</h4>
+                  <mat-vertical-stepper  #stepper>
+                    <mat-step>
+                      <div>
+                        <ng-template matStepLabel >Available Year-Round ?</ng-template>
+                        <mat-checkbox  formControlName="isAvailableYearRound" color="primary">Available Year-Round</mat-checkbox>
+                        <div class="mat" [hidden]="isAvailableYearRound.value" >
+                          <mat-form-field >
+                            <mat-label>Start / End date</mat-label>
+                            <mat-date-range-input [rangePicker]="picker">
+                              <input matStartDate  formControlName="startDate" placeholder="Start date">
+                              <input matEndDate formControlName="endDate" placeholder="End date">
+                            </mat-date-range-input>
+                            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-date-range-picker #picker></mat-date-range-picker>
+                          </mat-form-field>
+                        </div>
+                        <div [hidden]="isAvailableYearRound.value" >
+                          <ng-template matStepLabel>Dates flexibles ?</ng-template>
+                          <mat-checkbox formControlName="isFlexibleDates">Dates flexibles (Booking Dates)</mat-checkbox>
+                          <div  class="mat" [hidden]="!isFlexibleDates.value" >
+                            <mat-form-field>
+                              <mat-label>Start Date / End Date</mat-label>
+                              <mat-date-range-input [rangePicker]="bookingpicker">
+                                <input matStartDate formControlName="bookingStartDate" placeholder="Start date">
+                                <input matEndDate formControlName="bookingEndDate" placeholder="End date">
+                              </mat-date-range-input>
+                              <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+                              <mat-datepicker-toggle matIconSuffix [for]="bookingpicker"></mat-datepicker-toggle>
+                              <mat-date-range-picker #bookingpicker></mat-date-range-picker>
+                            </mat-form-field>
+
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div>
+                        <button mat-button matStepperNext type="button">Next</button>
+                      </div>
+                    </mat-step>
+                    <mat-step [stepControl]="isPlacesLimited">
+                      <ng-template matStepLabel>Places limitées</ng-template>
+                      <mat-checkbox formControlName="isPlacesLimited">Places limitées</mat-checkbox>
+                      <div [hidden]="!isPlacesLimited.value">
+
+                        <div class="col-sm-6">
+                          <div>
+                            <mat-form-field>
+                              <mat-label> maxParticipants:</mat-label>
+                              <input type="number" formControlName="maxParticipants" placeholder="maxParticipants" required matInput />
+                              <mat-error>The  maxParticipants is required</mat-error>
+                              <mat-hint>
+                                Price should be between 1 and 10000
+                              </mat-hint>
+                            </mat-form-field>
+                          </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                          <div>
+                            <mat-form-field>
+                              <mat-label>participants</mat-label>
+                              <input type="number" formControlName="participants" placeholder="participants" required matInput />
+                              <mat-error>The participants is required</mat-error>
+                              <mat-hint>
+                                Price should be between 1 and 10000
+                              </mat-hint>
+                            </mat-form-field>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <button type="button" mat-button matStepperPrevious>Back</button>
+                        <button type="button" mat-button matStepperNext>Next</button>
+                      </div>
+
+                    </mat-step>
+                    <mat-step [stepControl]="price">
+                      <ng-template matStepLabel>Prices</ng-template>
+                      <div class="col-sm-6">
+                        <mat-form-field>
+                          <mat-label>Price/Person</mat-label>
+                          <input type="number" formControlName="price" placeholder="Sale Price" required matInput />
+                          <mat-error>The price is required</mat-error>
+                          <mat-hint>
+                            Price should be between 1 and 10000
+                          </mat-hint>
+                        </mat-form-field>
+                      </div>
+                      <!--
+                      <div class="col-sm-6">
+                        <mat-form-field>
+                          <mat-label>Price / Group</mat-label>
+                          <input type="number" formControlName="price" placeholder="Sale Price" required matInput />
+                          <mat-error>The price is required</mat-error>
+                          <mat-hint>
+                            Price should be between 1 and 10000
+                          </mat-hint>
+                        </mat-form-field>
+                      </div>
+                      -->
+                      <div>
+                        <button type="button" mat-button matStepperPrevious>Back</button>
+                        <button type="button" mat-button matStepperNext>Next</button>
+                      </div>
+                    </mat-step>
+                  </mat-vertical-stepper>
+                </div>
+              </div>
+              <div class="dashboard-box">
+                <h4>Gallery</h4>
+                <div class="custom-field-wrap">
+                  <div class="dragable-field">
+                    <div class="dragable-field-inner">
+                      <p class="drag-drop-info">Drop Files To Upload</p>
+                      <p>or</p>
+                      <div class="upload-input">
+                        <div class="form-group">
+                          <span class="upload-btn">Upload a image</span>
+                          <input type="file" name="myfile">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="dashboard-box">
+                <h4>Location</h4>
+                <div class="custom-field-wrap">
+                  <div class="row">
+
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>City</mat-label>
+                      <input formControlName="city" placeholder="City" [matAutocomplete]="cityAuto" required matInput (input)="onCityChange($event)" />
+                      <mat-error>Please provide a city name</mat-error>
+                    </mat-form-field>
+
+                    <mat-autocomplete #cityAuto="matAutocomplete">
+                      <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                        {{city}}
+                      </mat-option>
+                    </mat-autocomplete>
+
+                    <section class="contact-us-section" id="contact-us">
+                      <div class="container">
+                        <div class="row contact-row">
+                          <div class="w-90 map-container" id="map" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="900">
+                            <iframe [src]="safeUrl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+          <div class="col-lg-4 col-xl-3">
+            <form [formGroup]="activityForm" (ngSubmit)="createActivity()">
+              <div class="dashboard-box">
+                <div class="custom-field-wrap">
+                  <h4>Category</h4>
+                  <mat-form-field style="width: 100%;">
+                    <mat-label>Categories</mat-label>
+                    <mat-select formControlName="category" required>
+                      <mat-option *ngFor="let category of categories" [value]="category">
+                        {{category}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="dashboard-box">
+                <div class="custom-field-wrap db-pop-field-wrap">
+                  <h4>Add image</h4>
+                  <img
+                    [src]="imageUrl"
+                    alt="user-avatar"
+                    class="d-block w-100 opacity-25 rounded"
+                    id="uploadedAvatar"
+                  />
+                  <input type="file" id="fileInput" (change)="onFileSelected($event)" name="fileInput">
+                  <div class="publish-action">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!activityForm.valid">Publish</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+    </div>
+    <!-- Copyrights -->
+    <div class="copyrights">
+      Copyright © 2021 Travele. All rights reserveds.
+    </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+
+<header id="masthead" class="site-header header-primary">
+    <!-- header html start -->
+    <!--    <div class="top-header">-->
+    <!--        <div class="container">-->
+    <!--            <div class="row">-->
+    <!--&lt;!&ndash;                <div class="col-lg-8 d-none d-lg-block">&ndash;&gt;-->
+    <!--&lt;!&ndash;                    <div class="header-contact-info">&ndash;&gt;-->
+    <!--&lt;!&ndash;                        <ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            <li>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <a href="#"><i class="fas fa-phone-alt"></i> +01 (977) 2599 12</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            </li>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            <li>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <a href="https://demo.bosathemes.com/cdn-cgi/l/email-protection#84edeae2ebc4d0f6e5f2e1e8aae7ebe9"><i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="0f6c60627f6e61764f6b60626e6661216c6062">[email&#160;protected]</span></a>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            </li>&ndash;&gt;-->
+    <!--&lt;!&ndash;                            <li>&ndash;&gt;-->
+    <!--&lt;!&ndash;                                <i class="fas fa-map-marker-alt"></i> 3146 Koontz Lane, California&ndash;&gt;-->
+    <!--&lt;!&ndash;                            </li>&ndash;&gt;-->
+    <!--&lt;!&ndash;                        </ul>&ndash;&gt;-->
+    <!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+    <!--&lt;!&ndash;                </div>&ndash;&gt;-->
+    <!--                <div class="col-lg-4 d-flex justify-content-lg-end justify-content-between">-->
+    <!--                    <div class="header-social social-links">-->
+    <!--                        <ul>-->
+    <!--                            <li><a href="#"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>-->
+    <!--                            <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>-->
+    <!--                            <li><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>-->
+    <!--                            <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>-->
+    <!--                        </ul>-->
+    <!--                    </div>-->
+    <!--                    <div class="header-search-icon">-->
+    <!--                        <button class="search-icon">-->
+    <!--                            <i class="fas fa-search"></i>-->
+    <!--                        </button>-->
+    <!--                    </div>-->
+    <!--                </div>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <div class="bottom-header">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="site-identity">
+                <p class="site-title">
+                    <a href="index.html">
+                        <img class="white-logo" src="assets/images/travele-logo.png" alt="logo">
+                        <img class="black-logo" src="assets/images/travele-logo1.png" alt="logo">
+                    </a>
+                </p>
+            </div>
+
+            <!-- Recherche -->
+            <div class="container_search" *ngIf="isHomepage">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" [(ngModel)]="searchText" (input)="filterCities()" placeholder="Your destination">
+                <div class="search">Search</div>
+                <ul *ngIf="filteredCities.length > 0" class="suggestions">
+                    <li *ngFor="let city of filteredCities" (click)="selectCity(city)">{{ city }}</li>
+                </ul>
+            </div>
+
+
+
+
+            <!-- Menu de navigation principal -->
+            <div class="main-navigation d-none d-lg-block">
+                <nav id="navigation" class="navigation">
+                    <ul>
+                        <li class="menu-item-has-children">
+                            <a class="title" routerLink="/wishlist" class="title" href="#">Wishlist</a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a  class="title" routerLink="/Cart" href="#">Cart {{elementCount}}</a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a class="title" routerLink="/Admin_login" href="#">Become a supplier</a>
+                        </li>
+                        <li class="menu-item-has-children">
+                            <a class="title" href="#">Profile</a>
+                            <ul>
+                                <li><a href="#">Log out</a></li>
+                                <li><a href="#">Language</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Switcher de thème -->
+<!--            <div class="theme-switcher">-->
+<!--                <label class="swtich">-->
+
+<!--                    <div class="theme-switcher">-->
+<!--                        <button (click)="onThemeSwitchChange()" [ngClass]="{'light-theme': isLightTheme, 'dark-theme': !isLightTheme}">-->
+<!--                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-fill" viewBox="0 0 16 16">-->
+<!--                                <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"/>-->
+<!--                            </svg>-->
+<!--                        </button>-->
+<!--                    </div>-->
+
+<!--                </label>-->
+<!--            </div>-->
+        </div>
+    </div>
+    <div class="mobile-menu-container"></div>
+</header>
+
+

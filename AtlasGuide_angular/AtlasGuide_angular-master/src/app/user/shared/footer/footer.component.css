@@ -1,0 +1,132 @@
+
+/*--------------------------------------------------------------
+>>> Main Footer
+----------------------------------------------------------------*/
+.site-footer {
+  background-color: #383838;
+  padding-top: 80px;
+}
+.site-footer .top-footer {
+  padding-bottom: 55px;
+}
+.site-footer .award-img {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-top: 15px;
+}
+.site-footer .award-img a {
+  width: 50%;
+}
+.site-footer .award-img a:first-child {
+  margin-right: 10px;
+}
+.site-footer .buttom-footer {
+  background-color: #404040;
+  padding: 30px 0;
+}
+.site-footer .copy-right {
+  color: #ffffff;
+}
+.site-footer .copy-right a {
+  color: #ffffff;
+}
+.site-footer .copy-right a:hover {
+  color: #2C75BA;
+}
+.site-footer .footer-menu ul {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+.site-footer .footer-menu ul li {
+  list-style: none;
+  display: inline-block;
+  position: relative;
+  padding: 0 10px;
+}
+.site-footer .footer-menu ul li:before {
+  content: "|";
+  position: absolute;
+  top: 0;
+  right: -2px;
+  font-size: 14px;
+  color: #B6B6B6;
+}
+.site-footer .footer-menu ul li:last-child:before {
+  display: none;
+}
+.site-footer .footer-menu ul li a {
+  color: #ffffff;
+  font-size: 15px;
+}
+.site-footer .footer-menu ul li a:hover, .site-footer .footer-menu ul li a:focus {
+  color: #2C75BA;
+}
+@media screen and (max-width: 575px) {
+  .site-footer {
+    padding-top: 50px;
+  }
+  .site-footer .top-footer {
+    padding-bottom: 25px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .site-footer .footer-menu {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  .site-footer .footer-logo {
+    margin-bottom: 15px;
+  }
+  .site-footer .copy-right {
+    text-align: center !important;
+  }
+}
+
+.footer-primary .widget {
+  color: #e0e0e0;
+}
+.footer-primary .widget .widget-title {
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin-bottom: 18px;
+  -webkit-align-items: center;
+  -moz-align-items: center;
+  -ms-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+.footer-primary .widget .widget-title:before {
+  background-color: #0791BE;
+  content: "";
+  height: 18px;
+  width: 3px;
+  margin-right: 10px;
+}
+.footer-primary .widget ul li a {
+  color: #ffffff;
+}
+.footer-primary .widget ul li a:hover, .footer-primary .widget ul li a:focus, .footer-primary .widget ul li a:active {
+  color: #2C75BA;
+}
+@media screen and (max-width: 991px) {
+  .footer-primary .widget {
+    margin-bottom: 30px;
+  }
+}

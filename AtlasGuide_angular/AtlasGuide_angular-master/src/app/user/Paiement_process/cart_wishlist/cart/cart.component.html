@@ -1,0 +1,82 @@
+<app-header></app-header>
+<main id="content" class="site-main">
+    <!-- Inner Banner html start-->
+    <section class="inner-banner-wrap">
+        <div class="inner-baner-container" style="">
+            <div class="container">
+                <div class="inner-banner-content">
+                    <h1 class="inner-title">Your Cart</h1>
+                </div>
+            </div>
+        </div>
+        <div class="inner-shape"></div>
+    </section>
+    <!-- Inner Banner html end-->
+    <div class="step-section cart-section">
+        <div class="container">
+            <div class="step-link-wrap">
+                <div class="step-item active">
+                    Your cart
+                    <a href="/Cart" class="step-icon"></a>
+                </div>
+                <div class="step-item">
+                    Your Details
+                    <a href="/paiement" class="step-icon"></a>
+                </div>
+                <div class="step-item">
+                    Finish
+                    <a href="#" class="step-icon"></a>
+                </div>
+            </div>
+            <!-- step one form html start -->
+            <div class="cart-list-inner">
+                <form action="#">
+                    <div class="table-responsive center">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th></th>
+                                <th>Activity Name</th>
+                                <th>Price</th>
+                                <th>number of persons</th>
+                                <th>Sub Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let element of cart.cartElements ; let i = index">
+                                <td class="">
+                                    <span class="cartImage"><img src="" alt="image"></span>
+                                </td>
+                                <td data-column="Product Name">{{element.activity.designation}}</td>
+                                <td data-column="Price">{{element.activity.price}} MAD</td>
+                              <td data-column="Quantity">{{element.nbrOfPerson}}</td>
+<!--                                <td data-column="Quantity" class="count-input">-->
+<!--                                    <div>-->
+<!--                                        <a class="minus-btn" (click)="decrementQuantity()" ><i class="fa fa-minus"></i></a>-->
+<!--                                        <input class="quantity" type="text" value="">-->
+<!--                                        <a class="plus-btn" (click)="incrementQuantity()"><i class="fa fa-plus"></i></a>-->
+<!--                                    </div>-->
+<!--                                </td>-->
+                                <td data-column="Sub Total">{{element.sub_total}} MAD</td>
+                              <td><button (click)="deleteFromCart(element,cart)" class="close" data-dismiss="alert"  aria-label="Close"><span aria-hidden="true">×</span></button></td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                    <div class="totalAmountArea">
+                        <ul class="list-unstyled">
+                            <li><strong>Grand Total</strong> <span class="grandTotal">{{cart.total_amount}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="checkBtnArea text-right">
+                        <a  routerLink="/paiement" class="button-primary">checkout</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>
+
+

@@ -1,0 +1,23 @@
+export enum City {
+    Agadir = 'Agadir',
+    AlHoceima = 'Al Hoceima',
+    Asilah = 'Asilah',
+    Casablanca = 'Casablanca',
+    Chefchaouen = 'Chefchaouen',
+    ElJadida = 'El Jadida',
+    Errachidia = 'Errachidia',
+    Essaouira = 'Essaouira',
+    Fes = 'Fes',
+    Ifrane = 'Ifrane',
+    Marrakech = 'Marrakech',
+    Meknes = 'Meknes',
+    Nador = 'Nador',
+    Ouarzazate = 'Ouarzazate',
+    Oujda = 'Oujda',
+    Rabat = 'Rabat',
+    Safi = 'Safi',
+    Tanger = 'Tanger',
+    Taroudant = 'Taroudant',
+    Tetouan = 'Tetouan',
+    Zagora = 'Zagora'
+}

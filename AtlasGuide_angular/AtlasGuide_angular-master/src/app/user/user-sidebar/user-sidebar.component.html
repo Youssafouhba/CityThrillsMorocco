@@ -1,0 +1,129 @@
+
+<!-- Default Nav -->
+<header  class="header vacasky-default-nav">
+  <div class="d-none d-xl-block">
+    <div class="header-inner d-flex align-items-center justify-content-around justify-content-xl-between flex-wrap flex-xl-nowrap gap-3 gap-xl-5">
+      <div class="header-left-part d-flex align-items-center flex-grow-1 w-100">
+        <div class="header-search w-100">
+          <form class="search-form" action="https://wpthemebooster.com/demo/themeforest/html/vacasky/dashboard/search.php">
+            <input type="text" name="search" class="keyword form-control w-100" placeholder="Search">
+            <button type="submit" class="btn"><img src="./assets/img/svg/search.svg" alt=""></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="header-right-part d-flex align-items-center flex-shrink-0">
+        <ul class="nav-elements d-flex align-items-center list-unstyled m-0 p-0">
+          <li class="nav-item nav-notification dropdown">
+            <a href="#" class="nav-toggler" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="./assets/img/svg/bell.svg" alt="bell">
+              <div class="badge rounded-circle">12</div>
+            </a>
+            <div class="dropdown-widget dropdown-menu p-0">
+              <div class="dropdown-wrapper pd-50">
+                <div class="dropdown-wrapper--title">
+                  <h4 class="d-flex align-items-center justify-content-between">Notifications <a href="#">View All</a></h4>
+                </div>
+                <ul class="notification-board list-unstyled">
+                  <li class="d-flex gap-3">
+                    <div class="media bg-primary text-white">
+                      <i class="bi bi-lightning"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <p class="fs-16 fw-medium"><a href="#">Classic Italy Tour Package</a><a> is nearest you</a>
+                      <p class="d-flex align-items-center justify-content-between fw-semibold text-primary mb-0"> <span class="fs-14 text-gray fw-normal">2m ago</span> <span>Mark as read</span></p>
+                    </div>
+                  </li>
+                  <li class="d-flex gap-3">
+                    <div class="media bg-secondary text-white">
+                      <i class="bi bi-lightning"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                      <p class="fs-16 fw-medium"><a href="#">Grand Elysée</a> hotel booking is confirmed.</p>
+                      <p class="d-flex align-items-center justify-content-between fw-semibold text-primary mb-0"> <span class="fs-14 text-gray fw-normal">2m ago</span> <span>Mark as read</span></p>
+                    </div>
+                  </li>
+                </ul>
+                <h6 class="all-notifications mb-0"> <a href="#" class="btn bg-muted text-primary w-100 fw-semibold mt-3 ff-base">View All Notifications</a> </h6>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item nav-author">
+            <a href="#" class="nav-toggler" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="assets/img/admin.jpg" alt="img" width="60" class="rounded-2">
+              <div *ngIf="user" class="nav-toggler-content">
+                <h5  class="ff-base fw-medium mb-0">{{user.firstname}} {{user.lastname}}</h5>
+                <div class="ff-base fs-14 fw-normal text-gray">{{user.email}}</div>
+              </div>
+            </a>
+            <div class="dropdown-widget dropdown-menu p-0 admin-card">
+              <div class="dropdown-wrapper">
+                <div class="card mb-0">
+                  <div class="card-header p-3 text-center">
+                    <img src="assets/img/admin.jpg" alt="img" width="80" class="rounded-circle avatar">
+                    <div class="mt-2">
+                      <h6 class="ff-base fw-medium mb-0">Erica Stocklin</h6>
+                      <div class="ff-base fs-14 fw-normal text-gray">ericastocklin&#64;gmail.com</div>
+                    </div>
+                  </div>
+                  <div class="card-body p-3">
+                    <ul class="list-unstyled p-0 m-0">
+                      <li>
+                        <a href="account-profile.html" class="fs-14 fw-normal text-dark d-block p-1"><i class="bi bi-person me-2"></i> Profile</a>
+                      </li>
+                      <li >
+                        <a href="account-bookings.html" class="fs-14 fw-normal text-dark d-block p-1"><i class="bi bi-envelope me-2 "></i> My Bookings</a>
+                      </li>
+                      <li>
+                        <a href="account-profile-edit.html" class="fs-14 fw-normal text-dark d-block p-1"><i class="bi bi-gear me-2"></i> Setting & Privacy</a>
+                      </li>
+                    </ul>
+
+                  </div>
+                  <div class="card-footer p-3">
+                    <a href="login.html" class="btn btn-outline-gray bg-transparent w-100 py-2 rounded-1 text-dark fs-14 fw-medium"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="small-header d-flex align-items-center justify-content-between d-xl-none">
+    <div class="logo">
+      <a href="https://wpthemebooster.com/demo/themeforest/html/vacasky/index.html" class="d-flex align-items-center gap-3 flex-shrink-0">
+        <img src="assets/img/footer-logo-2.svg" alt="logo">
+      </a>
+    </div>
+    <button type="button" class="vacasky-mobile-menu-opener"><span class="close"><i class="bi bi-arrow-left"></i></span> <span class="open"><i class="bi bi-list"></i></span></button>
+  </div>
+</header>
+
+<!-- Vertical Nav -->
+<div  class="vacasky-vertical-nav">
+  <!-- Logo  -->
+  <div class="logo d-flex align-items-center justify-content-between">
+    <a href="https://wpthemebooster.com/demo/themeforest/html/vacasky/index.html" class="d-flex align-items-center gap-3 flex-shrink-0">
+      <img src="assets/img/icons/1.png" style="width: 200px;"  alt="logo">
+    </a>
+    <button type="button" class="vacasky-vertical-nav-toggle"><i class="bi bi-list"></i></button>
+  </div>
+
+  <div class="vacasky-navmenu">
+    <ul class="main-menu">
+      <li ><a href="account-profile.html"><span class="nav-icon flex-shrink-0"><i class="bi bi-speedometer fs-24"></i></span> <span class="nav-text">My Profile</span></a></li>
+      <li ><a href="account-bookings.html"><span class="nav-icon flex-shrink-0"><i class="bi bi-ticket-fill fs-24"></i></span> <span class="nav-text">My Bookings</span></a></li>
+      <li ><a href="account-wishlist.html"><span class="nav-icon flex-shrink-0"><i class="bi bi-heart-fill fs-24"></i></span> <span class="nav-text">Wishlist</span></a></li>
+      <li class="menu-item"><a href="#"><span class="nav-icon flex-shrink-0"><i class="bi bi-star-fill fs-24"></i></span> <span class="nav-text">Reviews</span></a></li>
+      <li class="menu-item"><a href="account-payment-details.html"><span class="nav-icon flex-shrink-0"><i class="bi bi-cash-coin fs-24"></i></span> <span class="nav-text">Payment Details</span></a></li>
+      <li class="menu-item"><a href="account-profile-edit.html"><span class="nav-icon flex-shrink-0"><i class="bi bi-gear-fill fs-24"></i></span> <span class="nav-text">Profile Settings</span></a></li>
+      <li class="menu-item"><a href="#"><span class="nav-icon flex-shrink-0"><i class="bi bi-trash-fill fs-24"></i></span> <span class="nav-text">Delete Profile</span></a></li>
+      <li class="menu-item"><a href="" (click)="navigator.logout()" class=" text-primary"><span class="nav-icon flex-shrink-0"><i class="bi bi-box-arrow-right fs-24"></i></span> <span class="nav-text">Sign Out</span></a></li>
+    </ul>
+  </div>
+</div>
+

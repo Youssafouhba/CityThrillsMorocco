@@ -1,0 +1,30 @@
+<section class="home-slider-section ">
+        <div class="home-slider ">
+            <div class="home-banner-items ">
+                <div class="banner-inner-wrap darken-background" [ngStyle]="styles[index]"></div>
+                <div class="banner-content-wrap">
+
+                    <div class="container">
+                        <div class="banner-content text-center">
+                            <h2 class="banner-title">Magical Moments Await in Morocco</h2>
+                            <p>Explore the vibrant cities, from the historic streets of Marrakech to the coastal charm of Essaouira. Dive into the Sahara's golden dunes or wander through the captivating blue streets of Chefchaouen. Discover ancient medinas, taste the flavors of traditional cuisine, and embark on adventures that will create lasting memories.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="overlay"></div>
+                <ul class="de_nav de_nav_dark " #stickyMenu [class.sticky] = "sticky" >
+                    <button data-link="#section-services-tab" [ngClass]="{'active': index === 0}" (click)="onSetIndex(0)"><h2>For you</h2></button>
+                    <button data-link="#section-services-tab" [ngClass]="{'active': index === 1}" (click)="onSetIndex(1)"><h2>Culture</h2></button>
+                    <button data-link="#section-services-tab" [ngClass]="{'active': index === 2}" (click)="onSetIndex(2)"><h2>Nature</h2></button>
+                    <button data-link="#section-services-tab" [ngClass]="{'active': index === 3}" (click)="onSetIndex(3)"><h2>Sport</h2></button>
+                    <button data-link="#section-services-tab" [ngClass]="{'active': index === 4}" (click)="onSetIndex(4)"><h2>Food</h2></button>
+                </ul>
+            </div>
+
+        </div>
+
+</section>
+
+
+<span *ngFor="let img of photos" [style.background]="img"></span>

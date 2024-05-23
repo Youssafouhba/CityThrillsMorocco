@@ -1,0 +1,71 @@
+<section class="package-section">
+    <div class="container">
+        <div class="section-heading">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                        <h5 class="dash-style">EXPLORE GREAT PLACES</h5>
+                    <h2>Unforgettable experiences</h2>
+                </div>
+
+            </div>
+        </div>
+        <div class="package-inner">
+            <div class="row">
+                <div class="col-lg-4 col-md-6" *ngFor="let activity of activities ; let i = index ">
+                    <div class="package-wrap">
+                        <figure class="feature-image">
+                            <a  routerLink="/Details">
+                                <img src="{{activity.imageUrl}}" alt="" >
+                            </a>
+                        </figure>
+                        <div class="package-price">
+                            <h6>
+                                <span>{{activity.price}}$ </span> / per person
+                            </h6>
+                        </div>
+                        <div class="package-content-wrap">
+                            <div class="package-meta text-center">
+                                <ul>
+                                    <li>
+                                        <i class="far fa-clock"></i>
+                                        {{Pipe.formatDateString(activity.startDate.toString(),'yyyy-MM-dd','yyyy-MM-dd') }}
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-user-friends"></i>
+                                        People: {{activity.participants}}
+                                    </li>
+                                    <li>
+                                        <i class="fas fa-map-marker-alt"></i>
+                                        {{activity.city}}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="package-content">
+                                <h3>
+                                    <a  [routerLink]="['/Details' , activity.id] ">{{activity.designation}}</a>
+                                </h3>
+                                <div class="review-area">
+                                    <span class="review-text">({{numberOfComments[i]}} reviews)  </span>
+                                    <div class="rating-start" title="Rated {{ averageNotes[i] }} out of 5">
+                                        <span style="width: {{ averageNotes[i] * 20 }}%"></span>
+
+                                    </div>
+                                </div>
+                                <p>{{activity.description}}</p>
+                                <div class="btn-wrap">
+                                    <button class="button-text width-6" (click)="addToCart(activity.id,2,2)">Add To Cart<i class="fas fa-arrow-right"></i></button>
+                                    <a href="#" class="button-text width-6">Wish List<i class="far fa-heart"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+<!--            <div class="btn-wrap text-center">-->
+<!--                <a href="#" class="button-primary">VIEW ALL PACKAGES</a>-->
+<!--            </div>-->
+        </div>
+    </div>
+</section>
+

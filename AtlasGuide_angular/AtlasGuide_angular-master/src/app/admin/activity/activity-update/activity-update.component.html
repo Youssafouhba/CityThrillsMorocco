@@ -1,0 +1,250 @@
+<div class="container alert alert-light" >
+  <h2 style="margin-left: 40%;">Update Activity</h2>
+  <img  *ngIf="activity$ | async as activity" src="{{activity.imageUrl}}" alt="" class="ii" />
+  <h2 class="inner-title" *ngIf="activity$ | async as activity">{{activity.designation}}</h2>
+  <div class="db-info-wrap1 db-add-tour-wrap">
+    <form [formGroup]="activityForm" (ngSubmit)="updateActivity()">
+      <div class="row" style="width: 100%;">
+        <div class="col-lg-8 col-xl-9">
+          <div class="dashboard-box">
+            <div class="custom-field-wrap">
+              <h4>Activity Details</h4>
+              <div >
+                <mat-form-field style="width: 100%;">
+                  <mat-label>Designation</mat-label>
+                  <input formControlName="designation" placeholder="Designation" [matAutocomplete]="activitiesAuto" required matInput />
+                  <mat-error>The designation is not valid</mat-error>
+                </mat-form-field>
+                <mat-autocomplete #activitiesAuto="matAutocomplete">
+                  <mat-option *ngFor="let activity of activities$ | async" [value]="activity.designation">
+                    {{activity.designation}}
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+              <div>
+                <mat-form-field style="width: 100%;" >
+                  <mat-label>Description</mat-label>
+                  <textarea formControlName="description" placeholder="Description" [matAutocomplete]="activitiesAuto" required matInput></textarea>
+                  <mat-error>The description is not valid</mat-error>
+                </mat-form-field>
+                <mat-autocomplete #activitiesAuto="matAutocomplete">
+                  <mat-option *ngFor="let activity of activities$ | async" [value]="activity.designation">
+                    {{activity.description}}
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+              <div>
+                <mat-form-field style="width: 100%;" >
+                  <mat-label>Description Details</mat-label>
+                  <textarea formControlName="descriptionDetail" placeholder="Description Details" [matAutocomplete]="activitiesAuto" required matInput></textarea>
+                  <mat-error>The description is not valid</mat-error>
+                </mat-form-field>
+                <mat-autocomplete #activitiesAuto="matAutocomplete">
+                  <mat-option *ngFor="let activity of activities$ | async" [value]="activity.descriptionDetail">
+                    {{activity.descriptionDetail}}
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-box">
+            <div class="custom-field-wrap">
+              <h4>Dates and Prices</h4>
+              <div class="row">
+                <mat-stepper  [linear]="isLinear" #stepper>
+                  <mat-step>
+                    <div>
+                      <ng-template matStepLabel >Available Year-Round ?</ng-template>
+                      <mat-checkbox  formControlName="isAvailableYearRound" color="primary">Available Year-Round</mat-checkbox>
+                      <div style="margin-left: 10%;" [hidden]="activityForm.get('isAvailableYearRound')?.value" >
+                        <mat-form-field>
+                          <mat-label>Started Date</mat-label>
+                          <input matInput  formControlName="startDate" placeholder="Started Date" [matDatepicker]="picker1" />
+                          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                          <mat-datepicker #picker1></mat-datepicker>
+                        </mat-form-field>
+                        <mat-form-field>
+                          <mat-label>Finished Date</mat-label>
+                          <input matInput formControlName="endDate" placeholder="Finished Date" [matDatepicker]="picker" />
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                      <div [hidden]="activityForm.get('isAvailableYearRound')?.value" >
+                        <ng-template matStepLabel>Dates flexibles ?</ng-template>
+                        <mat-checkbox formControlName="isFlexibleDates">Dates flexibles</mat-checkbox>
+                        <div style="margin-left: 10%;" [hidden]="!activityForm.get('isFlexibleDates')?.value" >
+                          <mat-form-field>
+                            <mat-label>bookingStartDate Date</mat-label>
+                            <input matInput formControlName="bookingStartDate" type="text" placeholder="Finished Date" [matDatepicker]="pickerbookingStartDate" />
+                            <mat-datepicker-toggle matSuffix [for]="pickerbookingStartDate"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerbookingStartDate></mat-datepicker>
+                          </mat-form-field>
+                          <mat-form-field>
+                            <mat-label>bookingEndDate Date</mat-label>
+                            <input matInput formControlName="bookingEndDate" type="text" placeholder="Finished Date" [matDatepicker]="bookingEndDatepicker" />
+                            <mat-datepicker-toggle matSuffix [for]="bookingEndDatepicker"></mat-datepicker-toggle>
+                            <mat-datepicker #bookingEndDatepicker></mat-datepicker>
+                          </mat-form-field>
+
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div>
+                      <button mat-button matStepperNext type="button">Next</button>
+                    </div>
+                  </mat-step>
+                  <mat-step [stepControl]="activityForm.get('isPlacesLimited')?.value">
+                    <ng-template matStepLabel>Places limitées</ng-template>
+                    <mat-checkbox formControlName="isPlacesLimited">Places limitées</mat-checkbox>
+                    <div [hidden]="!activityForm.get('isPlacesLimited')?.value">
+
+                      <div class="col-sm-6">
+                        <div>
+                          <mat-form-field>
+                            <mat-label> maxParticipants:</mat-label>
+                            <input type="number" formControlName="maxParticipants" placeholder="maxParticipants" required matInput />
+                            <mat-error>The  maxParticipants is required</mat-error>
+                            <mat-hint>
+                              Price should be between 1 and 10000
+                            </mat-hint>
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6">
+                        <div>
+                          <mat-form-field>
+                            <mat-label>participants</mat-label>
+                            <input type="number" formControlName="participants" placeholder="participants" required matInput />
+                            <mat-error>The participants is required</mat-error>
+                            <mat-hint>
+                              Price should be between 1 and 10000
+                            </mat-hint>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button type="button" mat-button matStepperPrevious>Back</button>
+                      <button type="button" mat-button matStepperNext>Next</button>
+                    </div>
+
+                  </mat-step>
+                  <mat-step [stepControl]="activityForm.get('price')?.value">
+                    <ng-template matStepLabel>Sale Price</ng-template>
+                    <mat-form-field>
+                      <mat-label>Sale Price</mat-label>
+                      <input type="number" formControlName="price" placeholder="Sale Price" required matInput />
+                      <mat-error>The price is required</mat-error>
+                      <mat-hint>
+                        Price should be between 1 and 10000
+                      </mat-hint>
+                    </mat-form-field>
+                    <div>
+                      <button type="button" mat-button matStepperPrevious>Back</button>
+                      <button type="button" mat-button matStepperNext>Next</button>
+                    </div>
+                  </mat-step>
+
+
+                </mat-stepper>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-box">
+            <h4>Gallery</h4>
+            <div class="custom-field-wrap">
+              <div class="dragable-field">
+                <div class="dragable-field-inner">
+                  <p class="drag-drop-info">Drop Files To Upload</p>
+                  <p>or</p>
+                  <div class="upload-input">
+                    <div class="form-group">
+                      <span class="upload-btn">Upload a image</span>
+                      <input type="file" name="myfile">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-box">
+            <h4>Location</h4>
+            <div class="custom-field-wrap">
+              <div class="row">
+
+                <mat-form-field style="width: 100%;">
+                  <mat-label>City</mat-label>
+                  <input formControlName="city" placeholder="City" [matAutocomplete]="cityAuto" required matInput (input)="onCityChange($event)" />
+                  <mat-error>Please provide a city name</mat-error>
+                </mat-form-field>
+
+                <mat-autocomplete #cityAuto="matAutocomplete">
+                  <mat-option *ngFor="let city of filteredCities | async" [value]="city">
+                    {{city}}
+                  </mat-option>
+                </mat-autocomplete>
+
+                <section class="contact-us-section" id="contact-us">
+                  <div class="container">
+                    <div class="row contact-row">
+                      <div class="w-90 map-container" id="map" data-aos="fade-left" data-aos-duration="1000" data-aos-offset="900">
+                        <iframe [src]="safeUrl" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+              </div>
+            </div>
+          </div>
+          <div class="dashboard-box">
+            <div class="custom-field-wrap">
+              <h4>Category</h4>
+              <mat-form-field style="width: 100%;">
+                <mat-label>Categories</mat-label>
+                <mat-select formControlName="category">
+                  <mat-option *ngFor="let category of categories" [value]="category">
+                    {{category}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+            </div>
+          </div>
+
+          <div class="dashboard-box">
+            <div class="custom-field-wrap db-pop-field-wrap">
+              <h4>Add image</h4>
+              <img
+                src="/assets/img/avatars/drag-drop_8202936.png"
+                alt="user-avatar"
+                class="d-block w-100 opacity-25 rounded"
+                id="uploadedAvatar"
+              />
+              <mat-form-field style="width: 100%;">
+                <div>
+                  <mat-toolbar>
+                    <input matInput formControlName="imageUrl" placeholder="Upload image" />
+                  </mat-toolbar>
+                  <input
+                    type="file"
+                    id="fileInput"
+                    (change)="selectFile($event)"
+                    name="fileInput"
+                  />
+                </div>
+              </mat-form-field>
+              <div class="publish-action">
+                <button mat-raised-button color="primary" type="submit" >Publish</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

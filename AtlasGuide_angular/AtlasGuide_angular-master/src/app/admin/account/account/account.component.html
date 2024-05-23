@@ -1,0 +1,264 @@
+<!--**********************************
+    Content body start
+***********************************-->
+<div  class="dashboard-container  content-body">
+  <div class="container-fluid">
+    <!-- row -->
+    <div class="row">
+      <div class="card mb-4">
+        <h4 *ngIf="this.filterService.roleFilter('ROLE_CONTENT_MANAGER')" class="card-header">Agence Details</h4>
+        <h4 *ngIf="this.filterService.roleFilter('ROLE_USER')" class="card-header">Personal Information</h4>
+        <!-- Account -->
+        <div class="card-body">
+          <div class="d-flex align-items-start align-items-sm-center gap-4">
+            <img
+              src="/assets/img/avatars/6.png"
+              alt="user-avatar"
+              class="d-block w-px-120 h-px-120 rounded"
+              id="uploadedAvatar" />
+            <div class="button-wrapper">
+              <label for="upload" class="btn btn-primary me-2 mb-3" tabindex="0">
+                <span class="d-none d-sm-block">Upload new photo</span>
+                <i class="mdi mdi-tray-arrow-up d-block d-sm-none"></i>
+                <input
+                  type="file"
+                  id="upload"
+                  class="account-file-input"
+                  hidden
+                  accept="image/png, image/jpeg" />
+              </label>
+              <button type="button" class="btn btn-outline-danger account-image-reset mb-3">
+                <i class="mdi mdi-reload d-block d-sm-none"></i>
+                <span class="d-none d-sm-block">Reset</span>
+              </button>
+
+              <div class="text-muted small">Allowed JPG, GIF or PNG. Max size of 800K</div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body pt-2 mt-1">
+          <form [formGroup]="updateForm" (ngSubmit)="updateData()" id="formAccountSettings" method="POST" (reset)="resetForm()" onsubmit="return false">
+            <div class="row mt-2 gy-4">
+              <div *ngIf="this.filterService.roleFilter('ROLE_CONTENT_MANAGER')" class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="Name"
+                    name="Name"
+                    formControlName="name"
+                    [value]="agence.name"
+                    autofocus
+                    placeholder="Enter your name"
+                  />
+                  <label for="Name" class="text-black">Agency Name</label>
+                </div>
+              </div>
+              <div *ngIf="this.filterService.roleFilter('ROLE_USER')" class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="FirstName"
+                    formControlName="firstname"
+                    [value]="user.firstname"
+                    autofocus
+                    placeholder="Enter your First name"
+                  />
+                  <label for="FirstName" class="text-black">FirstName</label>
+                </div>
+              </div>
+              <div *ngIf="this.filterService.roleFilter('ROLE_USER')" class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="lastname"
+                    name="Name"
+                    formControlName="lastname"
+                    [value]="user.lastname"
+                    autofocus
+                    placeholder="Enter your Last Name"
+                  />
+                  <label for="lastname" class="text-black">LastName</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="Email"
+                    name="email"
+                    formControlName="email"
+                    [value]="this.filterService.roleFilter('ROLE_CONTENT_MANAGER')? agence.email: user.email"
+                    placeholder="john.doe@example.com" />
+                  <label for="Email" class="text-black">E-mail</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group input-group-merge">
+                  <div class="form-floating form-floating-outline">
+                    <input
+                      type="text"
+                      id="Phone"
+                      name="phoneNumber"
+                      class="form-control"
+                      [value]="this.filterService.roleFilter('ROLE_CONTENT_MANAGER')? agence.phone: user.phone"
+                      formControlName="phone"
+                      placeholder="Enter phone number"
+                    />
+                    <label for="Phone" class="text-black">Phone Number</label>
+                  </div>
+                  <span class="input-group-text text-black">MA (+212)</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    name="address"
+                    formControlName="city"
+                    [value]="this.filterService.roleFilter('ROLE_CONTENT_MANAGER')? agence.location: ''"
+                    placeholder="Address" />
+                  <label for="location" class="text-black">Address</label>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <button type="submit" class="btn btn-primary me-2">Save changes</button>
+            </div>
+          </form>
+        </div>
+        <!-- /Account -->
+      </div>
+      <div *ngIf="this.filterService.roleFilter('ROLE_CONTENT_MANAGER')"  class="card mb-4">
+        <h4 class="card-header">Manager Details</h4>
+        <!-- Account -->
+        <div class="card-body pt-2 mt-1">
+          <form method="POST" (reset)="resetForm()" onsubmit="return false">
+            <div class="row mt-2 gy-4">
+              <div class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="Name"
+                    [value]="agence.user.firstname +' '+ agence.user.lastname"
+                    autofocus
+                    placeholder="Enter your name"
+                    [disabled]="true"
+                  />
+                  <label for="Name" class="text-black">Full Name</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    class="form-control"
+                    type="text"
+                    name="email"
+                    [disabled]="true"
+                    [value]="agence.user.email"
+                    placeholder="john.doe@example.com" />
+                  <label for="Email" class="text-black">E-mail</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group input-group-merge">
+                  <div class="form-floating form-floating-outline">
+                    <input
+                      type="text"
+                      name="phoneNumber"
+                      class="form-control"
+                      [value]="agence.user.phone"
+                      [disabled]="true"
+                      placeholder="Enter phone number"
+                    />
+                    <label for="Phone" class="text-black">Phone Number</label>
+                  </div>
+                  <span class="input-group-text text-black">MA (+212)</span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!-- /Account -->
+      </div>
+      <div   class="card mb-4">
+        <h4 class="card-header">Reset Password</h4>
+        <!-- Account -->
+        <div class="card-body pt-2 mt-1">
+          <form [formGroup]="resetPasswordForm">
+            <div class="row mt-2 gy-4">
+              <div class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="Email1"
+                    name="email"
+                    formControlName="email"
+                    [value]="this.filterService.roleFilter('ROLE_CONTENT_MANAGER')? agence.email: user.email"
+                    placeholder="john.doe@example.com"
+                  required/>
+                  <label for="Email1" class="text-black">E-mail</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    class="form-control"
+                    id="Password"
+                    type="password"
+                    formControlName="password"
+                    name="password"
+                    placeholder="New Password"
+                    required/>
+                  <label for="password" class="text-black">New Password</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating form-floating-outline">
+                  <input
+                    class="form-control"
+                    id="Passwordconfirm"
+                    type="password"
+                    [(ngModel)]="passwordConfirmation"
+                    name="password"
+                    placeholder="Confirm Password"
+                    required/>
+                  <label for="passwordconfirm" class="text-black">Confirm Password</label>
+                </div>
+              </div>
+              <div *ngIf="resetPasswordForm.get('newPassword')?.value !== '' && passwordConfirmation !== '' && resetPasswordForm.get('newPassword')?.value !== passwordConfirmation" class="text-danger error-message">Passwords do not match</div>
+            </div>
+            <div class="mt-4">
+              <button [disabled]="!resetPasswordForm.valid" type="submit" class="btn btn-primary me-2">Save changes</button>
+            </div>
+          </form>
+        </div>
+        <!-- /Account -->
+      </div>
+      <div class="card mb-4">
+        <h4 class="card-header fw-normal">Delete Account</h4>
+        <div class="card-body">
+          <div class="alert alert-warning">
+            <h6 class="alert-heading mb-1">Are you sure you want to delete your account?</h6>
+            <p class="mb-0">Once you delete your account, there is no going back. Please be certain.</p>
+          </div>
+          <form id="formAccountDeactivation" onsubmit="return false" (ngSubmit)="deleteAccount()">
+            <div class="form-check mb-3 ms-3">
+              <input class="form-check-input" type="checkbox" name="accountActivation" id="accountActivation" [(ngModel)]="confirmation" required />
+              <label class="form-check-label" for="accountActivation">I confirm my account deactivation</label>
+            </div>
+            <button type="submit" class="btn btn-danger"  [disabled]="!confirmation">Deactivate Account</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

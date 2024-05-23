@@ -1,0 +1,103 @@
+<app-header></app-header>
+<main id="content" class="site-main">
+    <!-- Inner Banner html start-->
+    <section class="inner-banner-wrap">
+        <div class="inner-baner-container" style="background-image: url(assets/images/saouira.jpg);">
+            <div class="container">
+                <div class="inner-banner-content">
+                    <h1 class="inner-title">Booking</h1>
+                </div>
+            </div>
+        </div>
+        <div class="inner-shape"></div>
+    </section>
+    <!-- Inner Banner html end-->
+    <div class="step-section cart-section">
+        <div class="container">
+            <div class="step-link-wrap">
+                <div class="step-item active">
+                    Your cart
+                    <a href="/Cart" class="step-icon"></a>
+                </div>
+                <div class="step-item active">
+                    Your Details
+                    <a href="/paiement" class="step-icon"></a>
+                </div>
+                <div class="step-item active">
+                    Finish
+                    <a href="/confirmation" class="step-icon"></a>
+                </div>
+            </div>
+            <!-- step three form html start -->
+            <div class="confirmation-outer">
+                <div class="success-notify" *ngIf="paymentStatus">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="success-content">
+                        <h3>PAYMENT CONFIRMED</h3>
+                        <p>Thank you, your payment has been successful and your booking is now confirmed.A confirmation email has been sent to <a href="https://demo.bosathemes.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6f060109002f1b1d0e190a030a410c0002">[email&#160;protected]</a>.</p>
+                    </div>
+                </div>
+              <div class="failure-notify" *ngIf="!paymentStatus">
+                <div class="failure-icon">
+<!--                  <i class="fa-light fa-circle-xmark"></i>-->
+                </div>
+                <div class="failure-content" >
+                  <h3>PAYMENT FAILED</h3>
+                  <p>Payment failed. Please check your card information or your account balance and try again.</p>
+                  <button (click)="goBack()" >Try Again</button>
+                </div>
+              </div>
+                <div class="confirmation-inner" *ngIf="paymentStatus">
+                    <div class="row">
+                        <div class="col-lg-11 mx-auto">
+                            <div class="confirmation-details">
+                                <h3>BOOKING DETAILS</h3>
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td>Booking id:</td>
+                                        <td>Order_Id{{paymentInformation.id}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>First Name:</td>
+                                        <td>{{paymentInformation.firstName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Last Name:</td>
+                                        <td>{{paymentInformation.lastName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email:</td>
+                                        <td>{{paymentInformation.email}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Card number</td>
+                                        <td>XXXX-XXXX-XXXX-XX42</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                                <div class="details payment-details">
+                                    <h3>PAYMENT</h3>
+                                    <div class="details-desc">
+                                        <p>Payment successful! Your payment of {{paymentInformation.amount}} mad has been processed</p>
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    <h3>VIEW BOOKING DETAILS</h3>
+                                    <div class="details-desc">
+                                        <p>Check your Email for your booking Details</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- step three form html end -->
+        </div>
+    </div>
+</main>
+<app-footer></app-footer>

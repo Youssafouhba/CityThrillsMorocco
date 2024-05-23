@@ -1,0 +1,19 @@
+.hide-row {
+  display: none;
+}
+.t{
+  background-color: rgba(166, 207, 238, 0.26);
+}
+.d{
+  background-color: coral;
+}
+.p{
+  background-color: aliceblue;
+}
+.a{
+  background-color: rgba(0, 148, 246, 0.06);
+}
+.table-border-bottom-0 th{
+  background: #a5d5ff;
+}
+

@@ -1,0 +1,130 @@
+<div class="login-page darken-background" style="background-image: url(assets/images/admin_background.jpg);">
+  <div class="login-from-wrap">
+    <h1 class="site-title">
+      <a routerLink="/">
+        <img src="assets/images/logo_app.png" alt="">
+      </a>
+    </h1>
+    <div style="display: flex;">
+      <h4 (click)="roleState(true)">ADMIN</h4>
+      <h4 (click)="roleState(false)">/CLIENT</h4>
+    </div>
+    <form id="formAuthentication" class="mb-3 login-from" [formGroup]="this.registrationForm" (ngSubmit)="register()">
+      <div class="form-floating form-floating-outline mb-3 form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          formControlName="firstname"
+          placeholder="{{this.role ? 'Your Enterprise Name':'Your Name'}}"
+          autofocus
+          required
+        />
+        <label>{{this.role ? 'Agency Name':'FirstName'}}</label>
+        <div *ngIf="this.registrationForm.get('firstname')?.invalid && (this.registrationForm.get('firstname')?.dirty || this.registrationForm.get('firstname')?.touched) && this.registrationForm.get('firstname')?.errors?.['required']" class="text-danger error-message">Agence name is required</div>
+      </div>
+      <div class="form-floating form-floating-outline mb-3 form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="lastname"
+          formControlName="lastname"
+          placeholder="{{this.role ? 'Agency Location':'Your FirstName'}}"
+          autofocus
+          required
+        />
+        <label>{{this.role ? 'Location':'FirstName'}}</label>
+        <div *ngIf="this.registrationForm.get('lastname')?.invalid && (this.registrationForm.get('lastname')?.dirty || this.registrationForm.get('lastname')?.touched) && this.registrationForm.get('lastname')?.errors?.['required']" class="text-danger error-message">Location is required</div>
+      </div>
+      <div class="form-floating form-floating-outline mb-3 form-group">
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          autofocus
+          required
+        />
+        <label>Email</label>
+        <div *ngIf="this.registrationForm.get('email')?.invalid && (this.registrationForm.get('email')?.dirty || this.registrationForm.get('email')?.touched)">
+          <div *ngIf="this.registrationForm.get('email')?.errors?.['required']" class="text-danger error-message">Email is required</div>
+          <div *ngIf="this.registrationForm.get('email')?.errors?.['email']" class="text-danger error-message">Invalid email format</div>
+        </div>
+        </div>
+      <div class="form-floating form-floating-outline mb-3 form-group">
+          <input
+            type="{{ this.registrationForm.get('password')?.value && showPassword ? 'text' : 'password' }}"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            placeholder="Enter your password"
+            autofocus
+            required
+          />
+          <button style="background: none;border: none;font-size: smaller;right: 2%;top: 35%;position: absolute;"  type="button" (click)="showPassword=!showPassword">
+            <span class="fa" [ngClass]="{ 'fa-eye': !showPassword, 'fa-eye-slash': showPassword }"></span>
+          </button>
+        <label>Password</label>
+        <div *ngIf="this.registrationForm.get('password')?.errors && this.registrationForm.get('password')?.value">
+          <div *ngIf="this.registrationForm.get('password')?.errors?.['minLengthNotMet']" class="text-danger error-message">Password must have at least 8 characters</div>
+          <div *ngIf="this.registrationForm.get('password')?.errors?.['maxLengthExceeded']" class="text-danger error-message">Password can have at most 16 characters</div>
+          <div *ngIf="this.registrationForm.get('password')?.errors?.['passwordInvalid']" class="text-danger error-message">Password must contains letters,numbers and characters (!,*,?,...)</div>
+        </div>
+          <div *ngIf="this.registrationForm.get('password')?.invalid && (this.registrationForm.get('password')?.dirty || this.registrationForm.get('password')?.touched) && this.registrationForm.get('password')?.errors?.['required']" class="text-danger error-message">Password is required</div>
+      </div>
+      <form [formGroup]="passwordConfirmation">
+        <div class="form-floating form-floating-outline mb-3 form-group">
+          <input
+            type="{{ this.passwordConfirmation.get('passwordConfirmation')?.value && showPasswordconfirm ? 'text' : 'password' }}"
+            class="form-control"
+            id="passwordConfirmation"
+            formControlName="passwordConfirmation"
+            placeholder="Confirm Password"
+            required />
+          <button style="background: none;border: none;font-size: smaller;right: 2%;top: 35%;position: absolute;"  type="button" (click)="showPasswordconfirm=!showPasswordconfirm">
+            <span class="fa" [ngClass]="{ 'fa-eye': !showPasswordconfirm, 'fa-eye-slash': showPasswordconfirm }"></span>
+          </button>
+          <label>Confirm Password</label>
+          <div *ngIf="this.registrationForm.get('passwordConfirmation')?.errors || this.passwordConfirmation.get('passwordConfirmation')?.value">
+            <div *ngIf="this.passwordConfirmation.get('passwordConfirmation')?.errors?.['minLengthNotMet']" class="text-danger error-message">Password must have at least 8 characters</div>
+            <div *ngIf="this.passwordConfirmation.get('passwordConfirmation')?.errors?.['maxLengthExceeded']" class="text-danger error-message">Password can have at most 16 characters</div>
+            <div *ngIf="this.passwordConfirmation.get('passwordConfirmation')?.errors?.['passwordInvalid']" class="text-danger error-message">Password must contains letters,numbers and characters (!,*,?,...)</div>
+          </div>
+            <div *ngIf="this.passwordConfirmation.get('passwordConfirmation')?.invalid && (this.passwordConfirmation.get('passwordConfirmation')?.dirty || this.passwordConfirmation.get('passwordConfirmation')?.touched) && this.passwordConfirmation.get('passwordConfirmation')?.errors?.['required']" class="text-danger error-message">Password Confirmation is required</div>
+        </div>
+
+      </form>
+
+      <div class="form-floating form-floating-outline mb-3 form-group">
+        <input
+          type="number"
+          class="form-control"
+          id="phone"
+          formControlName="phone"
+          placeholder="Enter your phone number"
+          autofocus
+          required
+        />
+        <label>Phone Number</label>
+        <div *ngIf="this.registrationForm.get('phone')?.invalid && (this.registrationForm.get('phone')?.dirty || this.registrationForm.get('phone')?.touched) && this.registrationForm.get('phone')?.errors?.['required']" class="text-danger error-message">Phone number is required</div>
+      </div>
+
+
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary d-grid w-100">Sign Up</button>
+      </div>
+      <div class="text-center form-group">
+        <a class="d-flex fill-primary align-items-center justify-content-center">
+          Already Registered?
+        </a>
+      </div>
+      <div class="text-center form-group">
+        <a routerLink="/Admin_login" class="d-flex align-items-center justify-content-center">
+          Login
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

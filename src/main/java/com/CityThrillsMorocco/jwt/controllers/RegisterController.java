@@ -13,7 +13,6 @@ import java.security.NoSuchAlgorithmException;
 
 @RestController
 @RequestMapping(value="/register")
-@CrossOrigin("https://664eb8c9cf07a4962b068958--cosmic-quokka-29ed66.netlify.app/")
 @AllArgsConstructor
 public class RegisterController {
     private final RegisterUserDetailsService registerUserDetailsService;

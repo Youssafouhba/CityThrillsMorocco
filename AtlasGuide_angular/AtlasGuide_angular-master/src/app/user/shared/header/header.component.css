@@ -1,0 +1,96 @@
+
+/* ------------- CHAYMAE CSS ___ ------------- */
+
+.title{
+  color: white;
+  font-size: 14px;
+}
+
+.container_search {
+  margin-top: 3px;
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 50px;
+  width: 400px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+
+}
+
+.container_search input {
+  width: 400px;
+  height: 30px;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  font-size: 14px;
+}
+
+.container_search .search {
+  background-color: #3498db;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50px;
+  margin-left: auto;
+}
+.container_search .search:hover{
+  background-color: #286f9b;
+}
+@media screen and (max-width: 767px) {
+  .container_search {
+    width: 300px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .container_search {
+    width: 250px;
+  }
+}
+.container_search {
+  position: relative;
+}
+
+.suggestions {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  border-top: none;
+  position: absolute;
+  top: calc(100% + 5px); /* Place la liste 5px en dessous de l'entrée de texte */
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.suggestions li {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.suggestions li:hover {
+  background-color: #f2f2f2;
+}
+
+.quantity{
+  background: red;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  position: absolute;
+  top: -1px;
+  left: 80%;
+  padding: 3px 10px;
+}
+
+
+
+
+

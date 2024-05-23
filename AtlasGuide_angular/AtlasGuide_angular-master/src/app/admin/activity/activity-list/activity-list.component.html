@@ -1,0 +1,82 @@
+
+<div class="dashboard-container layout-wrapper layout-content-navbar">
+  <div class="layout-container">
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="py-3 mb-4"><span class="text-muted fw-light">Activities/</span>All</h4>
+      <div class="content-wrapper">
+        <div class="card">
+          <div style="display: flex">
+            <h5 class="card-header">Contextual Classes</h5>
+            <div class="card-header" *ngFor="let item of types">
+              <span (click)="typeFilter(item.value)" class="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-gray-700 dark:text-gray-300">
+                {{item.name}}
+              </span>
+            </div>
+            <div class="card-header" style="display: flex; margin-left: 30%;">
+              <div id="dropdownAction" *ngFor="let item of stateFilters">
+               <span
+                 [ngClass]="{'bg-label-info': item=='Active',
+                 'bg-label-danger': item=='Expired',
+                  'bg-label-warning': item=='Pending',}"
+                 style="padding: 3px 10px 3px 10px;margin-left: 10px;"
+                 (click)="stateFilter(item)">
+                  {{item}}
+               </span>
+              </div>
+            </div>
+          </div>
+          <div class="table-responsive text-nowrap">
+            <table mat-table [dataSource]="activities" matSort matSortDisableClear class="table-border-bottom-0" >
+
+              <ng-container matColumnDef="designation">
+                <th mat-header-cell *matHeaderCellDef  mat-sort-header>Designation</th>
+                <td class="fw-medium" mat-cell *matCellDef="let element">
+                  <i [ngClass]="rowIcon[generateRandomBinaryDigit()]"></i>
+                  {{ element.designation }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="startDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Started Date</th>
+                <td mat-cell *matCellDef="let element">{{ Pipe.formatDateString(element.startDate,'yyyy-MM-dd','yyyy-MM-dd') }} </td>
+              </ng-container>
+              <ng-container matColumnDef="endDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Finished Date</th>
+                <td mat-cell *matCellDef="let element">{{ Pipe.formatDateString(element.endDate,'yyyy-MM-dd','yyyy-MM-dd')  }}</td>
+              </ng-container>
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+                <td mat-cell *matCellDef="let element" class="text-center">
+                <span
+                  [ngClass]="{'bg-label-info': element.status==='Active',
+                  'bg-label-danger': element.status==='Expired',
+                  'bg-label-warning': element.status==='Pending'}"
+                  class="badge rounded-pill me-1">
+                  {{element.status}}</span>
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef>Action</th>
+                <td mat-cell *matCellDef="let element">
+                  <span class="badge" style="background-color: #00d084" (click)="openUpdateDialog(element.id)">
+                    <i class="far fa-edit"></i>
+                  </span>
+                  <span class="badge" style="margin-left: 10px;background-color: orangered;" (click)="openDeleteConfirmationDialog(element.id)">
+                    <i class="far fa-trash-alt"></i>
+                  </span>
+
+                </td>
+              </ng-container>
+              <tr  mat-header-row *matHeaderRowDef="['designation','startDate', 'endDate', 'status', 'action']"></tr>
+              <tr  mat-row *matRowDef="let row;let i = index; columns: ['designation','startDate', 'endDate','status', 'action']"
+                   [ngClass]="rowStyles[(i%2)]" ></tr>
+            </table>
+            <mat-paginator [pageSize]="5" [pageSizeOptions]="[5,10,15]"></mat-paginator>
+          </div>
+        </div>
+      </div>
+      <div class="content-backdrop fade"></div>
+    </div>
+  </div>
+  <!-- Overlay -->
+  <div class="layout-overlay layout-menu-toggle"></div>
+</div>
