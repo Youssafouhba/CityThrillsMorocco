@@ -26,6 +26,7 @@ public class AuthenticateController {
 
 
   @RequestMapping(value = "/login")
+  @CrossOrigin("https://664eb8c9cf07a4962b068958--cosmic-quokka-29ed66.netlify.app/")
   public ResponseEntity<?> authenticate(
     @RequestBody AuthenticationRequest req
   ) throws Exception {
