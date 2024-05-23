@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import axios from 'axios'
 import {DomSanitizer, SafeResourceUrl} from "@angular/platform-browser";
-import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
