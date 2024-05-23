@@ -280,7 +280,7 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/classes/static/</outputDirectory>
+							<outputDirectory>${project.build.directory}/classes/templates/</outputDirectory>
 							<resources>
 								<resource>
 									<directory>/AtlasGuide_angular/AtlasGuide_angular-master/dist/frontend</directory>
