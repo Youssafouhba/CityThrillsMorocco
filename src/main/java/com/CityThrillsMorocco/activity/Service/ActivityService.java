@@ -1,13 +1,18 @@
 package com.CityThrillsMorocco.activity.Service;
 
+import com.CityThrillsMorocco.Program.Model.Program;
+import com.CityThrillsMorocco.Program.Service.ProgramService;
 import com.CityThrillsMorocco.activity.Dto.ActivityDto;
 import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.activity.Repository.ActivityRepo;
-import com.CityThrillsMorocco.agence.Model.Agence;
-import com.CityThrillsMorocco.agence.Service.AgenceService;
+import com.CityThrillsMorocco.agency.Model.Agence;
+import com.CityThrillsMorocco.agency.Repository.AgenceRepository;
+import com.CityThrillsMorocco.agency.Service.AgenceService;
 import com.CityThrillsMorocco.enumeration.ActivityCategories;
 import com.CityThrillsMorocco.enumeration.City;
 import com.CityThrillsMorocco.exception.BadRequestException;
+import com.CityThrillsMorocco.user.model.Admin;
+import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +28,10 @@ public class ActivityService {
 
     private final ActivityRepo activityRepo;
     private final AgenceService agenceService;
-    private final ModelMapper modelMapper;
+    private final UserService userService;
+    private final ProgramService programService;
+    private final AgenceRepository agenceRepository;
+    private final ModelMapper mapper;
 
     public List<Activity> getAllActivities(){
         List<Activity> activities = new ArrayList<Activity>( activityRepo.findAll());
@@ -39,31 +47,52 @@ public class ActivityService {
         if(existingActivity) {
             throw new BadRequestException(" this activity  already exists !!");
         }
-        Agence agence = agenceService.getAgenceById(agenceid);
+        Agence agence = agenceService.getAgenceById(
+                getAgenceByUser(agenceid));
         activity.setAgence(agence);
-        activityRepo.save(activity);
-        return ResponseEntity.ok(" added succesfully");
+        Program program = new Program();
+        program = activity.getProgram();
+        System.out.println(program);
+        activity.setProgram(program);
+
+        activity.setProgram(programService.createProgramFromActivity(program));
+        Activity savedActivity = activityRepo.save(activity);
+        // Créer le programme à partir de l'activité
+        return ResponseEntity.ok("Activity added successfully");
     }
-
     public void updateActivity(Activity activity,Long id){
-        var existingActivity = activityRepo.selectExistsDesignation(activity.getDesignation());
-        if(existingActivity) throw new BadRequestException(" this activity  already exists !!");
-
         Activity activity1 = getActivityById(id);
-
-        activity1.setAgence(activity.getAgence());
+        activity1.setAgence(agenceService.getAgenceById(activity1.getAgence().getId()));
         activity1.setPrice(activity.getPrice());
         activity1.setCategory(activity.getCategory());
-        activity1.setAgence(activity.getAgence());
         activity1.setDesignation(activity.getDesignation());
         activity1.setImageUrl(activity.getImageUrl());
         activity1.setPrice(activity.getPrice());
         activity1.setDescriptiondetail(activity.getDescriptiondetail());
-        activity1.setId(id);
-
-        activityRepo.save(activity);
+        activity1.setAvailableYearRound(activity.isAvailableYearRound());
+        activity1.setBookingEndDate(activity.getBookingEndDate());
+        activity1.setBookingStartDate(activity.getBookingStartDate());
+        activity1.setCity(activity.getCity());
+        activity1.setPlacesLimited(activity.isPlacesLimited());
+        activity1.setFlexibleDates(activity.isFlexibleDates());
+        activity1.setMaxParticipants(activity.getMaxParticipants());
+        activity1.setParticipants(activity.getParticipants());
+        activityRepo.save(activity1);
+    }
+    public List<Activity> AllAgenceActivities(Long id){
+        System.out.println(id);
+        return activityRepo.findActivitiesByAgence_Id(
+                getAgenceByUser(id)
+        );
     }
 
+    public Long getAgenceByUser(Long id) {
+        Admin admin = mapper.map(userService.getUserById(id), Admin.class);
+
+        List<Agence> agences = agenceRepository.findByAdmin(admin);
+
+        return agences.isEmpty() ? null : agences.get(0).getId();
+    }
     public List<ActivityDto> findAllByCategory(ActivityCategories category) {
         List<Activity> activities = activityRepo.findAllByCategory(category);
         return activities.stream()
@@ -104,7 +133,7 @@ public class ActivityService {
 
     public ActivityDto findById(Long activityId) {
         Activity activity = activityRepo.getById(activityId);
-        ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
+        ActivityDto activityDto = mapper.map(activity, ActivityDto.class);
         activityDto.setAgence_id(activity.getAgence().getId());
         return activityDto;
     }
@@ -115,13 +144,24 @@ public class ActivityService {
         List<Activity> activities = activityRepo.findActivitiesByCityAndCategory(city, category);
         List<ActivityDto> activityDtos = new ArrayList<>();
         for (Activity activity : activities) {
-            ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
+            ActivityDto activityDto = mapper.map(activity, ActivityDto.class);
             activityDtos.add(activityDto);
         }
         return activityDtos;
     }
+    public ActivityDto getActivity(Long activityId) {
+        Activity activity = activityRepo.getById(activityId);
+        ActivityDto activityDto = mapper.map(activity, ActivityDto.class);
+        activityDto.setAgence_id(activity.getAgence().getId());
+        return activityDto;
+    }
+
+    public void decrementActivityCapacity(Activity activity,int nbr) {
+        activity.setMaxParticipants(activity.getMaxParticipants()-nbr);
+        activityRepo.save(activity);
+    }
     public ActivityDto convertToDto(Activity activity) {
-        ActivityDto activityDto = modelMapper.map(activity, ActivityDto.class);
+        ActivityDto activityDto = mapper.map(activity, ActivityDto.class);
         activityDto.setAgence_id(activity.getAgence().getId());
         return activityDto;
     }

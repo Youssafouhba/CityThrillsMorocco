@@ -37,7 +37,8 @@ public class CorsConfig {
                         "Origin, Accept",
                         "X-Requested-With",
                         "Access-Control-Request-Method",
-                        "Access-Control-Request-Headers"
+                        "Access-Control-Request-Headers",
+                        "x-user-role"
                 )
         );
         corsConfiguration.setExposedHeaders(

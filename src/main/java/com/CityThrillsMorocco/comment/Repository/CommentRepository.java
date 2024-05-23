@@ -11,6 +11,9 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment,Long> {
+    List<Comment> getCommentsByActivity_Id(Long activityId);
+    List<Comment> findByActivityId(Long activityId);
+    List<Comment> findByParentCommentId(Long parentCommentId);
     @Query("SELECT comment.activity FROM Comment comment ORDER BY comment.note DESC ")
     List<Activity> findActivitiesWithHighRatings();
 

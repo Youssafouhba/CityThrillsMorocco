@@ -7,6 +7,7 @@ import com.CityThrillsMorocco.activity.Service.ActivityService;
 import com.CityThrillsMorocco.comment.Dto.CommentDto;
 import com.CityThrillsMorocco.comment.Model.Comment;
 import com.CityThrillsMorocco.comment.Repository.CommentRepository;
+import com.CityThrillsMorocco.jwt.util.JwtUtil;
 import com.CityThrillsMorocco.user.Dto.UserDto;
 import com.CityThrillsMorocco.user.model.User;
 import com.CityThrillsMorocco.user.repository.UserRepository;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.awt.*;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +28,7 @@ import java.util.stream.Collectors;
 public class CommentService {
     private final CommentRepository commentRepository;
     private final UserService userService;
+    private final JwtUtil jwtUtil;
     private final ModelMapper mapper;
     private final ActivityService activityService;
     private final ActivityRepo activityRepository;
@@ -107,6 +110,49 @@ public class CommentService {
                 .collect(Collectors.toList());
     }
 
+    public Comment addComment(Comment comment,Long activityId,String token){
+        Activity activity = activityService.getActivityById(activityId);
+        UserDto userDto = userService.getUserById(getUser(token).getId());
+        comment.setUser(mapper.map(userDto, User.class));
+        comment.setActivity(activity);
+        comment.setCreatedDate(new Date());
+        return commentRepository.save(comment);
+    }
+
+
+    public List<Comment> getCommentsByActivityId(Long activityId) {
+        return commentRepository.getCommentsByActivity_Id(activityId);
+    }
+
+    public Comment createReply(Comment reply,Long parentCommentId,String token) {
+        reply.setCreatedDate(new Date());
+        reply.setUser(getUser(token));
+        Comment parentComment = commentRepository.findById(parentCommentId)
+                .orElseThrow(() -> new IllegalArgumentException("Parent comment not found"));
+        reply.setParentComment(parentComment);
+        reply.setActivity(parentComment.getActivity());
+        parentComment.getReplies().add(reply);
+        return commentRepository.save(reply);
+    }
+
+    public List<Comment> getRepliesByCommentId(Long commentId) {
+        Comment comment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new IllegalArgumentException("Comment not found"));
+
+        return comment.getReplies();
+    }
+
+    public List<Comment> findByParentCommentId(Long parentCommentId){
+        return commentRepository.findByParentCommentId(parentCommentId);
+    }
+
+    public User getUser(String token) {
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        String userEmail = jwtUtil.extractUsername(token);
+        return userService.searchByEmail(userEmail);
+    }
 
     public ActivityDto convertToDto(Activity activity) {
         ActivityDto activityDto = mapper.map(activity, ActivityDto.class);

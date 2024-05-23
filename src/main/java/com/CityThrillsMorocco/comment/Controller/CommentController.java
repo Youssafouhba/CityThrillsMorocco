@@ -17,7 +17,7 @@ import java.util.List;
 @Log4j2
 @AllArgsConstructor
 @RestController
-@RequestMapping("comment")
+@RequestMapping("/comment")
 public class CommentController {
   
     private CommentService commentService;
@@ -39,11 +39,14 @@ public class CommentController {
         CommentDto createdComment = commentService.addCommentToActivity(activityId, userId, commentDto);
         return ResponseEntity.ok(createdComment);
     }
-
-    @DeleteMapping("/{id}")
-    public void removeComment(@PathVariable("id") Long id ) throws NoSuchAlgorithmException{
-        commentService.deleteComment(id);
+    @PostMapping("/{activity_id}")
+    public Comment addComment(
+            @RequestBody Comment comment,
+            @PathVariable("activity_id") Long activityId,
+            @RequestHeader("Authorization") String token) throws NoSuchAlgorithmException {
+        return commentService.addComment(comment,activityId,token);
     }
+
     
     @GetMapping("/comments_with_High_Rating")
     public List<ActivityDto> findActivitiesWithHighRatings(){
@@ -79,5 +82,23 @@ public class CommentController {
     }
 
 
+    @PostMapping("/{parent_id}")
+    public ResponseEntity<?> createReply(
+            @RequestBody Comment reply,
+            @RequestHeader("Authorization") String token,
+            @PathVariable("parent_id") Long parentId
+    ){
+        commentService.createReply(reply,parentId,token);
+        return ResponseEntity.ok().body("Reply Sent ");
+    }
 
+    @GetMapping("/{commentId}/replies")
+    public List<Comment> getRepliesByCommentId(@PathVariable Long commentId) {
+        return commentService.getRepliesByCommentId(commentId);
+    }
+
+    @DeleteMapping("/{id}")
+    public void removeComment(@PathVariable("id") Long id ) throws NoSuchAlgorithmException{
+        commentService.deleteComment(id);
+    }
 }

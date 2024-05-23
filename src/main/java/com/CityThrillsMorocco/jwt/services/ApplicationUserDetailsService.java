@@ -1,83 +1,63 @@
 package com.CityThrillsMorocco.jwt.services;
 
 
+import com.CityThrillsMorocco.RolesAndPrivileges.Models.Role;
+import com.CityThrillsMorocco.RolesAndPrivileges.Repository.RoleRepository;
 import com.CityThrillsMorocco.jwt.models.UserPrincipal;
 import com.CityThrillsMorocco.user.model.User;
 import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
+
+
+import org.modelmapper.ModelMapper;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 
 @Service
 @AllArgsConstructor
 public class ApplicationUserDetailsService implements UserDetailsService {
 
   private final UserService userService;
+  private final RoleRepository roleRepository;
+  private final PasswordEncoder passwordEncoder;
+  private final ModelMapper mapper;
+
 
   @Override
-  public UserDetails loadUserByUsername(String email)
-          throws UsernameNotFoundException {
-    return new UserPrincipal(userService.searchByEmail(email));
+  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    var userEntity = userService.searchByEmail(email);
+    return new UserPrincipal(userEntity);
   }
+
 
   public User authenticate(String email, String password)
           throws NoSuchAlgorithmException {
-    if (
-            email.isEmpty() || password.isEmpty()
-    ) throw new BadCredentialsException("Unauthorized");
+    if (email.isEmpty() || password.isEmpty()) {
+      throw new BadCredentialsException("Unauthorized");
+    }
 
     var userEntity = userService.searchByEmail(email);
 
-    if (userEntity == null) throw new BadCredentialsException("Unauthorized");
-
-    var verified = verifyPasswordHash(
-            password,
-            userEntity.getStoredHash(),
-            userEntity.getStoredSalt()
-    );
-
-    if (!verified) throw new BadCredentialsException("Unauthorized");
-
-    return userEntity;
-  }
-
-  private Boolean verifyPasswordHash(
-          String password,
-          byte[] storedHash,
-          byte[] storedSalt
-  ) throws NoSuchAlgorithmException {
-    if (
-            password.isBlank() || password.isEmpty()
-    ) throw new IllegalArgumentException(
-            "Password cannot be empty or whitespace only string."
-    );
-
-    if (storedHash.length != 64) throw new IllegalArgumentException(
-            "Invalid length of password hash (64 bytes expected)"
-    );
-
-    if (storedSalt.length != 128) throw new IllegalArgumentException(
-            "Invalid length of password salt (64 bytes expected)."
-    );
-
-    var md = MessageDigest.getInstance("SHA-512");
-    md.update(storedSalt);
-
-    var computedHash = md.digest(password.getBytes(StandardCharsets.UTF_8));
-
-    for (int i = 0; i < computedHash.length; i++) {
-      if (computedHash[i] != storedHash[i]) return false;
+    if (userEntity == null) {
+      throw new BadCredentialsException("Unauthorized");
     }
 
-    // The above for loop is the same as below
+    if (!passwordEncoder.matches(password, userEntity.getPassword())) {
+      throw new BadCredentialsException("Unauthorized");
+    }
+    return userEntity;
 
-    return MessageDigest.isEqual(computedHash, storedHash);
+  }
+
+  public Role getRole(Long id){
+    return this.roleRepository.findRoleByUsersIn(Arrays.asList(mapper.map(userService.getUserById(id),User.class)));
   }
 }

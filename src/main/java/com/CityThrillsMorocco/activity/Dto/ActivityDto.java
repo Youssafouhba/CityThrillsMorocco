@@ -1,6 +1,6 @@
 package com.CityThrillsMorocco.activity.Dto;
 
-import com.CityThrillsMorocco.agence.Model.Agence;
+import com.CityThrillsMorocco.agency.Model.Agence;
 import com.CityThrillsMorocco.enumeration.ActivityCategories;
 import com.CityThrillsMorocco.enumeration.City;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,6 @@ public class ActivityDto {
     private Long id;
     private String designation;
     private Date starteddate;
-
     private Date finisheddate;
     private String location;
     private String description;
