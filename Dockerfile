@@ -14,7 +14,7 @@ FROM maven:3.8.4-openjdk-17 AS backend-builder
 WORKDIR /app
 COPY . /app/
 # Copier le build du frontend dans le backend
-COPY --from=frontend-builder /app/dist /app/src/main/resources/static
+COPY --from=frontend-builder /app/dist /app/src/main/resources/templates
 
 RUN mvn clean package -DskipTests
 

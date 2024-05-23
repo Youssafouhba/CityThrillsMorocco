@@ -7,6 +7,7 @@ import com.CityThrillsMorocco.activity.Repository.ActivityRepo;
 import com.CityThrillsMorocco.agency.Dto.AgenceDto;
 import com.CityThrillsMorocco.agency.Model.Agence;
 import com.CityThrillsMorocco.agency.Repository.AgenceRepository;
+import com.CityThrillsMorocco.cart_element.repository.CartElementRepository;
 import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.exception.NotFoundException;
 import com.CityThrillsMorocco.user.model.Admin;
@@ -17,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +34,7 @@ public class AgenceService {
     private final ModelMapper mapper;
     private final UserService userService;
     private final EmailService emailService;
+    private final CartElementRepository cartElementRepository;
 
 
     public Agence searchByEmail(String email) {
@@ -40,13 +43,10 @@ public class AgenceService {
 
     public ResponseEntity<?> createAgence(AgenceDto agenceDto) throws NoSuchAlgorithmException {
         Agence agence = DtoToAgence(agenceDto);
-
         var existsEmail = agenceRepository.selectExistsEmail(agence.getEmail());
         if (existsEmail) throw new BadRequestException(
                 "Email " + agence.getEmail() + " taken"
         );
-
-
         agenceRepository.save(agence);
         return ResponseEntity.ok("Created successfully");
     }
@@ -120,4 +120,10 @@ public class AgenceService {
     private Agence DtoToAgence(AgenceDto agenceDto) {
         return mapper.map(agenceDto, Agence.class);
     }
+
+    public int getClientCount(Long agenceId) {
+        return cartElementRepository.getCartElementsByActivity_Id(agenceId).size();
+    }
+
+
 }

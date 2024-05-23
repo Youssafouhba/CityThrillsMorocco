@@ -188,7 +188,7 @@
 
 	</dependencies>
 
-
+<!--
 	<build>
 		<plugins>
 			<plugin>
@@ -231,7 +231,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- START packaging spring and client app in one jar -->
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
 				<artifactId>frontend-maven-plugin</artifactId>
@@ -290,7 +289,8 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- END packaging spring and client app in one jar -->
+
 		</plugins>
 	</build>
+-->
 </project>
