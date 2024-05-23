@@ -1,6 +1,6 @@
 package com.CityThrillsMorocco.Cart.Model;
 
-import com.CityThrillsMorocco.activity.Model.Activity;
+import com.CityThrillsMorocco.cart_element.model.CartElement;
 import com.CityThrillsMorocco.user.model.User;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
@@ -16,25 +16,16 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "cart")
+
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_Cart;
-    private Long number_persons;
-    private Double sub_total;
     private Double total_amount;
-    @JsonManagedReference
-    @ManyToMany
-    @JoinTable(
-            name = "cart_activity",
-            joinColumns = @JoinColumn(name = "cart_id"),
-            inverseJoinColumns = @JoinColumn(name = "activity_id")
-    )
-    private List<Activity> activityList;
     @OneToOne
     @JoinColumn(name = "user_id", unique = true)
     private User user;
-
-
-
+    @OneToMany(targetEntity = CartElement.class, fetch = FetchType.LAZY,cascade = CascadeType.ALL ,mappedBy = "cart")
+    @JsonManagedReference
+    private List<CartElement> cartElements;
 }

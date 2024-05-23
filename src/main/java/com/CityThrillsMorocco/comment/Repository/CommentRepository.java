@@ -11,9 +11,11 @@ import java.util.List;
 
 @Repository
 public interface CommentRepository extends JpaRepository<Comment,Long> {
+    List<Comment> getCommentsByActivity_Id(Long activityId);
+    List<Comment> findByActivityId(Long activityId);
+    List<Comment> findByParentCommentId(Long parentCommentId);
     @Query("SELECT comment.activity FROM Comment comment ORDER BY comment.note DESC ")
     List<Activity> findActivitiesWithHighRatings();
-
 
     @Query("SELECT ROUND(AVG(c.note),0) FROM Comment c WHERE c.activity.id = :activityId")
     Long findAverageNoteByActivityId(@Param("activityId") Long activityId);
@@ -21,6 +23,14 @@ public interface CommentRepository extends JpaRepository<Comment,Long> {
     @Query("SELECT COUNT(c) FROM Comment c WHERE c.activity.id = :activityId")
     Long getNumberOfComments(@Param("activityId") Long activityId);
 
+    @Query("SELECT COUNT(c) FROM Comment c WHERE c.note=5 or c.note=4")
+    Long getNumberOfGoodComments();
+
+    @Query("SELECT comment.activity FROM Comment comment WHERE comment.activity.category = :category ORDER BY comment.note DESC")
+    List<Activity> findActivitiesWithHighRatings(@Param("category") String category);
+
+    @Query("SELECT comment FROM Comment comment WHERE comment.activity.id= :activityId ")
+    List<Comment> findCommentsByActivityId(@Param("activityId") Long activityId);
 
 
 
