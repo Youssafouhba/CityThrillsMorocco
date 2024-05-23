@@ -31,6 +31,7 @@ export class AppComponent implements OnInit{
       || this.router.url === '/resetPassword';
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
 }
