@@ -12,13 +12,7 @@ import java.util.List;
 @Component
 public class ActivityStatusUpdateTask {
 
-    private final ActivityRepo activityRepository;
-    private final WebSocketHandler activityWebSocketHandler;
 
-    public ActivityStatusUpdateTask(ActivityRepo activityRepository, WebSocketHandler activityWebSocketHandler) {
-        this.activityRepository = activityRepository;
-        this.activityWebSocketHandler = activityWebSocketHandler;
-    }
 /*
     @Scheduled(fixedRate = 10000) // Exécution quotidienne à minuit
     public void updateActivityStatus() throws IOException {
