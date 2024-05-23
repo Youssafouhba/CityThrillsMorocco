@@ -280,7 +280,7 @@
 							<target>
 								<copy todir="${project.build.directory}/classes/public">
 									<!-- check your frontend's dist or build folders -->
-									<fileset dir="${project.basedir}/AtlasGuide_angular/AtlasGuide_angular-master/dist/frontend"/>
+									<fileset dir="AtlasGuide_angular/AtlasGuide_angular-master/dist/frontend"/>
 								</copy>
 							</target>
 						</configuration>
