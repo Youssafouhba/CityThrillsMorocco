@@ -6,7 +6,7 @@ import {FiltersService} from "../filter/filters.service";
 @Component({
   selector: 'app-dashbord',
   templateUrl: './dashbord.component.html',
-  styleUrls: ['./dashbord.component.css']
+  styleUrls: ['./dashbord.component.css','./dashboard.component1.css','./dashboard.component2.css','./dashboard.component3.css']
 })
 export class DashbordComponent implements  OnInit {
   constructor(
