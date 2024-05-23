@@ -16,7 +16,6 @@ import java.util.List;
 public class CommentController {
     private final CommentService commentService;
 
-
     @GetMapping("/comments_with_High_Rating")
     public List<Activity> findActivitiesWithHighRatings(){
         return commentService.findTop6Activities();

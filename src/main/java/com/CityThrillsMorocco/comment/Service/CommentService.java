@@ -25,6 +25,38 @@ public class CommentService {
     private final ModelMapper mapper;
     private final ActivityService activityService;
 
+    public Comment addComment(Comment comment,Long activityId,Long UserId) throws NoSuchAlgorithmException {
+        Activity activity = activityService.getActivityById(activityId);
+        UserDto userDto = userService.getUserById(UserId);
+        comment.setUser(mapper.map(userDto, User.class));
+        comment.setActivity(activity);
+        return commentRepository.save(comment);
+    }
+    public List<Comment> getComments(){
+        return commentRepository.findAll();
+    }
+
+    public void deleteComment(Long id){
+        commentRepository.deleteById(id);
+    }
+
+    public List<Activity> findTop6Activities(){
+        List<Activity> topActivities = commentRepository.findActivitiesWithHighRatings();
+        if(topActivities.size() > 6){
+            topActivities = topActivities.subList(0,6);
+        }
+
+        return topActivities;
+    }
+
+    public Long getNote(Long activity_id){
+        return commentRepository.findAverageNoteByActivityId(activity_id);
+    }
+
+    public Long getNumberOfComments(Long activity_id){
+        return commentRepository.getNumberOfComments(activity_id);
+    }
+
     public Comment addComment(Comment comment,Long activityId,String token){
         Activity activity = activityService.getActivityById(activityId);
         UserDto userDto = userService.getUserById(getUser(token).getId());
@@ -34,13 +66,6 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
-    public List<Comment> getComments(){
-        return commentRepository.findAll();
-    }
-
-    public void deleteComment(Long id){
-        commentRepository.deleteById(id);
-    }
 
     public List<Comment> getCommentsByActivityId(Long activityId) {
         return commentRepository.getCommentsByActivity_Id(activityId);
@@ -63,24 +88,6 @@ public class CommentService {
 
         return comment.getReplies();
     }
-
-    public List<Activity> findTop6Activities(){
-        List<Activity> topActivities = commentRepository.findActivitiesWithHighRatings();
-        if(topActivities.size() > 6){
-            topActivities = topActivities.subList(0,6);
-        }
-
-        return topActivities;
-    }
-
-    public Long getNote(Long activity_id){
-        return commentRepository.findAverageNoteByActivityId(activity_id);
-    }
-
-    public Long getNumberOfComments(Long activity_id){
-        return commentRepository.getNumberOfComments(activity_id);
-    }
-
 
     public List<Comment> findByParentCommentId(Long parentCommentId){
         return commentRepository.findByParentCommentId(parentCommentId);

@@ -1,6 +1,8 @@
 package com.CityThrillsMorocco.activity.Repository;
 
 import com.CityThrillsMorocco.activity.Model.Activity;
+import com.CityThrillsMorocco.enumeration.ActivityCategories;
+import com.CityThrillsMorocco.enumeration.City;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -21,5 +23,9 @@ public interface ActivityRepo extends JpaRepository<Activity, Long> {
     List<Activity> findActivitiesByAgence_Id(Long agenceId);
     void deleteActivitiesByAgence_Id(Long agenceId);
     void deleteById(Long id);
+
+    List<Activity> findAllByCategory(ActivityCategories category);
+
+    List<Activity> findAllByCity(City city);
 
 }

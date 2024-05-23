@@ -1,9 +1,12 @@
 package com.CityThrillsMorocco.activity.Controller;
 
 
+import com.CityThrillsMorocco.activity.Dto.ActivityDto;
 import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.activity.Service.ActivityService;
 import com.CityThrillsMorocco.activity.WebSocket.ActivityWebSocketHandler;
+import com.CityThrillsMorocco.enumeration.ActivityCategories;
+import com.CityThrillsMorocco.enumeration.City;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -70,6 +73,16 @@ public class ActivityController {
         activityService.updateActivity(activity,id);
 
         return  ResponseEntity.status(HttpStatus.CREATED).body("Message créé avec succès");
+    }
+    @GetMapping("/activities/category{category}")
+    public List<ActivityDto> getActivitiesByCategory(@PathVariable("category") ActivityCategories category) {
+        return activityService.findAllByCategory(category);
+
+    }
+
+    @GetMapping("/activities/city/{city}")
+    public List<ActivityDto> getActivitiesByCity(@PathVariable("city") City city){
+        return activityService.findAllByCity(city);
     }
 
 }

@@ -2,11 +2,14 @@ package com.CityThrillsMorocco.activity.Service;
 
 import com.CityThrillsMorocco.Program.Model.Program;
 import com.CityThrillsMorocco.Program.Service.ProgramService;
+import com.CityThrillsMorocco.activity.Dto.ActivityDto;
 import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.activity.Repository.ActivityRepo;
 import com.CityThrillsMorocco.agency.Model.Agence;
 import com.CityThrillsMorocco.agency.Repository.AgenceRepository;
 import com.CityThrillsMorocco.agency.Service.AgenceService;
+import com.CityThrillsMorocco.enumeration.ActivityCategories;
+import com.CityThrillsMorocco.enumeration.City;
 import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.user.model.Admin;
 import com.CityThrillsMorocco.user.model.User;
@@ -19,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -101,4 +105,34 @@ public class ActivityService {
         return agences.isEmpty() ? null : agences.get(0).getId();
     }
 
+    public List<ActivityDto> findAllByCategory(ActivityCategories category) {
+        List<Activity> activities = activityRepo.findAllByCategory(category);
+        return activities.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ActivityDto> findAllByCity(City city){
+        List<Activity> activities = activityRepo.findAllByCity(city);
+        return activities.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+    public ActivityDto convertToDto(Activity activity) {
+        ActivityDto activityDto = mapper.map(activity, ActivityDto.class);
+        activityDto.setAgence_id(activity.getAgence().getId());
+        return activityDto;
+    }
+
+    public ActivityDto getActivity(Long activityId) {
+        Activity activity = activityRepo.getById(activityId);
+        ActivityDto activityDto = mapper.map(activity, ActivityDto.class);
+        activityDto.setAgence_id(activity.getAgence().getId());
+        return activityDto;
+    }
+    public void decrementActivityCapacity(Activity activity,int nbr) {
+        activity.setMaxParticipants(activity.getMaxParticipants()-nbr);
+
+        activityRepo.save(activity);
+    }
 }
