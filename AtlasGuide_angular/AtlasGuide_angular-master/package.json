@@ -30,6 +30,7 @@
     "axios": "^1.6.8",
     "cloudinary": "^2.2.0",
     "cloudinary-core": "^2.13.1",
+    "core-js": "^3.37.1",
     "flowbite": "^2.3.0",
     "leaflet": "^1.9.4",
     "ngx-image-compress": "^15.1.6",
