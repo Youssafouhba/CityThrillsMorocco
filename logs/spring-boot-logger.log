@@ -19411,3 +19411,6 @@ Consider defining a bean of type 'org.springframework.data.rest.core.config.Repo
 2024-05-23 03:44:35,478 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-05-23 03:44:35,490 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
 2024-05-23 03:44:35,552 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 60 ms
+2024-05-23 04:06:37,099 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-05-23 04:06:37,294 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-6 - Shutdown initiated...
+2024-05-23 04:06:37,406 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-6 - Shutdown completed.
