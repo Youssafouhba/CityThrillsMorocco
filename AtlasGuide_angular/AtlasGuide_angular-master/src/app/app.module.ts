@@ -24,6 +24,7 @@ import {PaymentResolver} from "./resolvers/payment/payment.resolver";
 import { SwaggerComponent } from './swagger/swagger/swagger.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import {CloudinaryModule} from '@cloudinary/ng';
+import { MapsComponent } from './maps/maps.component';
 
 
 
@@ -33,6 +34,7 @@ import {CloudinaryModule} from '@cloudinary/ng';
   declarations: [
     AppComponent,
     SwaggerComponent,
+    MapsComponent,
 
   ],
   imports: [
