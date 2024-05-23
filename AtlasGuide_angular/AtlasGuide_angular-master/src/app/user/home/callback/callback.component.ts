@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'app-callback',
   templateUrl: './callback.component.html',
-  styleUrl: './callback.component.css'
+  styleUrls: ['./callback.component.css','./callback.component1.css']
 })
 export class CallbackComponent implements OnInit{
   nombreTotalClients: number = 100;
