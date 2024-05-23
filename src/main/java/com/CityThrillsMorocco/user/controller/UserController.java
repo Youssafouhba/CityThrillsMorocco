@@ -18,7 +18,7 @@ import java.util.List;
 @Log4j2
 @AllArgsConstructor
 @RestController
-@RequestMapping("/CityThrillsMorocco")
+@RequestMapping("/account")
 public class UserController {
 
   private final UserService userService;

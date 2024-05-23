@@ -25,7 +25,7 @@ public class AuthenticateController {
   private final ApplicationUserDetailsService userDetailsService;
 
 
-  @RequestMapping(value = "/authenticate")
+  @RequestMapping(value = "/login")
   public ResponseEntity<?> authenticate(
     @RequestBody AuthenticationRequest req
   ) throws Exception {

@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/CityThrillsMorocco/Admin/activities")
+@RequestMapping("/activities")
 @CrossOrigin("http://localhost:4200/")
 public class ActivityController {
     private final ActivityWebSocketHandler activityWebSocketHandler;
@@ -74,13 +74,13 @@ public class ActivityController {
 
         return  ResponseEntity.status(HttpStatus.CREATED).body("Message créé avec succès");
     }
-    @GetMapping("/activities/category{category}")
+    @GetMapping("/category{category}")
     public List<ActivityDto> getActivitiesByCategory(@PathVariable("category") ActivityCategories category) {
         return activityService.findAllByCategory(category);
 
     }
 
-    @GetMapping("/activities/city/{city}")
+    @GetMapping("/city/{city}")
     public List<ActivityDto> getActivitiesByCity(@PathVariable("city") City city){
         return activityService.findAllByCity(city);
     }

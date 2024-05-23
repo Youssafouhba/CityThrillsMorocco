@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.NoSuchAlgorithmException;
 
 @RestController
-@RequestMapping(value="/CityThrillsMorocco/register")
+@RequestMapping(value="/register")
 @AllArgsConstructor
 public class RegisterController {
     private final RegisterUserDetailsService registerUserDetailsService;

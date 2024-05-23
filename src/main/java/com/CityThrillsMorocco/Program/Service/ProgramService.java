@@ -18,15 +18,12 @@ import static java.lang.System.in;
 public class ProgramService {
 
     private final ProgramRepository programRepository;
-    private final ActivityRepo activityService;
     private final ProgramElementRepository programElementRepository;
 
-    public ProgramService(ProgramRepository programRepository, ActivityRepo activityService, ProgramElementRepository programElementRepository) {
+    public ProgramService(ProgramRepository programRepository, ProgramElementRepository programElementRepository) {
         this.programRepository = programRepository;
-        this.activityService = activityService;
         this.programElementRepository = programElementRepository;
     }
-
 
     public Program createProgramFromActivity(Program program) {
         // Enregistrer le programme
@@ -37,30 +34,15 @@ public class ProgramService {
         Program savedProgram = programRepository.save(newprogram);
         // Créer les éléments de programme
         generateProgramElements(savedProgram,program);
-
         //setProgramElements(program);
         return savedProgram;
     }
 
     private void generateProgramElements(Program savedProgram,Program program) {
-
         for (ProgramElement programElement : program.getProgramElements()) {
             programElement.setDay("Day " + (program.getProgramElements().size() + 1));
             programElement.setProgram(savedProgram);
             programElementRepository.save(programElement);
         }
-
     }
-
-    private void setProgramElements(Program program) {
-
-        for (ProgramElement programElement : program.getProgramElements()) {
-            ProgramElement element = programElementRepository.getById(programElement.getId());
-
-            programElementRepository.save(element);
-
-        }
-
-    }
-
 }

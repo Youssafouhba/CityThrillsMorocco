@@ -3,6 +3,7 @@ package com.CityThrillsMorocco.agency.Controller;
 import com.CityThrillsMorocco.agency.Dto.AgenceDto;
 import com.CityThrillsMorocco.agency.Model.Agence;
 import com.CityThrillsMorocco.agency.Service.AgenceService;
+import com.CityThrillsMorocco.jwt.util.JwtUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -16,7 +17,7 @@ import java.util.List;
 @Log4j2
 @AllArgsConstructor
 @RestController
-@RequestMapping("/CityThrillsMorocco/Admin")
+@RequestMapping("/CityThrillsMorocco/agence")
 @CrossOrigin("http://localhost:4200/")
 public class AgenceController {
 
@@ -24,11 +25,12 @@ public class AgenceController {
     private final ModelMapper mapper;
 
 
+/*
     @GetMapping
     public ResponseEntity<List<AgenceDto>> AllUsers(){
         return agenceService.getAllAgences();
     }
-/*
+
     @GetMapping("/{id}")
     public ResponseEntity<Agence> getAgenceById(@PathVariable("id") Long id){
         return new  ResponseEntity<>(agenceService.getAgenceById(id),HttpStatus.FOUND);

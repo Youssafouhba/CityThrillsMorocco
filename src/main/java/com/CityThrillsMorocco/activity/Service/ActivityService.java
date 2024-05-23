@@ -12,7 +12,6 @@ import com.CityThrillsMorocco.enumeration.ActivityCategories;
 import com.CityThrillsMorocco.enumeration.City;
 import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.user.model.Admin;
-import com.CityThrillsMorocco.user.model.User;
 import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -61,12 +60,10 @@ public class ActivityService {
         activity.setProgram(programService.createProgramFromActivity(program));
         Activity savedActivity = activityRepo.save(activity);
         // Créer le programme à partir de l'activité
-
-        return ResponseEntity.ok(" added succesfully");
+        return ResponseEntity.ok("Activity added successfully");
     }
 
     public void updateActivity(Activity activity,Long id){
-
         Activity activity1 = getActivityById(id);
         activity1.setAgence(agenceService.getAgenceById(activity1.getAgence().getId()));
         activity1.setPrice(activity.getPrice());
@@ -118,6 +115,7 @@ public class ActivityService {
                 .map(this::convertToDto)
                 .collect(Collectors.toList());
     }
+
     public ActivityDto convertToDto(Activity activity) {
         ActivityDto activityDto = mapper.map(activity, ActivityDto.class);
         activityDto.setAgence_id(activity.getAgence().getId());
@@ -130,9 +128,9 @@ public class ActivityService {
         activityDto.setAgence_id(activity.getAgence().getId());
         return activityDto;
     }
+
     public void decrementActivityCapacity(Activity activity,int nbr) {
         activity.setMaxParticipants(activity.getMaxParticipants()-nbr);
-
         activityRepo.save(activity);
     }
 }
