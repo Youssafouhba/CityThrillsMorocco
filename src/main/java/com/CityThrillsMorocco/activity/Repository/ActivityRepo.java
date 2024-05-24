@@ -1,6 +1,7 @@
 package com.CityThrillsMorocco.activity.Repository;
 
 import com.CityThrillsMorocco.activity.Model.Activity;
+import com.CityThrillsMorocco.agency.Model.Agence;
 import com.CityThrillsMorocco.enumeration.ActivityCategories;
 import com.CityThrillsMorocco.enumeration.City;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,5 +28,7 @@ public interface ActivityRepo extends JpaRepository<Activity, Long> {
     List<Activity> findAllByCategory(ActivityCategories category);
 
     List<Activity> findAllByCity(City city);
+
+    int countByAgence(Agence agence);
 
 }

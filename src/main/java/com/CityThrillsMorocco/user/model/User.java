@@ -1,5 +1,6 @@
 package com.CityThrillsMorocco.user.model;
 
+import com.CityThrillsMorocco.Cart.Model.Cart;
 import com.CityThrillsMorocco.Notification.Model.Notification;
 import com.CityThrillsMorocco.Reservation.Model.Reservation;
 import com.CityThrillsMorocco.RolesAndPrivileges.Models.Role;
@@ -47,7 +48,6 @@ public class User {
   @JsonIgnore
   @JsonManagedReference("reservation")
   private List<Reservation> reservations = new ArrayList<>();
-
 
 
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

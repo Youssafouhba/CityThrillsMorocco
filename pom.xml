@@ -185,10 +185,15 @@
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>20.63.1</version>
+		</dependency>
 	</dependencies>
 
 
+	<!--
 	<build>
 		<plugins>
 			<plugin>
@@ -291,6 +296,6 @@
 			</plugin>
 
 		</plugins>
-	</build>
+	</build>-->
 
 </project>

@@ -1,15 +1,20 @@
 package com.CityThrillsMorocco.agency.Service;
 
+import com.CityThrillsMorocco.Cart.Model.Cart;
+import com.CityThrillsMorocco.Cart.Repository.CartRepo;
 import com.CityThrillsMorocco.accountverification.Repository.ConfirmationTokenRepository;
 import com.CityThrillsMorocco.accountverification.Service.EmailService;
 import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.activity.Repository.ActivityRepo;
+import com.CityThrillsMorocco.activity.Service.ActivityService;
 import com.CityThrillsMorocco.agency.Dto.AgenceDto;
 import com.CityThrillsMorocco.agency.Model.Agence;
 import com.CityThrillsMorocco.agency.Repository.AgenceRepository;
+import com.CityThrillsMorocco.cart_element.model.CartElement;
 import com.CityThrillsMorocco.cart_element.repository.CartElementRepository;
 import com.CityThrillsMorocco.exception.BadRequestException;
 import com.CityThrillsMorocco.exception.NotFoundException;
+import com.CityThrillsMorocco.payment.repository.PaymentRepository;
 import com.CityThrillsMorocco.user.model.Admin;
 import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
@@ -18,10 +23,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,7 +41,9 @@ public class AgenceService {
     private final UserService userService;
     private final EmailService emailService;
     private final CartElementRepository cartElementRepository;
-
+    private final CartRepo cartRepository;
+    private final ActivityRepo activityRepository;
+    private final PaymentRepository paymentRepository;
 
     public Agence searchByEmail(String email) {
         return agenceRepository.findByEmail(email);
@@ -78,7 +86,7 @@ public class AgenceService {
                 );
     }
 
-    public Agence getAgenceByUser(Long id) {
+    public  Agence getAgenceByUser(Long id) {
         Admin admin = mapper.map(userService.getUserById(id), Admin.class);
 
         List<Agence> agences = agenceRepository.findByAdmin(admin);
@@ -121,8 +129,12 @@ public class AgenceService {
         return mapper.map(agenceDto, Agence.class);
     }
 
-    public int getClientCount(Long agenceId) {
-        return cartElementRepository.getCartElementsByActivity_Id(agenceId).size();
+
+    public List<Activity> AllAgenceActivities(Long id){
+        System.out.println(id);
+        return activityRepo.findActivitiesByAgence_Id(
+                getAgenceByUser(id).getId()
+        );
     }
 
 

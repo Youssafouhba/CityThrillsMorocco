@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="stripe.bonsai.core_2.10" type="repository">
+    <properties maven-id="com.stripe:bonsai-core_2.10:0.2.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/stripe/bonsai-core_2.10/0.2.1/bonsai-core_2.10-0.2.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/scala-lang/scala-library/2.10.6/scala-library-2.10.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

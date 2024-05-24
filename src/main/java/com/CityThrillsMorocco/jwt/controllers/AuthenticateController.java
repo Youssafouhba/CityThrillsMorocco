@@ -24,7 +24,6 @@ public class AuthenticateController {
   private final JwtUtil jwtTokenUtil;
   private final ApplicationUserDetailsService userDetailsService;
 
-
   @RequestMapping(value = "/login")
   public ResponseEntity<?> authenticate(
     @RequestBody AuthenticationRequest req

@@ -1,6 +1,5 @@
 package com.CityThrillsMorocco.RolesAndPrivileges.Models;
 
-import com.CityThrillsMorocco.RolesAndPrivileges.Models.Role;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;

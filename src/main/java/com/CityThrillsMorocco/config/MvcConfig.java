@@ -11,6 +11,7 @@ import java.io.IOException;
 
 @Configuration
 public class MvcConfig implements WebMvcConfigurer {
+    /*
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
@@ -25,5 +26,10 @@ public class MvcConfig implements WebMvcConfigurer {
                                 : new ClassPathResource("/templates/index.html");
                     }
                 });
+    }*/
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/templates/");
     }
 }

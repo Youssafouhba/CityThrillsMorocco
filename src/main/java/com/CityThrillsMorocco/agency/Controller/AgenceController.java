@@ -42,6 +42,8 @@ public class AgenceController {
         return ResponseEntity.ok(agenceService.getAgenceByUser(id));
     }
 
+
+
     @PostMapping
     public ResponseEntity<?> registerAgence(@RequestBody Agence agence) throws NoSuchAlgorithmException {
         return  agenceService.saveAgence(agence);
