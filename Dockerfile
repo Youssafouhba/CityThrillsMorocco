@@ -1,15 +1,14 @@
 FROM maven:3.8.4-openjdk-17 AS builder
-# Étape 1 : Construire le backend avec Maven
-FROM maven:3.8.4-openjdk-17 AS backend-builder
 
+# Définissez le répertoire de travail dans le conteneur
 WORKDIR /app
 COPY . /app/
+RUN mvn clean package
 
-# Étape 3 : Exécuter l'application
+#
 FROM openjdk:17-alpine
-
+# Définissez le répertoire de travail dans le conteneur
 WORKDIR /app
-COPY --from=backend-builder /app/target/*.jar /app/app.jar
+COPY --from=builder /app/target/*.jar /app/app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
-
