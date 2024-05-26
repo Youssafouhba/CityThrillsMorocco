@@ -160,6 +160,8 @@ public class ActivityService {
         activity.setMaxParticipants(activity.getMaxParticipants()-nbr);
         activityRepo.save(activity);
     }
+
+
     public ActivityDto convertToDto(Activity activity) {
         ActivityDto activityDto = mapper.map(activity, ActivityDto.class);
         activityDto.setAgence_id(activity.getAgence().getId());

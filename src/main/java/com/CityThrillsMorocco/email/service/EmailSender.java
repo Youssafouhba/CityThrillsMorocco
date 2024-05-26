@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Service
 public class EmailSender {
-    public static final String NEW_USER_ACCOUNT_VERIFICATION = "New User Account Verification";
+    public static final String ORDER_CONFIRMATION = "Order Confirmation";
     public static final String UTF_8_ENCODING = "UTF-8";
     public static final String EMAIL_TEMPLATE = "emailtemplate";
     public static final String TEXT_HTML_ENCONDING = "text/html";
@@ -43,7 +43,7 @@ public class EmailSender {
             MimeMessage message = getMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true, UTF_8_ENCODING);
             helper.setPriority(1);
-            helper.setSubject(NEW_USER_ACCOUNT_VERIFICATION);
+            helper.setSubject(ORDER_CONFIRMATION);
             helper.setFrom(fromEmail);
             helper.setTo(emailDetails.getEmail());
             helper.setText(text, true);

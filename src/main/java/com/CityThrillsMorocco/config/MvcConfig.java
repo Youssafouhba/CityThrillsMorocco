@@ -19,6 +19,12 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**")
+                .addResourceLocations("classpath:/templates/");
+    }
+  /*
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/**")
                 .addResourceLocations("classpath:/src/main/resources/templates/")
                 .resourceChain(true)
                 .addResolver(new PathResourceResolver() {
@@ -30,7 +36,7 @@ public class MvcConfig implements WebMvcConfigurer {
                                 : new ClassPathResource("/templates/index.html");
                     }
                 });
-    }
+    }*/
 
     @Override
     public void addFormatters(FormatterRegistry registry) {

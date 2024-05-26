@@ -2,19 +2,20 @@ package com.CityThrillsMorocco.Wishlist.model;
 
 import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.user.model.User;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Wishlist {
 
     @Id
@@ -23,6 +24,8 @@ public class Wishlist {
 
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnore
+    @JsonBackReference
     private User user;
 
     @ManyToMany
@@ -41,4 +44,7 @@ public class Wishlist {
         }
         return this.activities;
     }
+
+
+
 }

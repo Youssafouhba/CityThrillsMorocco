@@ -5,17 +5,20 @@ import com.CityThrillsMorocco.activity.Service.ActivityService;
 import lombok.AllArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Date;
+
 @AllArgsConstructor
 
 public class ActivityReservationManager {
 
     private  final ActivityService activityService;
     public void checkAndUpdateActivityStatus() {
-        LocalDate currentDate = LocalDate.now();
+        Date currentDate = new Date();
         Activity activity = activityService.getActivityById(5L);
-        if (currentDate.isAfter(activity.getStartDate())) {
+        if (currentDate.after(activity.getStartDate())) {
             activity.setStatus("Terminated");
-            activityService.updateActivity(activity,5L);
+            activityService.updateActivity(activity, 5L);
         }
     }
+
 }
