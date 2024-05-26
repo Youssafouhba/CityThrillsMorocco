@@ -9,19 +9,18 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalTime;
+
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 
@@ -38,9 +37,9 @@ public class Activity {
 
     private String descriptiondetail;
 
-    private LocalDate startDate;
+    private Date startDate;
 
-    private LocalDate endDate;
+    private Date endDate;
     private String location;
 
     private Double price;
@@ -62,9 +61,9 @@ public class Activity {
     private boolean isFlexibleDates;
     @JsonProperty("isPlacesLimited")
     private boolean isPlacesLimited;
-    private LocalDate bookingStartDate;
+    private Date bookingStartDate;
 
-    private LocalDate bookingEndDate;
+    private Date bookingEndDate;
     @Enumerated(EnumType.STRING)
     private City city;
 
@@ -91,17 +90,17 @@ public class Activity {
 
 
     public void updateStatusWhenStartDateArrives() {
-        LocalDate currentDate = LocalDate.now();
+        Date currentDate = new Date();
         if (!isFlexibleDates) {
-            if (currentDate.isEqual(startDate) || currentDate.isAfter(startDate)) {
-                if (endDate != null && currentDate.isAfter(endDate)) {
+            if (currentDate.equals(startDate) || currentDate.after(startDate)) {
+                if (endDate != null && currentDate.after(endDate)) {
                     this.status = "Expired";
                 } else {
                     this.status = "Active";
                 }
             }
         } else {
-            if (bookingEndDate != null && currentDate.isAfter(bookingEndDate)) {
+            if (bookingEndDate != null && currentDate.after(bookingEndDate)) {
                 this.status = "Expired";
             }
         }

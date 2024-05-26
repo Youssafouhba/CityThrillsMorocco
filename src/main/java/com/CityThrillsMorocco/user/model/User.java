@@ -4,11 +4,10 @@ import com.CityThrillsMorocco.Notification.Model.Notification;
 import com.CityThrillsMorocco.Reservation.Model.Reservation;
 import com.CityThrillsMorocco.Wishlist.model.Wishlist;
 import com.CityThrillsMorocco.RolesAndPrivileges.Models.Role;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -16,9 +15,10 @@ import java.util.Collection;
 import java.util.List;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
@@ -33,7 +33,9 @@ public class User {
   private String phone;
   private String password;
   private boolean isEnabled;
-  @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+  @OneToOne(mappedBy = "user")
+  @JsonIgnore
+ @JsonManagedReference
   private Wishlist wishlist;
   private String provider;
   @ManyToMany
@@ -56,4 +58,7 @@ public class User {
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
   @JsonManagedReference("notification")
   private List<Notification> notifications;
+
+
+
 }

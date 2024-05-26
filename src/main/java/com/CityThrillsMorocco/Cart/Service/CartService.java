@@ -7,6 +7,7 @@ import com.CityThrillsMorocco.cart_element.repository.CartElementRepository;
 import com.CityThrillsMorocco.cart_element.service.CartElementService;
 import com.CityThrillsMorocco.user.Dto.UserDto;
 import com.CityThrillsMorocco.user.model.User;
+import com.CityThrillsMorocco.user.service.UserService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +29,7 @@ public class CartService {
     @Autowired
     private CartElementService cartElementService;
     @Autowired
-    private CartElementRepository cartElementRepository;
+    private UserService userService;
 
 //    public Cart addActivityToCart(Long cartId, Long activityId) {
 //        Cart cart = cartRepo.findById(cartId).orElse(null);
@@ -45,7 +46,14 @@ public class CartService {
 //    }
 
     public Cart getCartByUserId(Long userId) {
-        return cartRepo.findByUserId(userId);
+        Cart cart=cartRepo.findByUserId(userId);
+        if(cart ==null){
+            cart=new Cart();
+            cart.setUser(mapper.map(userService.getUserById(userId),User.class));
+            cart.setTotal_amount(0.0);
+            cartRepo.save(cart);
+        }
+        return cart;
     }
 
 

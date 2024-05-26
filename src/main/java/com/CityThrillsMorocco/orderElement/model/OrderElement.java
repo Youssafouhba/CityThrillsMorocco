@@ -1,6 +1,5 @@
 package com.CityThrillsMorocco.orderElement.model;
 
-import com.CityThrillsMorocco.Cart.Model.Cart;
 import com.CityThrillsMorocco.activity.Model.Activity;
 import com.CityThrillsMorocco.order.model.Order;
 import com.fasterxml.jackson.annotation.JsonBackReference;
