@@ -104,7 +104,7 @@ public class RegisterUserDetailsService implements UserDetailsService {
         mailMessage.setTo(user.getEmail());
         mailMessage.setSubject("Complete Registration!");
         mailMessage.setText("To confirm your account, please click here : "
-                +"http://localhost:4200/Admin_sign_up?token="+confirmationToken.getConfirmationToken());
+                +"https://citythrillsmorocco-1.onrender.com/Admin_sign_up?token="+confirmationToken.getConfirmationToken());
         emailService.sendEmail(mailMessage);
         System.out.println("Confirmation Token: " + confirmationToken.getConfirmationToken());
         return ResponseEntity.ok("Verify email by the link sent on your email address");

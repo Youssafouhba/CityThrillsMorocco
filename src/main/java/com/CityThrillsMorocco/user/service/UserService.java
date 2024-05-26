@@ -57,7 +57,7 @@ public class UserService  {
         mailMessage.setTo(user.getEmail());
         mailMessage.setSubject("Rset Password!");
         mailMessage.setText("To Reset your Password, please click here : "
-                +"http://localhost:4200/resetPassword?token="+confirmationToken.getConfirmationToken());
+                +"https://citythrillsmorocco-1.onrender.com/resetPassword?token="+confirmationToken.getConfirmationToken());
         emailService.sendEmail(mailMessage);
 
         return ResponseEntity.ok("Verify email by the link sent on your email address");
