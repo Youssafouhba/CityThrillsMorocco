@@ -6,9 +6,23 @@
 [![Responsive](https://img.shields.io/badge/Responsive-Yes-orange.svg)]()
 
 <div align="center">
-  <img src="/api/placeholder/800/400" alt="CityThrillsMorocco Banner">
-  <p>Your Gateway to Authentic Moroccan Experiences</p>
+  <video width="800" height="400" controls>
+    <source src="demo/citythrills-demo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <p>Experience CityThrillsMorocco in Action - Your Gateway to Authentic Moroccan Experiences</p>
 </div>
+
+## 🎥 Demo Highlights
+
+Watch our platform in action:
+- User journey from search to booking
+- Service provider dashboard overview
+- Real-time booking management
+- Interactive map features
+- Social features and community engagement
+
+[View Full Demo Video](demo/citythrills-demo.mp4)
 
 ## 🌐 Overview
 
