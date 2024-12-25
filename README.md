@@ -1,17 +1,44 @@
-# CityThrillsMorocco 🌟
 
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen.svg)](https://spring.io/projects/spring-boot)
-[![React](https://img.shields.io/badge/React-18.x-blue.svg)](https://reactjs.org)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Responsive](https://img.shields.io/badge/Responsive-Yes-orange.svg)]()
+<h1 align="center">
+  <br>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="https://res.cloudinary.com/dlkvn0fpz/image/upload/v1735094951/pfsfiles/k5n32efjcyxp1bahdydj.png"
+								     width="200" height="200" alt="Markdownify"  ></a>
+  <br>
+   🌟 CityThrillsMorocco 🌟
+  <br>
+</h1>
+
+<h4 align="center">Experience CityThrillsMorocco in Action - Your Gateway to Authentic Moroccan Experiences .</h4>
 
 <div align="center">
-  <video width="800" height="400" controls>
-    <source src="demo/citythrills-demo.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <p>Experience CityThrillsMorocco in Action - Your Gateway to Authentic Moroccan Experiences</p>
+  <a href="https://spring.io/projects/spring-boot">
+    <img src="https://img.shields.io/badge/Spring%20Boot-3.6.0-brightgreen.svg" alt="Spring Boot">
+  </a>
+  <a href="https://reactjs.org">
+    <img src="https://img.shields.io/badge/Angular-16.x-red.svg" alt="Angular">
+  </a>
+  <a href="https://angular.io/guide/material">
+    <img src="https://img.shields.io/badge/Angular%20Material-16.x-blueviolet.svg" alt="Angular Material">
+  </a>
+  <a href="https://leafletjs.com/">
+    <img src="https://img.shields.io/badge/Leaflet-1.x-green.svg" alt="Leaflet">
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img src="https://img.shields.io/badge/Tailwind%20CSS-3.x-blue.svg" alt="Tailwind CSS">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License">
+  </a>
+  <img src="https://img.shields.io/badge/Responsive-Yes-orange.svg" alt="Responsive">
 </div>
+<br/>
+
+
+
+<p align="center">
+  <img src="client_El9Trd2E-ezgif.com-video-to-gif-converter.gif" alt="screenshot">
+</p>
+
 
 ## 🎥 Demo Highlights
 
@@ -21,9 +48,8 @@ Watch our platform in action:
 - Real-time booking management
 - Interactive map features
 - Social features and community engagement
-
-[View Full Demo Video](demo/citythrills-demo.mp4)
-
+  
+[View Full Demo Video](https://res.cloudinary.com/dlkvn0fpz/video/upload/v1735092219/pfsfiles/qybnrxbbolp1vo8aihwg.mp4)
 ## 🌐 Overview
 
 CityThrillsMorocco is a state-of-the-art tourism platform connecting adventurous travelers with premium local experiences across Morocco. Our responsive web application ensures a seamless experience across all devices, from desktop to mobile.
@@ -186,7 +212,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 - Website: [citythrillsmorocco.com](https://citythrillsmorocco.com)
 - Email: contact@citythrillsmorocco.com
-- Issue Tracker: [GitHub Issues](https://github.com/yourusername/citythrillsmorocco/issues)
+- Issue Tracker: [GitHub Issues](https://github.com/Youssafouhba/citythrillsmorocco/issues)
 
 ---
 
