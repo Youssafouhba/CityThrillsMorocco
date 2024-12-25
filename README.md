@@ -211,7 +211,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## 📞 Contact
 
 - Website: [citythrillsmorocco.com](https://citythrillsmorocco.com)
-- Email: contact@citythrillsmorocco.com
+- Email: youssefouhba@gmail.com
 - Issue Tracker: [GitHub Issues](https://github.com/Youssafouhba/citythrillsmorocco/issues)
 
 ---
